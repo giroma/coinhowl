@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  price_above: 9.99
+  price_below: 9.99
+  state: MyString
+  coin: one
+
+two:
+  user: two
+  price_above: 9.99
+  price_below: 9.99
+  state: MyString
+  coin: two
