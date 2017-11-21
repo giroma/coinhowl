@@ -14,4 +14,6 @@
         <% end %>
       </div>
 </div>
+<%= content_tag "div", id: "chartdiv", data: {chartArray: @data_by_minute_result} do %>
+<% end %>
 <%= @data_by_minute_result %>
