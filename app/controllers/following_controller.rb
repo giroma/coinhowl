@@ -7,20 +7,24 @@ class FollowingController < ApplicationController
     @follow = Following.new
     @follow.user_id = 1
     @follow.coin_name = params[:id]
-    @follow.save
-    puts @follow.inspect
-    # if @following.save
-    #   redirect_to
-    # end
+
+    if @follow.save
+      redirect_to coin_path
+    else
+      redirect_to coins_url
+    end
   end
 
   def destroy
-    @coin = params[:id]
-    @following = Following.where(user_id: 1, coin_name: @coin)
-    Following.destroy(@following.ids)
-    # @following.each do |follow|
-    #   puts follow.inspect
-    #   Following.delete(follow.id)
-    # end
+    @coin_symbol = params[:id]
+    @following = Following.where(user_id: 1, coin_name: @coin_symbol)
+
+    if Following.destroy(@following.ids)
+      redirect_to coin_path
+    else
+      redirect_to coins_url
+    end
   end
 end
+
+# @follow.coin_name and  @coin is referring to the show page of the coin the user is currently on
