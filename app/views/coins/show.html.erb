@@ -1,2 +1,10 @@
-<h1>Coins#show</h1>
-<p>Find me in app/views/coins/show.html.erb</p>
+<div class="container row">
+  <h1>Coins#show</h1>
+  <p>Find me in app/views/coins/show.html.erb</p>
+      <div class="col s6">
+        <div id='chart'></div>
+        <%= render_chart(@chart, 'chart') %>
+      </div>
+      <div class="col s6"style="background:green;">6-columns (one-half)</div>
+
+</div>

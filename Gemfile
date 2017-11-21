@@ -37,6 +37,7 @@ gem 'httparty', '~> 0.13.7'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'materialize-rails', '~> 0.97.5.2'
 gem 'material_icons'
+gem "google_visualr", ">= 2.5"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -18,17 +18,25 @@
           <% @result.each do |element| %>
           <% cc_symbol = element["symbol"] %>
             <tr>
+              <% if @cryptocompare_result[cc_symbol] != nil %>
               <% base_cc_url = "https://www.cryptocompare.com" %>
               <% coin_image = @cryptocompare_result[cc_symbol]["ImageUrl"] %>
               <% coin_image_url = "#{base_cc_url}#{coin_image}"  %>
               <td class="center"><%= image_tag(coin_image_url, alt:element["name"], class: "coin-image") %></td>
+              <% else %>
+              <td class="center">No image</td>
+              <% end %>
               <td class="center"><%= element["symbol"] %></td>
               <td class="center"><%= element["name"] %></td>
               <td class="center"><%= number_to_currency(element["price_cad"], precision: 2) %></td>
               <td class="center"><%= number_with_precision(element["price_btc"], precision: 8) %></td>
               <td class="center"><%= number_to_currency(element["24h_volume_cad"], precision: 2) %></td>
               <td class="center"><%= element["total_supply"] %></td>
-              <td class="center"><%= element["percent_change_24h"] %></td>
+              <% if element["percent_change_24h"].to_f < 0 %>
+              <td class="center"><i class="material-icons valign-wrapper red-text">arrow_drop_down</i><span class="red-text"><%= element["percent_change_24h"] %>%</span></td>
+              <% else %>
+              <td class="center"><i class="material-icons valign-wrapper green-text">arrow_drop_up</i><span class="green-text"><%= element["percent_change_24h"] %>%</span></td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>
