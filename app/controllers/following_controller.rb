@@ -3,16 +3,11 @@ class FollowingController < ApplicationController
     @following = Following.where(user_id: 1)
   end
 
-  def new
-    @following = Following.new
-  end
-
-  def create
-    call_coin_market_cap_api
-    @following = Following.new
-    @following.user_id = current_user
-    @following.coin_name = params[:coin]["symbol"]
-
+  def update
+    @follow = Following.new
+    @follow.user_id = 1
+    @follow.coin_name = params[:id]
+    puts @follow.inspect
     # if @following.save
     #   redirect_to
     # end

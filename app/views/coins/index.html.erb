@@ -1,7 +1,8 @@
-<% @result.each do |element| %>
-  <%= element['name']  %>
-  <%= number_to_currency(element['price_cad'], precision: 2)  %>
-  <br>
-<% end %>
-
+<ul>
+  <% @result.each do |element| %>
+  <li>  <a href="coins/<%= element['symbol'] %>"><%= element['name'] %></a>
+    <%= number_to_currency(element['price_cad'], precision: 2)  %>
+    <br></li>
+  <% end %>
+</ul>
 <!-- <submit action/createfollowing element['symbol'] -->
