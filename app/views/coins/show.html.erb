@@ -1,2 +1,9 @@
 <h1><%= @coin %></h1>
-<a href="#" class='follow_coin' data-symbol='<%= @coin %>'>Follow</a>
+
+<% if !@is_following %>
+  <a href="<%= following_path %>" data-method="put" rel="nofollow">Follow</a>
+  <p>Add <%= @coin %> to your portfolio!</p>
+<% else %>
+  <a href="<%= following_path %>" data-method="delete" rel="nofollow">Unfollow</a>
+  <p>Remove <%= @coin %> from your portfolio.</p>
+<% end %>
