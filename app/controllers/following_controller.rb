@@ -5,7 +5,7 @@ class FollowingController < ApplicationController
 
   def update
     @follow = Following.new
-    @follow.user_id = current_user
+    @follow.user_id = current_user.id
     @follow.coin_name = params[:id]
 
     if @follow.save
@@ -17,7 +17,7 @@ class FollowingController < ApplicationController
 
   def destroy
     @coin_symbol = params[:id]
-    @following = Following.where(user_id: current_user, coin_name: @coin_symbol)
+    @following = Following.where(user_id: current_user.id, coin_name: @coin_symbol)
 
     if Following.destroy(@following.ids)
       redirect_to coin_path
