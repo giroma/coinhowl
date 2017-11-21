@@ -10,7 +10,7 @@ class CoinsController < ApplicationController
     @coin_symbol = params[:id]
     @follow = Following.where(user_id: 1, coin_name: @coin_symbol)
     @is_following = @follow.length > 0 ? true : false
-
+    get_chart_data_by_minute
 
     data_table = GoogleVisualr::DataTable.new
     # Add Column Headers
@@ -31,4 +31,11 @@ class CoinsController < ApplicationController
     option = { height: 400, title: "#{@coin_symbol}" }
     @chart = GoogleVisualr::Interactive::CandlestickChart.new(data_table, option)
   end
+
+  def get_chart_data_by_minute
+    @data_by_minute = HTTParty.get('https://min-api.cryptocompare.com/data/histominute?fsym=ETH&limit=2000&tsym=BTC&aggregate=3&e=Bittrex&allData=true')
+    @data_by_minute_result = JSON.parse(@data_by_minute.body)
+    @data_by_minute_result = @data_by_minute_result["Data"]
+  end
+
 end
