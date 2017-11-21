@@ -1,3 +1,10 @@
+<% if !current_user %>
+  <%= link_to "Register", new_user_path %> |
+  <%= link_to "Login", new_session_path %> 
+<% else %>
+  <%= link_to "Logout", session_path, method: :delete %>
+<% end %>
+<br>
 <% @result.each do |element| %>
   <%= element['name']  %>
   <%= number_to_currency(element['price_cad'], precision: 2)  %>
