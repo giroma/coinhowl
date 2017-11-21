@@ -27,7 +27,7 @@
               <td class="center">No image</td>
               <% end %>
               <td class="center"><%= element["symbol"] %></td>
-              <td class="center"><%= element["name"] %></td>
+              <td class="center"><a href="coins/<%= element['symbol'] %>"><%= element["name"] %></a></td>
               <td class="center"><%= number_to_currency(element["price_cad"], precision: 2) %></td>
               <td class="center"><%= number_with_precision(element["price_btc"], precision: 8) %></td>
               <td class="center"><%= number_to_currency(element["24h_volume_cad"], precision: 2) %></td>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container row">
   <h1>Coins#show</h1>
   <p>Find me in app/views/coins/show.html.erb</p>
@@ -8,3 +9,14 @@
       <div class="col s6"style="background:green;">6-columns (one-half)</div>
 
 </div>
+=======
+<h1><%= @coin_symbol %></h1>
+
+<% if !@is_following %>
+  <a href="<%= following_path %>" data-method="put" rel="nofollow">Follow</a>
+  <p>Add <%= @coin_symbol %> to your portfolio!</p>
+<% else %>
+  <a href="<%= following_path %>" data-method="delete" rel="nofollow">Unfollow</a>
+  <p>Remove <%= @coin_symbol %> from your portfolio.</p>
+<% end %>
+>>>>>>> master
