@@ -1,3 +1,10 @@
+<% if !current_user %>
+  <%= link_to "Register", new_user_path %> |
+  <%= link_to "Login", new_session_path %>
+<% else %>
+  <%= link_to "Logout", session_path, method: :delete %>
+<% end %>
+<br>
 <div class="container">
   <div class="row">
     <div class="col s12 m12 l12">
