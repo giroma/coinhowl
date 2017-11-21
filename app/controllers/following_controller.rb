@@ -1,6 +1,8 @@
 class FollowingController < ApplicationController
   def index
-    @following = Following.where(user_id: 1)
+    @following = Following.where(user_id: current_user.id)
+    # @follow = @following.find(params[:id])
+    # @alerts = @follow.alerts
   end
 
   def update
