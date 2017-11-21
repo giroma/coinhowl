@@ -3,6 +3,7 @@
   <head>
     <title>Coinhowl</title>
     <%= csrf_meta_tags %>
+    <script src='https://www.google.com/jsapi'></script>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -12,6 +13,15 @@
     <% flash.each do |key, message| %>
       <div class="alert alert-<%= key %>"><%= message %></div>
       <% end %>
+    <nav>
+  <div class="nav-wrapper blue darken-3">
+    <a href="#!" class="brand-logo">&nbsp;&nbsp;CoinHowl</a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="#"><i class="material-icons left">search</i>Search</a></li>
+      <li><a href="#"><i class="material-icons right">account_circle</i>User</a></li>
+    </ul>
+  </div>
+</nav>
     <%= yield %>
   </body>
 </html>

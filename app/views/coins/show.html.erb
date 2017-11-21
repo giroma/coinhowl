@@ -1,2 +1,17 @@
-<h1>Coins#show</h1>
-<p>Find me in app/views/coins/show.html.erb</p>
+<div class="container row">
+  <h1><%= @coin_symbol %></h1>
+      <div class="col s6">
+        <div id='chart'></div>
+        <%= render_chart(@chart, 'chart') %>
+      </div>
+      <div class="col s6">
+        <% if !@is_following %>
+          <p>Add <%= @coin_symbol %> to your portfolio!</p>
+          <a href="<%= following_path %>" data-method="put" rel="nofollow">Follow</a>
+        <% else %>
+          <p>Remove <%= @coin_symbol %> from your portfolio.</p>
+          <a href="<%= following_path %>" data-method="delete" rel="nofollow">Unfollow</a>
+        <% end %>
+      </div>
+
+</div>
