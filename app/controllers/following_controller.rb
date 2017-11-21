@@ -17,9 +17,10 @@ class FollowingController < ApplicationController
   def destroy
     @coin = params[:id]
     @following = Following.where(user_id: 1, coin_name: @coin)
-    @following.each do |follow|
-      puts follow.inspect
-      Following.delete(follow.id)
-    end
+    Following.destroy(@following.ids)
+    # @following.each do |follow|
+    #   puts follow.inspect
+    #   Following.delete(follow.id)
+    # end
   end
 end
