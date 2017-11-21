@@ -1,5 +1,38 @@
-<% @result.each do |element| %>
-  <%= element['name']  %>
-  <%= number_to_currency(element['price_cad'], precision: 2)  %>
-  <br>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col s12 m12 l12">
+      <table class="striped highlight">
+        <thead>
+          <tr>
+            <th class="center">Icon</th>
+            <th class="center">Symbol</th>
+            <th class="center">Market Name</th>
+            <th class="center">Price CAD</th>
+            <th class="center">Price in BTC</th>
+            <th class="center">24 Volume CAD</th>
+            <th class="center">Total Supply</th>
+            <th class="center">Percentage Change 24hs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @result.each do |element| %>
+          <% cc_symbol = element["symbol"] %>
+            <tr>
+              <% base_cc_url = "https://www.cryptocompare.com" %>
+              <% coin_image = @cryptocompare_result[cc_symbol]["ImageUrl"] %>
+              <% coin_image_url = "#{base_cc_url}#{coin_image}"  %>
+              <td class="center"><%= image_tag(coin_image_url, alt:element["name"], class: "coin-image") %></td>
+              <td class="center"><%= element["symbol"] %></td>
+              <td class="center"><%= element["name"] %></td>
+              <td class="center"><%= number_to_currency(element["price_cad"], precision: 2) %></td>
+              <td class="center"><%= number_with_precision(element["price_btc"], precision: 8) %></td>
+              <td class="center"><%= number_to_currency(element["24h_volume_cad"], precision: 2) %></td>
+              <td class="center"><%= element["total_supply"] %></td>
+              <td class="center"><%= element["percent_change_24h"] %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
