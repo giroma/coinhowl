@@ -1,3 +1,27 @@
 // Place all the styles related to the Coins controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+tbody {
+  line-height: 0.1;
+}
+
+.card .card-title {
+  font-weight: 400;
+}
+
+.strong {
+  font-weight: 500;
+}
+
+.symbol {
+  font-size: 2.4rem;
+}
+
+.coin-image {
+  width: 25px;
+  height: 25px;
+}
+td {
+  padding: 5px 0;
+}
