@@ -1,7 +1,9 @@
+<h4>CURRENT PRICE:</h4>
+
 <%= form_for([@following, @alert]) do |f| %>
   <% if @alert.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@alert.errors.count, "error") %> prohibited this comment from being saved:</h2>
+      <h2><%= pluralize(@alert.errors.count, "error") %> prohibited this alert from being saved:</h2>
       <ul>
         <% @alert.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>

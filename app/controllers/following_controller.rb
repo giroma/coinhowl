@@ -1,6 +1,6 @@
 class FollowingController < ApplicationController
   def index
-    @following = Following.where(user_id: current_user)
+    @following = Following.where(user_id: current_user.id)
   end
 
   def update
@@ -17,9 +17,9 @@ class FollowingController < ApplicationController
 
   def destroy
     @coin_symbol = params[:id]
-    @following = Following.where(user_id: current_user.id, coin_name: @coin_symbol)
+    @follow = Following.where(user_id: current_user.id, coin_name: @coin_symbol)
 
-    if Following.destroy(@following.ids)
+    if Following.destroy(@follow.ids)
       redirect_to coin_path
     else
       redirect_to coins_url
