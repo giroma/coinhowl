@@ -5,7 +5,7 @@ class AlertsController < ApplicationController
     @alert.following_id = @following
     @alert.price_above = [:alert][:price_above]
     @alert.price_below = [:alert][:price_below]
-    @alert.state = 'active'
+    @alert.state = 'Active'
 
     if @alert.save
       flash.notice = "Alert is activated."
@@ -22,14 +22,14 @@ end
 
 def update
   @alert = Alert.find(params[:id])
-  @following = Following.find(params[:following_id])
+  @follow = Following.find(params[:following_id])
   @alert.price_above = params[:alert][:price_above]
   @alert.price_below = params[:alert][:price_below]
-  @alert.following_id = @following
+  @alert.state = 'Active'
 
   if @alert.save
     flash.notice = "Alert has been successfully updated."
-    redirect_to @following
+    redirect_to following_index_path
   else
     render :edit
   end

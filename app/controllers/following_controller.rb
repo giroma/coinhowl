@@ -27,4 +27,4 @@ class FollowingController < ApplicationController
   end
 end
 
-# @follow.coin_name and  @coin is referring to the show page of the coin the user is currently on
+# @follow.coin_name and  @coin_symbol is referring to the show page of the coin the user is currently on
