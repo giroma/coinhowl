@@ -22,7 +22,6 @@ end
 
 def update
   @alert = Alert.find(params[:id])
-  @follow = Following.find(params[:following_id])
   @alert.price_above = params[:alert][:price_above]
   @alert.price_below = params[:alert][:price_below]
   @alert.state = 'Active'
@@ -42,7 +41,7 @@ def destroy
     flash[:notice] = "Alert has been successfully deleted."
     redirect_to following_index_path
   else
-    flash[:notice] = "Alert has failed to delete."
+    flash[:alert] = "Alert has failed to delete."
     redirect_to following_index_path
   end
 end

@@ -10,7 +10,8 @@
     <p>Status: <%= alert.state %></p>
     <p><%= link_to "Edit", edit_following_alert_path(follow, alert) %> | <%= link_to "Delete", following_alert_path(follow, alert), method: :delete, data: {confirm: "Are you sure you want to delete this alert?" } %> </p>
   <% end %>
-  <!-- NEW ALERT FORM GOES HERE -->
+
+  <!-- cannot render the partial for the alert. for NEW method, it can't be @following, must be >>follow<< like in the iteration -->
   <%= form_for([follow, @alert]) do |f| %>
     <% if @alert.errors.any? %>
       <div id="error_explanation">
