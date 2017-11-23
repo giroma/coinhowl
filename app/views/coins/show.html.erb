@@ -7,10 +7,10 @@
       <div class="col s6">
         <% if !@is_following %>
           <p>Add <%= @coin_symbol %> to your portfolio!</p>
-          <a class="waves-effect waves-light btn blue darken-4" href="<%= following_path %>" data-method="put" rel="nofollow"><i class="material-icons left">star</i>Follow</a></a>
+          <a class="waves-effect waves-light btn green darken-4" href="<%= following_path %>" data-method="put" rel="nofollow"><i class="material-icons left">star</i>Follow</a></a>
         <% else %>
           <p>Remove <%= @coin_symbol %> from your portfolio.</p>
-          <a class="waves-effect waves-light btn blue darken-4" href="<%= following_path %>" data-method="delete" rel="nofollow"><i class="material-icons left">star</i>Unfollow</a>
+          <a class="waves-effect waves-light btn red darken-4" href="<%= following_path %>" data-method="delete" rel="nofollow"><i class="material-icons left">star</i>Unfollow</a>
         <% end %>
       </div>
 </div>
