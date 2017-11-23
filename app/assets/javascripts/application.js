@@ -15,61 +15,166 @@
 //= require turbolinks
 //= require materialize
 //= require_tree .
-
 document.addEventListener("DOMContentLoaded", function(event) {
 
 var info = document.getElementById('chartdiv');
+var chartData = JSON.parse(info.dataset.chartarray);
+var coinSymbol = 'BTC-LTC'
+
 var chart = AmCharts.makeChart( "chartdiv", {
-  "type": "serial",
+  "type": "stock",
   "theme": "light",
-  "dataDateFormat":"YYYY-MM-DD hh:mm:ss",
-  "valueAxes": [ {
-    "position": "left"
+  "mouseWheelScrollEnabled": false,
+  "mouseWheelZoomEnabled": true,
+
+  "categoryAxesSettings": {
+    "minPeriod": "hh"
+  },
+
+  "dataSets": [ {
+    "fieldMappings": [ {
+      "fromField": "open",
+      "toField": "open"
+    }, {
+      "fromField": "close",
+      "toField": "close"
+    }, {
+      "fromField": "high",
+      "toField": "high"
+    }, {
+      "fromField": "low",
+      "toField": "low"
+    }, {
+      "fromField": "volumefrom",
+      "toField": "volumefrom"
+    }, {
+      "fromField": "value",
+      "toField": "value"
+    } ],
+
+    "color": "#7f8da9",
+    "dataProvider": chartData,
+    "title": coinSymbol,
+    "categoryField": "date"
+  }, {
+    "fieldMappings": [ {
+      "fromField": "value",
+      "toField": "value"
+    } ],
+    // "color": "#fac314",
+    // "dataProvider": chartData,
+    // "compared": true,
+    // "title": "East Stock",
+    // "categoryField": "date"
   } ],
-  "graphs": [ {
-    "id": "g1",
-    "proCandlesticks": true,
-    "balloonText": "Open:<b>[[open]]</b><br>Low:<b>[[low]]</b><br>High:<b>[[high]]</b><br>Close:<b>[[close]]</b><br>",
-    "closeField": "close",
-    "fillColors": "#7f8da9",
-    "highField": "high",
-    "lineColor": "#7f8da9",
-    "lineAlpha": 1,
-    "lowField": "low",
-    "fillAlphas": 0.9,
-    "negativeFillColors": "#db4c3c",
-    "negativeLineColor": "#db4c3c",
-    "openField": "open",
-    "title": "Price:",
-    "type": "candlestick",
-    "valueField": "close"
-  } ],
-  "chartScrollbar": {
+
+
+  "panels": [ {
+      "title": "Value",
+      "showCategoryAxis": false,
+      "percentHeight": 70,
+      "valueAxes": [ {
+        "dashLength": 5
+      } ],
+
+      "categoryAxis": {
+        "dashLength": 5
+      },
+
+      "stockGraphs": [ {
+        "type": "candlestick",
+        "id": "g1",
+        "openField": "open",
+        "closeField": "close",
+        "highField": "high",
+        "lowField": "low",
+        "valueField": "close",
+        "lineColor": "#7f8da9",
+        "fillColors": "#7f8da9",
+        "negativeLineColor": "#db4c3c",
+        "negativeFillColors": "#db4c3c",
+        "fillAlphas": 1,
+        "useDataSetColors": false,
+        "comparable": true,
+        "compareField": "value",
+        "showBalloon": true,
+        "balloonText": "Open:<b>[[open]]</b><br>Low:<b>[[low]]</b><br>High:<b>[[high]]</b><br>Close:<b>[[close]]</b><br>",
+      } ],
+        "chartCursor": {
+        "valueLineEnabled": true,
+        "valueLineBalloonEnabled": true
+      },
+        "categoryField": "date",
+        "categoryAxis": {
+        "parseDates": true
+      },
+      "stockLegend": {
+        "valueTextRegular": undefined,
+        "periodValueTextComparing": "[[percents.value.close]]%"
+      }
+    },
+
+    {
+      "title": "Price",
+      "percentHeight": 30,
+      "marginTop": 1,
+      "showCategoryAxis": true,
+      "valueAxes": [ {
+        "dashLength": 5
+      } ],
+
+      "categoryAxis": {
+        "dashLength": 5
+      },
+
+      "stockGraphs": [ {
+        "valueField": "volume",
+        "type": "column",
+        "showBalloon": true,
+        "fillAlphas": 1
+      } ],
+
+      "stockLegend": {
+        "markerType": "none",
+        "markerSize": 0,
+        "labelText": "",
+        "periodValueTextRegular": "[[value.close]]"
+      }
+    }
+  ],
+
+  "chartScrollbarSettings": {
+    "autoGridCount": true,
     "graph": "g1",
     "graphType": "line",
-    "scrollbarHeight": 30
+    "usePeriod": "hh"
   },
-  "chartCursor": {
-    "valueLineEnabled": true,
-    "valueLineBalloonEnabled": true
-  },
-  "categoryField": "date",
-  "categoryAxis": {
-    "parseDates": true
-  },
-  "dataProvider": JSON.parse(info.dataset.chartarray),
-  "export": {
-    "enabled": true,
-    "position": "bottom-right"
+
+  "periodSelector": {
+    "inputFieldsEnabled": false,
+    "position": "top",
+    "periods": [ {
+      "period": "hh",
+      "count": 24,
+      "label": "1 days"
+
+    }, {
+      "period": "hh",
+      "count": 48,
+      "label": "2 days"
+    }, {
+      "period": "hh",
+      "count": 120,
+      "label": "5 days"
+    }, {
+      "period": "hh",
+      "count": 336,
+      "label": "14 days"
+    }, {
+      "period": "MAX",
+      "label": "MAX"
+    } ]
   }
 } );
 
-chart.addListener( "rendered", zoomChart );
-zoomChart();
-
-// this method is called when chart is first inited as we listen for "dataUpdated" event
-function zoomChart() {
-  // different zoom methods can be used - zoomToIndexes, zoomToDates, zoomToCategoryValues
-  chart.zoomToIndexes( chart.dataProvider.length - 50, chart.dataProvider.length - 1 );
-}
   });
