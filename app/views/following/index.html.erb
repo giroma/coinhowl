@@ -1,11 +1,14 @@
 <h1>Portfolio</h1>
 
+<%= link_to "Back to Coins", root_url %>
+
 <% @following.each do |follow| %>
   <p><%= follow.coin_name %></p>
   <% follow.alerts.each do |alert| %>
     <%= alert.price_below %>
     <%= alert.price_above %>
     <%= alert.state %>
+    <%= link_to "Edit", edit_following_alert_path %>
     <br>
   <% end %>
 <% end %>
