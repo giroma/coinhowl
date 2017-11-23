@@ -1,11 +1,39 @@
 <h1>Portfolio</h1>
 
+<%= link_to "Back to Coins", root_url %>
+
 <% @following.each do |follow| %>
   <p><%= follow.coin_name %></p>
   <% follow.alerts.each do |alert| %>
-    <%= alert.price_below %>
-    <%= alert.price_above %>
-    <%= alert.state %>
-    <br> 
+    <p>Price above: <%= alert.price_above %></p>
+    <p>Price below: <%= alert.price_below %></p>
+    <p>Status: <%= alert.state %></p>
+    <p><%= link_to "Edit", edit_following_alert_path(follow, alert) %> | <%= link_to "Delete", following_alert_path(follow, alert), method: :delete, data: {confirm: "Are you sure you want to delete this alert?" } %> </p>
+  <% end %>
+
+  <!-- cannot render the partial for the alert. for NEW method, it can't be @following, must be >>follow<< like in the iteration -->
+  <%= form_for([follow, @alert]) do |f| %>
+    <% if @alert.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@alert.errors.count, "error") %> prohibited this alert from being saved:</h2>
+        <ul>
+          <% @alert.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :price_above %><br />
+      <%= f.text_area :price_above %>
+    </div>
+    <div class="field">
+      <%= f.label :price_below %><br />
+      <%= f.text_area :price_below %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
   <% end %>
 <% end %>

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :users, except: [:index, :destroy]
 
   resources :following, only: [:index, :update, :destroy] do
-    resources :alerts
+    resources :alerts, except: [:index, :new, :show]
   end
 
   resources :sessions, only: [:new, :create]

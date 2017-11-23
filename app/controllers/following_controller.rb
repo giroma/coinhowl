@@ -1,6 +1,7 @@
 class FollowingController < ApplicationController
   def index
     @following = Following.where(user_id: current_user.id)
+    @alert = Alert.new
   end
 
   def update
@@ -17,9 +18,9 @@ class FollowingController < ApplicationController
 
   def destroy
     @coin_symbol = params[:id]
-    @following = Following.where(user_id: current_user.id, coin_name: @coin_symbol)
+    @follow = Following.where(user_id: current_user.id, coin_name: @coin_symbol)
 
-    if Following.destroy(@following.ids)
+    if Following.destroy(@follow.ids)
       redirect_to coin_path
     else
       redirect_to coins_url
@@ -27,4 +28,4 @@ class FollowingController < ApplicationController
   end
 end
 
-# @follow.coin_name and  @coin is referring to the show page of the coin the user is currently on
+# @follow.coin_name and  @coin_symbol is referring to the show page of the coin the user is currently on
