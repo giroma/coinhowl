@@ -1,5 +1,11 @@
 <h1>Portfolio</h1>
 
-<% @following.each do |info| %>
-<%= info.coin_name %>
+<% @following.each do |follow| %>
+  <p><%= follow.coin_name %></p>
+  <% follow.alerts.each do |alert| %>
+    <%= alert.price_below %>
+    <%= alert.price_above %>
+    <%= alert.state %>
+    <br> 
+  <% end %>
 <% end %>
