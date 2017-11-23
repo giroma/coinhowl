@@ -2,16 +2,16 @@ class AlertsController < ApplicationController
   def create
     @alert = Alert.create
     @following = Following.find(params[:following_id])
-    @alert.following_id = @following
-    @alert.price_above = [:alert][:price_above]
-    @alert.price_below = [:alert][:price_below]
+    @alert.following_id = @following.id
+    @alert.price_above = params[:alert][:price_above]
+    @alert.price_below = params[:alert][:price_below]
     @alert.state = 'Active'
 
-    if @alert.save
+    if @alert.save!
       flash.notice = "Alert is activated."
-      redirect_to @following
+      redirect_to following_index_path
     else
-      render following_path(@following)
+      render :edit
     end
 end
 
@@ -40,9 +40,10 @@ def destroy
 
   if @alert.destroy
     flash[:notice] = "Alert has been successfully deleted."
-    redirect_to following_path(params[:following_id])
+    redirect_to following_index_path
   else
-    render :show
+    flash[:notice] = "Alert has failed to delete."
+    redirect_to following_index_path
   end
 end
 

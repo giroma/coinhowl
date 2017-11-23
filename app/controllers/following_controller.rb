@@ -1,6 +1,7 @@
 class FollowingController < ApplicationController
   def index
     @following = Following.where(user_id: current_user.id)
+    @alert = Alert.new
   end
 
   def update

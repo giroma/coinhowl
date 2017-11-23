@@ -1,5 +1,6 @@
 <h4>CURRENT PRICE:</h4>
 
+<!-- for NEW method, it can't be @following, must be follow like in the iteration -->
 <%= form_for([@following, @alert]) do |f| %>
   <% if @alert.errors.any? %>
     <div id="error_explanation">
