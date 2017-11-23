@@ -19,10 +19,10 @@ User.create(username: 'ari', email: 'ari@gmail.com', password: '123',
               coin_name: ['BTC','ETH', 'BCH', 'XRP', 'LTC'].sample
             )
 end
-100.times do
+40.times do
   alerts = Alert.create!(
-              price_above: rand(0.001..0.1),
-              price_below: rand(0.001..0.1),
+              price_above: number_with_precision(rand(0.01..0.02), precision: 8),
+              price_below: number_with_precision(rand(0.02..0.03), precision: 8),
               state: 'Active',
               following_id: rand(1..10)
             )
