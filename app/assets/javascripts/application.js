@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 var info = document.getElementById('chartdiv');
 var chartData = JSON.parse(info.dataset.chartarray);
-var coinSymbol = 'BTC-LTC'
+var coinSymbol = info.dataset.coinsymbol;
 
 var chart = AmCharts.makeChart( "chartdiv", {
   "type": "stock",
@@ -52,7 +52,7 @@ var chart = AmCharts.makeChart( "chartdiv", {
       "toField": "value"
     } ],
 
-    "color": "#7f8da9",
+    "color": "#1565C0",
     "dataProvider": chartData,
     "title": coinSymbol,
     "categoryField": "date"
@@ -61,11 +61,7 @@ var chart = AmCharts.makeChart( "chartdiv", {
       "fromField": "value",
       "toField": "value"
     } ],
-    // "color": "#fac314",
-    // "dataProvider": chartData,
-    // "compared": true,
-    // "title": "East Stock",
-    // "categoryField": "date"
+
   } ],
 
 

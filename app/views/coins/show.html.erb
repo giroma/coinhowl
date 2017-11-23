@@ -1,7 +1,7 @@
 <div class="container row">
     <h1><%= @coin_symbol %></h1>
       <div class="col s6">
-        <%= content_tag "div", id: "chartdiv", data: {chartArray: @data_by_minute_result} do %>
+        <%= content_tag "div", id: "chartdiv", data: {chartArray: @data_by_minute_result, coinSymbol: params[:id]} do %>
         <% end %>
       </div>
       <div class="col s6">
