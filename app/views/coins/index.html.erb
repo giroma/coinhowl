@@ -23,7 +23,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @result.each do |element| %>
+          <% @response_only_btc.each do |element| %>
           <% cc_symbol = element["symbol"] %>
             <tr>
               <% if @cryptocompare_result[cc_symbol] != nil %>
@@ -34,16 +34,20 @@
               <% else %>
               <td class="center">No image</td>
               <% end %>
-              <td class="center"><%= element["symbol"] %></td>
-              <td class="center"><a href="coins/<%= element['symbol'] %>"><%= element["name"] %></a></td>
-              <td class="center"><%= number_to_currency(element["price_cad"], precision: 2) %></td>
-              <td class="center"><%= number_with_precision(element["price_btc"], precision: 8) %></td>
-              <td class="center"><%= number_to_currency(element["24h_volume_cad"], precision: 2) %></td>
+              <td class="center"><%= element["MarketName"] %></td>
+              <td class="center"><a href="coins/<%= element['symbol'] %>"><%= element["MarketName"] %></a></td>
+              <td class="center"><%= number_to_currency(element["Last"], precision: 2) %></td>
+              <td class="center"><%= number_with_precision(element["Last"], precision: 8) %></td>
+              <td class="center"><%= number_with_precision(element["PrevDay"], precision: 8) %></td>
               <td class="center"><%= element["total_supply"] %></td>
-              <% if element["percent_change_24h"].to_f < 0 %>
-              <td class="center"><i class="material-icons valign-wrapper red-text">arrow_drop_down</i><span class="red-text"><%= element["percent_change_24h"] %>%</span></td>
-              <% else %>
-              <td class="center"><i class="material-icons valign-wrapper green-text">arrow_drop_up</i><span class="green-text"><%= element["percent_change_24h"] %>%</span></td>
+              <% @percentage_change = number_with_precision((( element["Last"] - element["PrevDay"])/element["PrevDay"])*100, precision: 2) %>
+              <% if element["PrevDay"].to_f > element["Last"] %>
+              <td class="center"><i class="material-icons valign-wrapper red-text">arrow_drop_down</i><span class="red-text">
+                <%= @percentage_change %>%</span></td>
+              <% elsif element["PrevDay"].to_f < element["Last"] %>
+              <td class="center"><i class="material-icons valign-wrapper green-text">arrow_drop_up</i><span class="green-text"><%= @percentage_change  %></span></td>
+              <% else element["PrevDay"].to_f == element["Last"] %>
+              <td class="center"><i class="material-icons valign-wrapper green-text"></i><span><%= @percentage_change %></span></td>
               <% end %>
             </tr>
           <% end %>
@@ -52,3 +56,7 @@
     </div>
   </div>
 </div>
+<% yesterday = 104 %>
+<% today = 23 %>
+<%= (today/(yesterday/100)).to_f %>
+<%# @response_only_btc %>
