@@ -4,10 +4,12 @@ class UserMailer < ApplicationMailer
     @url  = 'www.coinhowl.com'
     mail(to: @user.email, subject: 'Welcome to CoinHowl')
   end
-  def alert_email(user, alert)
-    @user = user
-    @alert = alert
+  def alert_email_above(email, alert)
     @url  = 'www.coinhowl.com'
-    mail(to: @user.email, subject: "#{alert.following.coin_name} above #{alert.price_above}")
+    mail(to: email, subject: "#{alert.following.coin_name} > #{alert.price_above}")
+  end
+  def alert_email_below(email, alert)
+    @url  = 'www.coinhowl.com'
+    mail(to: email, subject: "#{alert.following.coin_name} < #{alert.price_above}")
   end
 end

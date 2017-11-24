@@ -18,14 +18,17 @@ task alerts: [:environment] do
     api_coin_name = api_coin[0]['MarketName']
     api_coin_price = api_coin[0]['Last'] #to acces the 0 array and return ony price
 
-    if api_coin_price > alert.price_above #trigger when current price is above the alert price_above
-      p "#{api_coin_name} is above:#{alert.price_above} current:#{api_coin_price}"
+    #trigger when current price is above the alert price_above
+    if api_coin_price > alert.price_above
+      # p "#{api_coin_name} is above:#{alert.price_above} current:#{api_coin_price}"
+      UserMailer.alert_email_above(alert.following.user.email, alert).deliver_now
     end
-    if api_coin_price < alert.price_below #trigger when current price is below the alert price_below
-      p "#{api_coin_name} is below:#{alert.price_below} current:#{api_coin_price}"
+    #trigger when current price is below the alert price_below
+    if api_coin_price < alert.price_below
+      # p "#{api_coin_name} is below:#{alert.price_below} current:#{api_coin_price}"
+      UserMailer.alert_email_below(alert.following.user.email, alert).deliver_now
     end
-    
-    UserMailer.welcome_email(@).deliver_now
+
   end
 
 end
