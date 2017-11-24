@@ -24,6 +24,8 @@ task alerts: [:environment] do
     if api_coin_price < alert.price_below #trigger when current price is below the alert price_below
       p "#{api_coin_name} is below:#{alert.price_below} current:#{api_coin_price}"
     end
+    
+    UserMailer.welcome_email(@).deliver_now
   end
 
 end
