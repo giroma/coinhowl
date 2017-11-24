@@ -16,13 +16,13 @@ User.create(username: 'ari', email: 'ari@gmail.com', password: '123',
 10.times do
   following = Following.create!(
               user_id: rand(1..3),
-              coin_name: ['BTC','ETH', 'BCH', 'XRP', 'LTC'].sample
+              coin_name: ['BTC','ETH', 'BCC', 'XRP', 'LTC'].sample
             )
 end
 40.times do
   alerts = Alert.create!(
-              price_above: number_with_precision(rand(0.01..0.02), precision: 8),
-              price_below: number_with_precision(rand(0.02..0.03), precision: 8),
+              price_above: rand(0.02..0.03).round(9),
+              price_below: rand(0.01..0.02).round(9),
               state: 'Active',
               following_id: rand(1..10)
             )
