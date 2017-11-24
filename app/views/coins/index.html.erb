@@ -14,7 +14,7 @@
           <tr>
             <th class="center">Icon</th>
             <th class="center">Symbol</th>
-            <th class="center">Market Name</th>
+            <th class="center">Coin Name</th>
             <th class="center">Price CAD</th>
             <th class="center">Price in BTC</th>
             <th class="center">24 Volume CAD</th>
@@ -23,9 +23,10 @@
           </tr>
         </thead>
         <tbody>
+          <%# @cryptocompare_result %>
           <% @response_only_btc.each do |element| %>
           <% cc_symbol = element["MarketName"] %>
-          <% cc_symbol = cc_symbol.delete('BTC-') %>
+          <% cc_symbol = cc_symbol.slice(4..-1) %>
             <tr>
               <% if @cryptocompare_result[cc_symbol] != nil %>
               <% base_cc_url = "https://www.cryptocompare.com" %>
@@ -35,7 +36,7 @@
               <% else %>
               <td class="center">No Image</td>
               <% end %>
-              <td class="center"><%= element["MarketName"] %></td>
+              <td class="center"><%= element["CurrencyLong"] %></td>
               <td class="center"><a href="coins/<%= element['MarketName'] %>"><%= element["MarketName"] %></a></td>
               <td class="center"><%= number_to_currency(element["Last"], precision: 2) %></td>
               <td class="center"><%= number_with_precision(element["Last"], precision: 8) %></td>
@@ -57,7 +58,3 @@
     </div>
   </div>
 </div>
-<% yesterday = 104 %>
-<% today = 23 %>
-<%= (today/(yesterday/100)).to_f %>
-<%# @response_only_btc %>
