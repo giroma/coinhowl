@@ -143,7 +143,7 @@ var chart = AmCharts.makeChart( "chartdiv", {
     "autoGridCount": true,
     "graph": "g1",
     "graphType": "line",
-    "usePeriod": "hh"
+    "usePeriod": "DD"
   },
 
   "periodSelector": {
@@ -151,8 +151,8 @@ var chart = AmCharts.makeChart( "chartdiv", {
     "position": "top",
     "periods": [ {
       "period": "hh",
-      "count": 24,
-      "label": "1 days"
+      "count": 2,
+      "label": "1 hour"
 
     }, {
       "period": "hh",
@@ -164,8 +164,8 @@ var chart = AmCharts.makeChart( "chartdiv", {
       "label": "5 days"
     }, {
       "period": "hh",
-      "count": 336,
-      "label": "14 days"
+      "count": 144,
+      "label": "7 days",
     }, {
       "period": "MAX",
       "label": "MAX"

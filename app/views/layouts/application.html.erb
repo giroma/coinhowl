@@ -23,8 +23,17 @@
     <%= link_to "CoinHowl", root_path, class: "brand-logo" %>
     <ul class="right hide-on-med-and-down">
       <li><a href="#"><i class="material-icons left">search</i>Search</a></li>
-      <li><a href="#"><i class="material-icons right">account_circle</i>User</a></li>
+      <% if !current_user %>
+      <li><a href="<%= new_user_path %>"><i class="material-icons right">add</i>Signup</a></li>
+      <li><a href="#"><i class="material-icons right">account_circle</i>Log In</a></li>
     </ul>
+    <% else %>
+      <li><a href="<%= user_path(current_user) %>"><i class="material-icons right">account_circle</i>My Account</a></li>
+      <li><a href="<%= following_index_path %>"><i class="material-icons right">account_balance_wallet</i>My Portfolio</a></li>
+
+      <!-- <%# link_to "Logout", session_path, method: :delete %> |
+      <%# link_to "Portfolio", following_index_path %> -->
+    <% end %>
   </div>
 </nav>
     <%= yield %>

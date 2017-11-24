@@ -8,8 +8,14 @@ class ApplicationController < ActionController::Base
     @result = JSON.parse(@response.body)
   end
 
+  def call_bittrex
+    response = HTTParty.get("https://bittrex.com/api/v1.1/public/getmarketsummaries")
+    @response_only_btc = JSON.parse(response.body)
+    @response_only_btc = @response_only_btc["result"].select {|coin| coin["MarketName"].include?("BTC-")}
+  end
+
   def call_cryptocompare_api
-    @cryptocompare = HTTParty.get('https://www.cryptocompare.com/api/data/coinlist/')
+    @cryptocompare = HTTParty.get('https://www.cryptocompare.com/api/data/coinlist')
     @cryptocompare_result = JSON.parse(@cryptocompare.body)
     @cryptocompare_result = @cryptocompare_result["Data"]
     base_cc_url = @cryptocompare_result["BaseImageUrl"]
