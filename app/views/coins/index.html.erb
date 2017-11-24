@@ -37,7 +37,7 @@
               <td class="center">No Image</td>
               <% end %>
               <td class="center"><%= element["CurrencyLong"] %></td>
-              <td class="center"><a href="coins/<%= element['MarketName'] %>"><%= element["MarketName"] %></a></td>
+              <td class="center"><a href="coins/<%= element['MarketName'].slice(4..-1) %>"><%= element["MarketName"] %></a></td>
               <td class="center"><%= number_to_currency(element["Last"], precision: 2) %></td>
               <td class="center"><%= number_with_precision(element["Last"], precision: 8) %></td>
               <td class="center"><%= number_with_precision(element["PrevDay"], precision: 8) %></td>
