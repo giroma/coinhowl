@@ -1,5 +1,4 @@
 <%= javascript_include_tag "coins" %>
-<%= link_to "Back to Coins", root_url %>
 
 <div class="container row">
       <div class="col s8">
@@ -11,6 +10,8 @@
           <thead>
             <tr>
                 <th><h3><%= @coin_symbol %></h3></th>
+
+                <!-- FOLLOW/UNFOLLOW BUTTON -->
                 <th><a id="unfollow-coin"
                 class="waves-effect waves-light btn red darken-4 <%= 'hide' if !@is_following %>"
                 href="<%= following_path %>"
@@ -21,13 +22,19 @@
                 href="<%= following_path %>"
                 data-method="put" rel="nofollow">
                 <i class="material-icons left">star</i>Follow</a></a></th>
-                <th><a href="#"
-                class="btn btn-floating btn-large cyan accent-4 <%= 'hide' if !@is_following %>">
-                <i id="alert" class="material-icons left">add_alert</i></a></th>
+
+                <!-- ALERT -->
+                  <th>
+                    <a id="alert"
+                    class="btn btn-floating btn-large cyan accent-4 <%= 'hide' if !@is_following %>"
+                    href="#">
+                    <i class="material-icons left">add_alert</i></a>
+                  </th>
             </tr>
           </thead>
           <tbody>
             <tr>
+              <!-- LAST -->
               <% if @coin_last < @coin_high %>
                 <td><h5 class="red-text">LAST:</h5></td>
                 <td><h5>&#579; <%= number_with_precision(@coin_last, precision: 8) %></h5></td>
@@ -43,31 +50,37 @@
               <% end %>
             </tr>
             <tr>
+              <!-- BASE VOL -->
               <td><h5>VOL:</h5></td>
               <td><h5>&#579; <%= number_with_precision(@coin_base_volume, precision: 8) %></h5></td>
               <td></td>
             </tr>
             <tr>
+              <!-- BID -->
               <td><h5>BID:</h5></td>
               <td><h5>&#579; <%= number_with_precision(@coin_bid, precision: 8) %></h5></td>
               <td></td>
             </tr>
             <tr>
+              <!-- ASK -->
               <td><h5>ASK:</h5></td>
               <td><h5>&#579; <%= number_with_precision(@coin_ask, precision: 8) %></h5></td>
               <td></td>
             </tr>
             <tr>
+              <!-- HIGH -->
               <td><h5>HIGH:</h5></td>
               <td><h5>&#579; <%= number_with_precision(@coin_high, precision: 8) %></h5></td>
               <td></td>
             </tr>
             <tr>
+              <!-- LOW -->
               <td><h5>LOW:</h5></td>
               <td><h5>&#579; <%= number_with_precision(@coin_low, precision: 8) %></h5></td>
               <td></td>
             </tr>
             <tr>
+              <!-- TIMESTAMP -->
               <td><h6>LAST UPDATED:</h6></td>
               <td><h6><%= @last_updated %></h6></td>
               <td></td>

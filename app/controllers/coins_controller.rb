@@ -6,6 +6,8 @@ class CoinsController < ApplicationController
 
   def show
     @coin_symbol = params[:id]
+
+    # This confirms the follow/unfollow display of current user
     @follow = Following.where(user_id: current_user.id, coin_name: @coin_symbol)
     @is_following = @follow.length > 0 ? true : false
     get_chart_data_by_minute
