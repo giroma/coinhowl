@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
     <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
     <script src="//www.amcharts.com/lib/3/amstock.js"></script>
-    <script src="https://www.w3schools.com/lib/w3.js"></script>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
@@ -26,7 +25,7 @@
       <li><a href="#"><i class="material-icons left">search</i>Search</a></li>
       <% if !current_user %>
       <li><a href="<%= new_user_path %>"><i class="material-icons right">add</i>Signup</a></li>
-      <li><a href="#"><i class="material-icons right">account_circle</i>Log In</a></li>
+      <li><a href="<%= new_session_path %>"><i class="material-icons right">account_circle</i>Log In</a></li>
     </ul>
     <% else %>
       <li><a href="<%= user_path(current_user) %>"><i class="material-icons right">account_circle</i>My Account</a></li>
