@@ -23,7 +23,8 @@ tbody {
   height: 25px;
 }
 td {
-  padding: 0;
+  padding: 4px 10px;
+
 }
 
 span .red-text {
@@ -40,4 +41,29 @@ span .green-text {
   width		: 100%;
   height		: 500px;
   font-size	: 11px;
+}
+
+.coin-title {
+  font-size: 1.1rem;
+
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+table[data-sortable] .no-image {
+  padding-left: 45px;
+}
+
+table.highlight > tbody > tr:hover {
+  background-color: lightblue;
 }

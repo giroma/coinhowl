@@ -1,3 +1,4 @@
+<%= javascript_include_tag "coins" %>
 <%= link_to "Back to Coins", root_url %>
 
 <div class="container row">
@@ -7,12 +8,15 @@
         <% end %>
       </div>
       <div class="col s6">
-        <% if !@is_following %>
-          <p>Add <%= @coin_symbol %> to your portfolio!</p>
-          <a class="waves-effect waves-light btn green darken-4" href="<%= following_path %>" data-method="put" rel="nofollow"><i class="material-icons left">star</i>Follow</a></a>
-        <% else %>
-          <p>Remove <%= @coin_symbol %> from your portfolio.</p>
-          <a class="waves-effect waves-light btn red darken-4" href="<%= following_path %>" data-method="delete" rel="nofollow"><i class="material-icons left">star</i>Unfollow</a>
-        <% end %>
+          <a id="unfollow-coin"
+          class="waves-effect waves-light btn red darken-4 <%= 'hide' if !@is_following %>"
+          href="<%= following_path %>"
+          data-method="delete" rel="nofollow">
+          <i class="material-icons left">star</i>Unfollow</a>
+          <a id="follow-coin"
+          class="waves-effect waves-light btn green darken-4 <%= 'hide' if @is_following %>"
+          href="<%= following_path %>"
+          data-method="put" rel="nofollow">
+          <i class="material-icons left">star</i>Follow</a></a>
       </div>
 </div>
