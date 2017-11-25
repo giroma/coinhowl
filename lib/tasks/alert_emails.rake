@@ -10,7 +10,7 @@ task alerts: [:environment] do
 
   response_only_btc_name_price = response_only_name_price.select {|coin| coin['MarketName'].include?('BTC-')} #select only the BTC market
 
-  database_alerts = Alert.all #from our database
+  database_alerts = Alert.where(state: 'Active') #from our database, active alerts only
 
   database_alerts.each do |alert|
     api_coin = response_only_btc_name_price.select {|coin| coin['MarketName'] == "BTC-#{alert.following.coin_name}"} #returns an active record container with an array of 1 element so need to do [0]
@@ -19,14 +19,18 @@ task alerts: [:environment] do
     api_coin_price = api_coin[0]['Last'] #to acces the 0 array and return ony price
 
     #trigger when current price is above the alert price_above
-    if api_coin_price > alert.price_above
-      UserMailer.alert_email_above(alert.following.user.email, alert).deliver_now
-    end
-    
-    #trigger when current price is below the alert price_below
-    if api_coin_price < alert.price_below
-      UserMailer.alert_email_below(alert.following.user.email, alert).deliver_now
-    end
+      if api_coin_price > alert.price_above
+        UserMailer.alert_email_above(alert.following.user.email, alert).deliver_now
+        alert.state = 'Inactive' #change alert state to inactive once triggered
+        alert.save
+      end
+
+      #trigger when current price is below the alert price_below
+      if api_coin_price < alert.price_below
+        UserMailer.alert_email_below(alert.following.user.email, alert).deliver_now
+        alert.state = 'Inactive'
+        alert.save
+      end
 
   end
 
