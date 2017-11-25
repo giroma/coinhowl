@@ -10,22 +10,20 @@
         <table class="bordered">
           <thead>
             <tr>
-                <th><h2><%= @coin_symbol %></h2></th>
-                <th>
-                  <a id="unfollow-coin"
-                  class="waves-effect waves-light btn red darken-4 <%= 'hide' if !@is_following %>"
-                  href="<%= following_path %>"
-                  data-method="delete" rel="nofollow">
-                  <i class="material-icons left">star</i>Unfollow</a>
-                  <a id="follow-coin"
-                  class="waves-effect waves-light btn green darken-4 <%= 'hide' if @is_following %>"
-                  href="<%= following_path %>"
-                  data-method="put" rel="nofollow">
-                  <i class="material-icons left">star</i>Follow</a></a>
-              </th>
-              <th>
-                  <i id="alert" class="material-icons <%= 'hide' if !@is_following %>">add_alert</i>
-              </th>
+                <th><h3><%= @coin_symbol %></h3></th>
+                <th><a id="unfollow-coin"
+                class="waves-effect waves-light btn red darken-4 <%= 'hide' if !@is_following %>"
+                href="<%= following_path %>"
+                data-method="delete" rel="nofollow">
+                <i class="material-icons left">star</i>Unfollow</a>
+                <a id="follow-coin"
+                class="waves-effect waves-light btn green darken-4 <%= 'hide' if @is_following %>"
+                href="<%= following_path %>"
+                data-method="put" rel="nofollow">
+                <i class="material-icons left">star</i>Follow</a></a></th>
+                <th><a href="#"
+                class="btn btn-floating btn-large cyan accent-4 <%= 'hide' if !@is_following %>">
+                <i id="alert" class="material-icons left">add_alert</i></a></th>
             </tr>
           </thead>
           <tbody>
@@ -45,28 +43,34 @@
               <% end %>
             </tr>
             <tr>
-              <td><h5>BASE VOL:</h5></td>
+              <td><h5>VOL:</h5></td>
               <td><h5>&#579; <%= number_with_precision(@coin_base_volume, precision: 8) %></h5></td>
+              <td></td>
             </tr>
             <tr>
               <td><h5>BID:</h5></td>
               <td><h5>&#579; <%= number_with_precision(@coin_bid, precision: 8) %></h5></td>
+              <td></td>
             </tr>
             <tr>
               <td><h5>ASK:</h5></td>
               <td><h5>&#579; <%= number_with_precision(@coin_ask, precision: 8) %></h5></td>
+              <td></td>
             </tr>
             <tr>
               <td><h5>HIGH:</h5></td>
               <td><h5>&#579; <%= number_with_precision(@coin_high, precision: 8) %></h5></td>
+              <td></td>
             </tr>
             <tr>
               <td><h5>LOW:</h5></td>
               <td><h5>&#579; <%= number_with_precision(@coin_low, precision: 8) %></h5></td>
+              <td></td>
             </tr>
             <tr>
               <td><h6>LAST UPDATED:</h6></td>
               <td><h6><%= @last_updated %></h6></td>
+              <td></td>
             </tr>
           </tbody>
         </table>
