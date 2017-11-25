@@ -9,11 +9,15 @@ class CoinsController < ApplicationController
     @follow = Following.where(user_id: current_user.id, coin_name: @coin_symbol)
     @is_following = @follow.length > 0 ? true : false
     get_chart_data_by_minute
-    @coin_last = 0
 
     @response_only_btc.each do |coin|
       if coin["MarketName"] == "BTC-#{@coin_symbol}"
         @coin_last = coin["Last"]
+        @coin_base_volume = coin["BaseVolume"]
+        @coin_bid = coin["Bid"]
+        @coin_ask = coin["Ask"]
+        @coin_high = coin["High"]
+        @coin_low = coin["Low"]
       end
     end
 

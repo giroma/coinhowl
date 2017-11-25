@@ -1,7 +1,12 @@
 <%= javascript_include_tag "coins" %>
 <%= link_to "Back to Coins", root_url %>
 
-<h4>CURRENT PRICE IN BTC: <%= number_with_precision(@coin_last, precision: 8) %></h4>
+<h4>LAST: &#579; <%= number_with_precision(@coin_last, precision: 8) %></h4>
+<h4>BASE VOL: &#579; <%= number_with_precision(@coin_base_volume, precision: 8) %></h4>
+<h4>BID: &#579; <%= number_with_precision(@coin_bid, precision: 8) %></h4>
+<h4>ASK: &#579; <%= number_with_precision(@coin_ask, precision: 8) %></h4>
+<h4>HIGH: &#579; <%= number_with_precision(@coin_high, precision: 8) %></h4>
+<h4>LOW: &#579; <%= number_with_precision(@coin_low, precision: 8) %></h4>
 
 <div class="container row">
     <h1><%= @coin_symbol %></h1>
