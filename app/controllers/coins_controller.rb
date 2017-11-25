@@ -18,6 +18,7 @@ class CoinsController < ApplicationController
         @coin_ask = coin["Ask"]
         @coin_high = coin["High"]
         @coin_low = coin["Low"]
+        @last_updated = coin["TimeStamp"]
       end
     end
 

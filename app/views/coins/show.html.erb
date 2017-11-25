@@ -23,6 +23,9 @@
                   data-method="put" rel="nofollow">
                   <i class="material-icons left">star</i>Follow</a></a>
               </th>
+              <th>
+                  <i id="alert" class="material-icons <%= 'hide' if !@is_following %>">add_alert</i>
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -60,6 +63,10 @@
             <tr>
               <td><h5>LOW:</h5></td>
               <td><h5>&#579; <%= number_with_precision(@coin_low, precision: 8) %></h5></td>
+            </tr>
+            <tr>
+              <td><h6>LAST UPDATED:</h6></td>
+              <td><h6><%= @last_updated %></h6></td>
             </tr>
           </tbody>
         </table>
