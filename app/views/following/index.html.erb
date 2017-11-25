@@ -2,6 +2,40 @@
 
 <%= link_to "Back to Coins", root_url %>
 
+<div class="row">
+  <% @following.each do |follow| %>
+     <div class="col s6">
+       <h1><%= follow.coin_name %></h1>
+     <table class="bordered">
+       <thead>
+         <tr>
+             <th data-sortable="false">Price above</th>
+             <th data-sortable="false">Price below</th>
+             <th data-sortable="false">Status</th>
+             <th></th>
+         </tr>
+       </thead>
+
+       <tbody>
+         <% follow.alerts.each do |alert| %>
+
+         <tr>
+           <td><%= alert.price_above %></td>
+           <td><%= alert.price_below %></td>
+           <td><%= alert.state %></td>
+           <td><%= link_to "Edit", edit_following_alert_path(follow, alert) %> | <%= link_to "Delete", following_alert_path(follow, alert), method: :delete, data: {confirm: "Are you sure you want to delete this alert?" } %></td>
+         </tr>
+         <% end %>
+         <tr>
+           <td colspan="4"><button class="btn waves-effect waves-light cyan accent-4" type="submit" name="action"><i class="material-icons right">add</i>Add Alert</button></td>
+         </tr>
+       </tbody>
+     </table>
+   </div>
+   <% end %>
+ </div>
+
+
 <% @following.each do |follow| %>
   <p><%= follow.coin_name %></p>
   <% follow.alerts.each do |alert| %>
