@@ -21,8 +21,8 @@ User.create(username: 'ari', email: 'ari@gmail.com', password: '123',
 end
 40.times do
   alerts = Alert.create!(
-              price_above: rand(0.02..0.03).round(9),
-              price_below: rand(0.01..0.02).round(9),
+              price_above: rand(0.02..0.03).round(8),
+              price_below: rand(0.01..0.02).round(8),
               state: 'Active',
               following_id: rand(1..10)
             )
