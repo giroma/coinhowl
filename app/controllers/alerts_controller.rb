@@ -1,6 +1,6 @@
 class AlertsController < ApplicationController
   def create
-    @alert = Alert.create
+    @alert = Alert.new
     @following = Following.find(params[:following_id])
     @alert.following_id = @following.id
     @alert.price_above = params[:alert][:price_above]

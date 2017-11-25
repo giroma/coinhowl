@@ -35,11 +35,16 @@
               <% end %>
               <% if @cryptocompare_result[cc_symbol] != nil %>
               <td class="coin-title"><a href="coins/<%= element['MarketName'].slice(4..-1) %>"><%= image_tag(coin_image_url, alt:element["name"], class: "coin-image") %>&nbsp;&nbsp;<%= truncate_coin_name(@cryptocompare_result[cc_symbol]["CoinName"]) %></a></td>
+              <% elsif element["MarketName"] == 'BTC-BCC' %>
+              <% base_cc_url = "https://www.cryptocompare.com" %>
+              <% coin_image = @cryptocompare_result['BCH']["ImageUrl"] %>
+              <% coin_image_url = "#{base_cc_url}#{coin_image}"  %>
+              <td class="coin-title"><a href="coins/BCH"><%= image_tag(coin_image_url, alt:element["name"], class: "coin-image") %>&nbsp;&nbsp;Bitcoin Cash</a></td>
               <% else %>
-              <td class="no-image"><a href="coins/<%= element['MarketName'].slice(4..-1) %>"><%= element["MarketName"] %></a></td>
+              <td class="no-image"><a href="coins/<%= element['MarketName'].slice(4..-1) %>"><%= element["MarketName"] %></a>
               <% end %>
               <td class="text-center"><%= element["MarketName"] %></td>
-              <td class="text-right"><%= number_to_currency(element["BaseVolume"], precision: 2) %></td>
+              <td class="text-right"><%= number_with_precision(element["BaseVolume"], precision: 8) %></td>
               <% @percentage_change = number_with_precision((( element["Last"] - element["PrevDay"])/element["PrevDay"])*100, precision: 2) %>
               <% if element["PrevDay"].to_f > element["Last"] %>
               <td class="text-center"><span class="red-text" ><i class="material-icons valign-wrapper red-text">arrow_drop_down</i>

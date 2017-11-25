@@ -13,5 +13,7 @@
 //= require jquery2
 //= require rails-ujs
 //= require materialize
+//= require coins
+//= require alerts
 //= require_tree .
 //= stub coins
