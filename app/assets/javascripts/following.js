@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var followLink = document.getElementById('follow-coin');
   var unfollowLink = document.getElementById('unfollow-coin');
+  var alertIcon = document.getElementById('alert')
 
   followLink.addEventListener('click', function(e) {
     e.preventDefault();
@@ -16,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
      }).done(function(data) {
        followLink.classList.add('hide');
        unfollowLink.classList.remove('hide');
+       alertIcon.classList.remove('hide');
      }).fail(function(data) {
        alert('Sorry, something went wrong, please try again.')
      });
@@ -30,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
      }).done(function(data) {
        unfollowLink.classList.add('hide');
        followLink.classList.remove('hide');
+       alertIcon.classList.add('hide');
      }).fail(function(data) {
        alert('Sorry, something went wrong, please try again.')
      });
