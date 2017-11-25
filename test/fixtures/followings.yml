@@ -2,8 +2,8 @@
 
 one:
   user: one
-  coin: one
+  coin_name: MyString
 
 two:
   user: two
-  coin: two
+  coin_name: MyString
