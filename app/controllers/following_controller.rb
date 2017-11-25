@@ -9,21 +9,31 @@ class FollowingController < ApplicationController
     @follow.user_id = current_user.id
     @follow.coin_name = params[:id]
 
-    if @follow.save
-      redirect_to coin_path
-    else
-      redirect_to coins_url
+    respond_to do |format|
+      format.html
+      format.json do
+        if @follow.save
+          render json:{}, nothing: true, status: 204
+        else
+          render json:{}, nothing: true, status: 400
+        end
+      end
     end
   end
 
   def destroy
     @coin_symbol = params[:id]
-    @follow = Following.where(user_id: current_user.id, coin_name: @coin_symbol)
+    @follow = Following.find_by(user_id: current_user.id, coin_name: @coin_symbol)
 
-    if Following.destroy(@follow.ids)
-      redirect_to coin_path
-    else
-      redirect_to coins_url
+    respond_to do |format|
+      format.html
+      format.json do
+        if @follow.destroy
+          render json:{}, nothing: true, status: 204
+        else
+          render json:{}, nothing: true, status: 400
+        end
+      end
     end
   end
 end
