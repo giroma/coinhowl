@@ -2,8 +2,6 @@ class CoinsController < ApplicationController
   def index
     @response = HTTParty.get('https://api.coinmarketcap.com/v1/ticker/?convert=CAD&limit=50')
     @result = JSON.parse(@response.body)
-    call_cryptocompare_api
-    call_bittrex
   end
 
   def show
@@ -11,6 +9,14 @@ class CoinsController < ApplicationController
     @follow = Following.where(user_id: current_user.id, coin_name: @coin_symbol)
     @is_following = @follow.length > 0 ? true : false
     get_chart_data_by_minute
+    @coin_last = 0
+
+    @response_only_btc.each do |coin|
+      if coin["MarketName"] == "BTC-#{@coin_symbol}"
+        @coin_last = coin["Last"]
+      end
+    end
+
   end
 
   def get_chart_data_by_minute

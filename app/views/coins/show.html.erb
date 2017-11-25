@@ -1,5 +1,7 @@
 <%= link_to "Back to Coins", root_url %>
 
+<h4>CURRENT PRICE IN BTC: <%= number_with_precision(@coin_last, precision: 8) %></h4>
+
 <div class="container row">
     <h1><%= @coin_symbol %></h1>
       <div class="col s6">
