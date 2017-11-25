@@ -5,6 +5,7 @@ class FollowingController < ApplicationController
   end
 
   def update
+    if current_user
     @follow = Following.new
     @follow.user_id = current_user.id
     @follow.coin_name = params[:id]
@@ -18,6 +19,10 @@ class FollowingController < ApplicationController
           render json:{}, nothing: true, status: 400
         end
       end
+    end
+    else
+      flash[:alert] = "You must sign in to follow a coin."
+      redirect_to coin_path
     end
   end
 
