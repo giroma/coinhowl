@@ -36,8 +36,8 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     @user.phone = params[:user][:phone]
-    @user.phone_alert = params[:phone_alert]
-    @user.email_alert = params[:email_alert]
+    @user.phone_alert = params[:phone_alert] || false
+    @user.email_alert = params[:email_alert] || false
     if @user.save
       flash[:alert] = "Successfully updated"
       redirect_to user_path(@user)

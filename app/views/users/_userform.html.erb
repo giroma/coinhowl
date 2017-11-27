@@ -25,7 +25,6 @@
       <div class="row">
         <p>Receive alerts by:</p>
         <div class="input-field col s3">
-          <%# if @user.phone_alert == true %>
           <%= check_box_tag 'phone_alert', "true", @user.phone_alert %>
           <label for="phone_alert">Text Message</label>
         </div>
