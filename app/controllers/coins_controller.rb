@@ -35,6 +35,7 @@ class CoinsController < ApplicationController
         @coin_high = coin["High"]
         @coin_low = coin["Low"]
         @last_updated = coin["TimeStamp"]
+        @local_time = Time.at(DateTime.parse(@last_updated).to_i)
       end
     end
 

@@ -5,6 +5,7 @@ class AlertsController < ApplicationController
     @alert.following_id = @following.id
     @alert.price_above = params[:alert][:price_above]
     @alert.price_below = params[:alert][:price_below]
+    @alert.percent = params[:alert][:percent]
     @alert.state = 'Active'
 
     if @alert.save!
@@ -24,6 +25,7 @@ class AlertsController < ApplicationController
     @alert = Alert.find(params[:id])
     @alert.price_above = params[:alert][:price_above]
     @alert.price_below = params[:alert][:price_below]
+    @alert.percent = params[:alert][:percent]
     @alert.state = 'Active'
 
     if @alert.save

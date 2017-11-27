@@ -92,3 +92,11 @@ table[data-sortable] .no-image {
 table.highlight > tbody > tr:hover {
   background-color: lightblue;
 }
+
+#show-coin-table td {
+  padding: 5px;
+}
+
+#show-coin-table-head th:last-child {
+  width: 100%;
+}
