@@ -23,7 +23,7 @@ end
   alerts = Alert.create!(
               price_above: rand(0.02..0.03).round(8),
               price_below: rand(0.01..0.02).round(8),
-              percent: rand(10.1..110.1).round(2),
+              percent: rand(1.1..20.1).round(2),
               state: 'Active',
               following_id: rand(1..10)
             )
