@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.new
     @user.username = params[:user][:username]
     @user.email = params[:user][:email]
-    @user.phone = ''
+    @user.phone = params[:user][:phone]
     @user.email_alert = true
     @user.phone_alert = false
     @user.password = params[:user][:password]
@@ -39,6 +39,7 @@ class UsersController < ApplicationController
     @user.phone_alert = params[:phone_alert] || false
     @user.email_alert = params[:email_alert] || false
     if @user.save
+      send_confirmation_sms
       flash[:alert] = "Successfully updated"
       redirect_to user_path(@user)
     else
