@@ -24,6 +24,10 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    if current_user == nil
+      redirect_to root_url
+      flash[:alert] = "You must be logged-in to see this page"
+    end
   end
 
   def update
