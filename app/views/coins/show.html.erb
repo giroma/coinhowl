@@ -38,15 +38,15 @@
               <% if @coin_last < @coin_high %>
                 <td><h5 class="red-text">LAST:</h5></td>
                 <td><h5>&#579; <%= number_with_precision(@coin_last, precision: 8) %></h5></td>
-              <td class="text-center"><span class="red-text" ><i class="material-icons valign-wrapper red-text">arrow_drop_down</i></span></td>
+                <td class="text-center"><span class="red-text" ><i class="material-icons valign-wrapper red-text">arrow_drop_down</i></span></td>
               <% elsif @coin_last > @coin_high %>
-              <td><h5 class="green-text">LAST:</h5></td>
-              <td><h5>&#579; <%= number_with_precision(@coin_last, precision: 8) %></h5></td>
-              <td class="text-center"><span class="green-text"><i class="material-icons valign-wrapper green-text">arrow_drop_up</i></span></td>
+                <td><h5 class="green-text">LAST:</h5></td>
+                <td><h5>&#579; <%= number_with_precision(@coin_last, precision: 8) %></h5></td>
+                <td class="text-center"><span class="green-text"><i class="material-icons valign-wrapper green-text">arrow_drop_up</i></span></td>
               <% else %>
-              <td><h5>LAST:</h5></td>
-              <td><h5>&#579; <%= number_with_precision(@coin_last, precision: 8) %></h5></td>
-              <td class="text-center"><span class="black-text"><i class="material-icons valign-wrapper black-text">drag_handle</i></span></td>
+                <td><h5>LAST:</h5></td>
+                <td><h5>&#579; <%= number_with_precision(@coin_last, precision: 8) %></h5></td>
+                <td class="text-center"><span class="black-text"><i class="material-icons valign-wrapper black-text">drag_handle</i></span></td>
               <% end %>
             </tr>
             <tr>
