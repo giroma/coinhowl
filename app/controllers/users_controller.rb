@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @user = User.new
     @user.username = params[:user][:username]
     @user.email = params[:user][:email]
+    @user.phone = ''
     @user.password = params[:user][:password]
     @user.password_confirmation = params[:user][:password_confirmation]
     if @user.save
@@ -32,5 +33,14 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
+    @user.phone = params[:user][:phone]
+    if @user.save
+      flash[:alert] = "Successfully updated"
+      redirect_to user_path(@user)
+    else
+      flash.now[:alert] = @user.errors.full_messages
+      render :edit
+    end
   end
+
 end

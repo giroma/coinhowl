@@ -7,4 +7,7 @@ class User < ApplicationRecord
   validates :password, confirmation: true, on: :create
   validates :password_confirmation, presence: true, on: :create
   validates :email, uniqueness: true
+  validates :phone, format: {
+    with: /\A\d{10}\z/,
+    message: 'must be in format 1234567890'}
 end
