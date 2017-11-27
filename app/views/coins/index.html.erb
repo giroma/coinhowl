@@ -13,13 +13,13 @@
         <thead>
           <tr>
             <th class="center" id="currency">Currency</th>
-            <th class="center" id="market">Market</th>
+            <th class="center hide-on-med-and-down" id="market">Market</th>
             <th class="center" id="volume">Volume in BTC</th>
             <th class="center" id="change">% Change in 24HR</th>
             <th class="center" id="last">Last Price</th>
-            <th class="center" id="high">24hr High</th>
-            <th class="center" id="low">24hr Low</th>
-            <th class="center" id="added">Added</th>
+            <th class="center hide-on-med-and-down" id="high">24hr High</th>
+            <th class="center hide-on-med-and-down" id="low">24hr Low</th>
+            <th class="center hide-on-med-and-down" id="added">Added</th>
           </tr>
         </thead>
         <tbody>
@@ -43,7 +43,7 @@
               <% else %>
               <td class="no-image"><a href="coins/<%= element['MarketName'].slice(4..-1) %>"><%= element["MarketName"] %></a>
               <% end %>
-              <td class="text-center"><%= element["MarketName"] %></td>
+              <td class="text-center hide-on-med-and-down"><%= element["MarketName"] %></td>
               <td class="text-right"><%= number_with_precision(element["BaseVolume"], precision: 8) %></td>
               <% @percentage_change = number_with_precision((( element["Last"] - element["PrevDay"])/element["PrevDay"])*100, precision: 2) %>
               <% if element["PrevDay"].to_f > element["Last"] %>
@@ -55,9 +55,9 @@
               <td class="text-center"><span class="black-text"><i class="material-icons valign-wrapper black-text">drag_handle</i><%= @percentage_change %>%</span></td>
               <% end %>
               <td class="text-right"><%= number_with_precision(element["Last"], precision: 8) %></td>
-              <td class="text-right"><%= number_with_precision(element["High"], precision: 8) %></td>
-              <td class="text-right"><%= number_with_precision(element["Low"], precision: 8) %></td>
-              <td class="text-right"><%= Date.parse(element["Created"]) %></td>
+              <td class="text-right hide-on-med-and-down"><%= number_with_precision(element["High"], precision: 8) %></td>
+              <td class="text-right hide-on-med-and-down"><%= number_with_precision(element["Low"], precision: 8) %></td>
+              <td class="text-right hide-on-med-and-down"><%= Date.parse(element["Created"]) %></td>
 
             </tr>
           <% end %>
