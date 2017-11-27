@@ -25,12 +25,13 @@
       <div class="row">
         <p>Receive alerts by:</p>
         <div class="input-field col s3">
-          <input type="checkbox" id="email" checked="checked" />
-          <label for="email">e-mail</label>
+          <%# if @user.phone_alert == true %>
+          <%= check_box_tag 'phone_alert', "true", @user.phone_alert %>
+          <label for="phone_alert">Text Message</label>
         </div>
         <div class="input-field col s3">
-          <input type="checkbox" id="text" />
-          <label for="text">Text Message</label>
+          <%= check_box_tag 'email_alert', 'true', @user.email_alert %>
+          <label for="email_alert">e-mail</label>
         </div>
       </div>
       <div class="row">

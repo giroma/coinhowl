@@ -8,6 +8,8 @@ class UsersController < ApplicationController
     @user.username = params[:user][:username]
     @user.email = params[:user][:email]
     @user.phone = ''
+    @user.email_alert = true
+    @user.phone_alert = false
     @user.password = params[:user][:password]
     @user.password_confirmation = params[:user][:password_confirmation]
     if @user.save
@@ -34,6 +36,8 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     @user.phone = params[:user][:phone]
+    @user.phone_alert = params[:phone_alert]
+    @user.email_alert = params[:email_alert]
     if @user.save
       flash[:alert] = "Successfully updated"
       redirect_to user_path(@user)
