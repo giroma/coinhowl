@@ -1,1 +1,44 @@
-Show User page
+<div class="container">
+<div class="row">
+    <form class="col s9 offset-s3" action="">
+      <div class="row">
+        <h1><%= @user.username %>'s Page!</h1>
+        <div class="input-field col s6">
+          <p>Username:</p>
+          <input disabled placeholder="<%= @user.username %>" id="username" type="text" class="validate">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <p>e-mail:</p>
+          <input disabled placeholder="<%= @user.email %>" id="email" type="text" class="validate">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <p>Phone number:</p>
+          <input placeholder="<%= @user.phone %>" id="phone" type="text" class="validate">
+        </div>
+      </div>
+      <div class="row">
+        <p>Receive alerts by:</p>
+        <div class="input-field col s3">
+          <input type="checkbox" id="email" checked="checked" />
+          <label for="email">e-mail</label>
+        </div>
+        <div class="input-field col s3">
+          <input type="checkbox" id="text" />
+          <label for="text">Text Message</label>
+        </div>
+      </div>
+      <div class="row">
+      </div>
+      <div class="row">
+        <div class="col s2 push-s2">
+          <button class="btn waves-effect waves-light" type="submit" name="action">update
+            <i class="material-icons right">edit</i>
+          </button>
+        </div>
+      </div>
+
+  </div>

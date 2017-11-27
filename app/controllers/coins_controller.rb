@@ -1,4 +1,9 @@
 class CoinsController < ApplicationController
+
+  before_action :call_coin_market_cap
+  before_action :call_bittrex
+  before_action :call_cryptocompare_api
+
   def index
     @response = HTTParty.get('https://api.coinmarketcap.com/v1/ticker/?convert=CAD&limit=50')
     @result = JSON.parse(@response.body)
@@ -7,13 +12,22 @@ class CoinsController < ApplicationController
   def show
     @coin_symbol = params[:id]
     if current_user
-    @follow = Following.where(user_id: current_user.id, coin_name: @coin_symbol)
-    @is_following = @follow.length > 0 ? true : false
+      @follow = Following.where(user_id: current_user.id, coin_name: @coin_symbol)
+      @is_following = @follow.length > 0 ? true : false
     end
     get_chart_data_by_minute
 
     @response_only_btc.each do |coin|
-      if coin["MarketName"] == "BTC-#{@coin_symbol}"
+      if coin["MarketName"] == "BTC-BCC"
+        coin["MarketName"] = 'BTC-BCH'
+        @coin_last = coin["Last"]
+        @coin_base_volume = coin["BaseVolume"]
+        @coin_bid = coin["Bid"]
+        @coin_ask = coin["Ask"]
+        @coin_high = coin["High"]
+        @coin_low = coin["Low"]
+        @last_updated = coin["TimeStamp"]
+      elsif coin["MarketName"] == "BTC-#{@coin_symbol}"
         @coin_last = coin["Last"]
         @coin_base_volume = coin["BaseVolume"]
         @coin_bid = coin["Bid"]

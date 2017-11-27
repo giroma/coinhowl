@@ -16,7 +16,7 @@ User.create(username: 'ari', email: 'ari@gmail.com', password: '123',
 10.times do
   following = Following.create!(
               user_id: rand(1..3),
-              coin_name: ['BCH','ETH', 'BCC', 'XRP', 'LTC'].sample
+              coin_name: ['BCC','ETH', 'TIX', 'XRP', 'LTC'].sample
             )
 end
 40.times do
