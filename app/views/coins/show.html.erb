@@ -6,7 +6,7 @@
         <% end %>
       </div>
       <div class="col s4">
-        <table class="bordered">
+        <table id="show-coin-table" class="bordered">
           <thead>
             <tr>
                 <th><h3><%= @coin_symbol %></h3></th>
@@ -79,13 +79,11 @@
               <td><h5>&#579; <%= number_with_precision(@coin_low, precision: 8) %></h5></td>
               <td></td>
             </tr>
-            <tr>
-              <!-- TIMESTAMP -->
-              <td><h6>LAST UPDATED:</h6></td>
-              <td><h6><%= @last_updated %></h6></td>
-              <td></td>
-            </tr>
           </tbody>
         </table>
       </div>
+      <tr>
+        <!-- TIMESTAMP -->
+        <h6>LAST UPDATED:</h6>
+        <h6><%= @last_updated %></h6>
 </div>
