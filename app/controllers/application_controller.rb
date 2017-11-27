@@ -5,6 +5,17 @@ class ApplicationController < ActionController::Base
   # before_action :call_bittrex
   # before_action :call_cryptocompare_api
 
+  def send_confirmation_sms
+    client = Twilio::REST::Client.new(ENV['TWILIO_ID'], ENV['TWILIO_TOKEN'])
+
+    client.api.account.messages.create(
+      from: ENV['PHONE_NUMBER'],
+      to: "+1#{current_user.phone}",
+      body: "Your alert has been triggered"
+    )
+  end
+
+
   def call_coin_market_cap
     @response = HTTParty.get('https://api.coinmarketcap.com/v1/ticker/?convert=CAD&limit=5')
     @result = JSON.parse(@response.body)

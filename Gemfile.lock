@@ -72,6 +72,10 @@ GEM
     delayed_job_active_record (4.1.2)
       activerecord (>= 3.0, < 5.2)
       delayed_job (>= 3.0, < 5)
+    dotenv (2.2.1)
+    dotenv-rails (2.2.1)
+      dotenv (= 2.2.1)
+      railties (>= 3.2, < 5.2)
     erubi (1.7.0)
     execjs (2.7.0)
     faraday (0.12.2)
@@ -195,6 +199,10 @@ GEM
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
+    twilio-ruby (5.5.0)
+      faraday (~> 0.9)
+      jwt (>= 1.5, <= 2.5)
+      nokogiri (>= 1.6, < 2.0)
     tzinfo (1.2.4)
       thread_safe (~> 0.1)
     uglifier (3.2.0)
@@ -222,6 +230,7 @@ DEPENDENCIES
   clockwork
   coffee-rails (~> 4.2)
   delayed_job_active_record
+  dotenv-rails
   httparty (~> 0.13.7)
   jbuilder (~> 2.5)
   jquery-rails (~> 4.3, >= 4.3.1)
@@ -236,6 +245,7 @@ DEPENDENCIES
   sorcery
   spring
   spring-watcher-listen (~> 2.0.0)
+  twilio-ruby (~> 5.5.0)
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)

@@ -38,6 +38,8 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'materialize-rails', '~> 0.97.5.2'
 gem 'material_icons'
 gem 'clockwork'
+gem 'twilio-ruby', '~> 5.5.0'
+gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'sorcery'
 
