@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require jquery-ui
  *= require_tree .
  *= require_self
  */
@@ -35,6 +36,6 @@ main {
   flex: 1 0 auto;
 }
 
-nav .nav-wrapper form, nav .nav-wrapper form .input-field{
-height: 64px;
+ul.autocomplete-content.dropdown-content {
+  position: absolute;
 }

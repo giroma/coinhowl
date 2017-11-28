@@ -50,13 +50,38 @@ span .green-text {
 
 .text-left {
   text-align: left;
+  font-size: inherit;
+  padding: inherit;
 }
 
 .text-right {
   text-align: right;
+  font-size: inherit;
+  padding: inherit;
 }
 
 .text-center {
+  padding: inherit;
+  text-align: center;
+  font-size: inherit;
+}
+
+table[data-sortable] thead th {
+  border-right: solid 1px lightgray;
+}
+table[data-sortable] tbody td {
+  border-right: solid 1px lightgray;
+}
+
+table[data-sortable] .text-left {
+  text-align: left;
+}
+
+table[data-sortable] .text-right {
+  text-align: right;
+}
+
+table[data-sortable] .text-center {
   text-align: center;
 }
 

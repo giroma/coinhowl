@@ -15,43 +15,94 @@
 //= require materialize
 //= require coins
 //= require alerts
+//= require jquery-ui
 //= require_tree .
 //= stub coins
 
 $(document).ready(function() {
-var trig = 1;
-//fix for chrome
-$("#search").addClass('searchbarfix');
+  $('.carousel.carousel-slider').carousel({fullWidth: true});
+  // $('.carousel-slider').slider({full_width: true});//slider init
 
 
-  //animate searchbar width increase to  +150%
-  $('#search').click(function(e) {
-       //handle other nav elements visibility here to avoid push down
-    $('.search-hide').addClass('hide');
-   if (trig == 1){
-      $('#navfix2').animate({
-        width: '+=150',
-        marginRight: 0
-      }, 400);
+// var trig = 1;
+// //fix for chrome
+// $("#search").addClass('searchbarfix');
+//
+//
+//   //animate searchbar width increase to  +150%
+//   $('#search').click(function(e) {
+//        //handle other nav elements visibility here to avoid push down
+//     $('.search-hide').addClass('hide');
+//    if (trig == 1){
+//       $('#navfix2').animate({
+//         width: '+=150',
+//         marginRight: 0
+//       }, 400);
+//
+//      trig ++;
+//      }
+//
+//   });
+//
+//   // if user leaves the form the width will go back to original state
+//
+//   $("#search").focusout(function() {
+//
+//       $('#navfix2').animate({
+//       width: '-=150'
+//     }, 400);
+//    trig = trig - 1;
+//     //handle other nav elements visibility first to avoid push down
+//     $('.search-hide').removeClass('hide');
+//
+//   });
+var symbolHash = {}
+var myResults = function() {
+  var url = "https://cors-anywhere.herokuapp.com/https://bittrex.com/api/v1.1/public/getmarketsummaries";
+  $.ajax({
+  url: url,
+  method: 'GET',
+  dataType: 'JSON'
+  }).done(function(data){
+      data["result"].forEach(function(element) {
+        var tempSymbol = element["MarketName"].includes('BTC-','');
+          if(tempSymbol == true) {
+            var btcRemoved = element["MarketName"].replace('BTC-','');
+            symbolHash[btcRemoved] = null
+          }
+      });
+      console.log(symbolHash);
 
-     trig ++;
-     }
+      $('input.autocomplete').autocomplete({
+       data: symbolHash,
+       limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+       onAutocomplete: function(val) {
+         console.log(val);
+         // Callback function when value is autcompleted.
+             // select: function( event, ui ) {
+               // var url = ui.item.label;
+               window.location = '/coins/'+val
+             // },
+       },
+       minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+      });
 
+
+      return symbolHash;
   });
-
-  // if user leaves the form the width will go back to original state
-
-  $("#search").focusout(function() {
-
-      $('#navfix2').animate({
-      width: '-=150'
-    }, 400);
-   trig = trig - 1;
-    //handle other nav elements visibility first to avoid push down
-    $('.search-hide').removeClass('hide');
+};
+myResults();
 
 
 
-  });
+  // $(function() {
+  //   $('input.autocomplete').autocomplete({
+  //     select: function( event, ui ) {
+  //       var url = ui.item.label;
+  //       window.location = '/coins/'+url
+  //     },
+  //     source: symbolArray
+  //   });
+  // });
 
 });
