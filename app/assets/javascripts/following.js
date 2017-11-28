@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
        unfollowLink.classList.remove('hide');
        alertIcon.classList.remove('hide');
      }).fail(function(data) {
-       alert('Sorry, something went wrong, please try again.')
+       alert('Sorry, something went wrong, please try again!!!.')
      });
   });
 
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
        followLink.classList.remove('hide');
        alertIcon.classList.add('hide');
      }).fail(function(data) {
-       alert('Sorry, something went wrong, please try again.')
+       alert('!!!Sorry, something went wrong, please try again.')
      });
   });
 
