@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     @user.phone_alert = params[:phone_alert] || false
     @user.email_alert = params[:email_alert] || false
     if @user.save
-      send_confirmation_sms
+      # send_confirmation_sms
       flash[:alert] = "Successfully updated"
       redirect_to user_path(@user)
     else
