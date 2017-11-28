@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user.phone = params[:user][:phone]
     @user.email_alert = true
     @user.phone_alert = false
-    @user.avatar_url = "https://api.adorable.io/avatars/285/#{@user.email}.png"
+    @user.avatar_url = "https://api.adorable.io/avatars/60/#{@user.username}.png"
     @user.password = params[:user][:password]
     @user.password_confirmation = params[:user][:password_confirmation]
     if @user.save

@@ -7,11 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create!(username: 'michelle', email: 'michelle@gmail.com', password: '123',
-    password_confirmation: '123', avatar_url: "https://api.adorable.io/avatars/285/michelle@gmail.com.png")
+    password_confirmation: '123', avatar_url: "https://api.adorable.io/avatars/60/michelle.png")
 User.create!(username: 'horacio', email: 'horacio@gmail.com', password: '123',
-        password_confirmation: '123', avatar_url: "https://api.adorable.io/avatars/285/horacio@gmail.com.png")
+        password_confirmation: '123', avatar_url: "https://api.adorable.io/avatars/60/horacio.png")
 User.create!(username: 'ari', email: 'ari@gmail.com', password: '123',
-        password_confirmation: '123', avatar_url: "https://api.adorable.io/avatars/285/ari@gmail.com.png")
+        password_confirmation: '123', avatar_url: "https://api.adorable.io/avatars/60/ari.png")
 
 10.times do
   following = Following.create!(
