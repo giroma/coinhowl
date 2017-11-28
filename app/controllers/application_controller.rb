@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     client.api.account.messages.create(
       from: ENV['PHONE_NUMBER'],
       to: "+1#{current_user.phone}",
-      body: "Your alert has been triggered"
+      body: "Coinhowl: Phone number linked!"
     )
   end
 
