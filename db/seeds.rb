@@ -6,12 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(username: 'michelle', email: 'michelle@gmail.com', password: '123',
-    password_confirmation: '123')
-User.create(username: 'horacio', email: 'horacio@gmail.com', password: '123',
-        password_confirmation: '123')
-User.create(username: 'ari', email: 'ari@gmail.com', password: '123',
-        password_confirmation: '123')
+User.create!(username: 'michelle', email: 'michelle@gmail.com', password: '123',
+    password_confirmation: '123', avatar_url: "https://api.adorable.io/avatars/285/michelle@gmail.com.png")
+User.create!(username: 'horacio', email: 'horacio@gmail.com', password: '123',
+        password_confirmation: '123', avatar_url: "https://api.adorable.io/avatars/285/horacio@gmail.com.png")
+User.create!(username: 'ari', email: 'ari@gmail.com', password: '123',
+        password_confirmation: '123', avatar_url: "https://api.adorable.io/avatars/285/ari@gmail.com.png")
 
 10.times do
   following = Following.create!(
@@ -19,6 +19,7 @@ User.create(username: 'ari', email: 'ari@gmail.com', password: '123',
               coin_name: ['BCC','ETH', 'TIX', 'XRP', 'LTC'].sample
             )
 end
+
 40.times do
   alerts = Alert.create!(
               price_above: rand(0.02..0.03).round(8),

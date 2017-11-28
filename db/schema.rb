@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20171127172155) do
+ActiveRecord::Schema.define(version: 20171127202147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +58,7 @@ ActiveRecord::Schema.define(version: 20171127172155) do
     t.string "phone"
     t.boolean "phone_alert"
     t.boolean "email_alert"
+    t.string "avatar_url"
   end
 
   add_foreign_key "alerts", "followings"
