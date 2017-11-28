@@ -51,9 +51,8 @@ $("#search").addClass('searchbarfix');
     //handle other nav elements visibility first to avoid push down
     $('.search-hide').removeClass('hide');
 
-
-
   });
+
   var symbolArray = []
   var url = "https://cors-anywhere.herokuapp.com/https://bittrex.com/api/v1.1/public/getmarketsummaries";
   $.ajax({
@@ -65,8 +64,8 @@ $("#search").addClass('searchbarfix');
     // var tempSymbol = element["MarketName"];
     var tempSymbol = element["MarketName"].includes('BTC-','');
     if(tempSymbol == true) {
-      var removeBtc = element["MarketName"].replace('BTC-','');
-      symbolArray.push(removeBtc);
+      var btcRemoved = element["MarketName"].replace('BTC-','');
+      symbolArray.push(btcRemoved);
     }
 });
   return symbolArray
