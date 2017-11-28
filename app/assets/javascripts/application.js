@@ -15,6 +15,7 @@
 //= require materialize
 //= require coins
 //= require alerts
+//= require jquery-ui
 //= require_tree .
 //= stub coins
 
@@ -52,6 +53,35 @@ $("#search").addClass('searchbarfix');
 
 
 
+  });
+  var symbolArray = []
+  var url = "https://cors-anywhere.herokuapp.com/https://bittrex.com/api/v1.1/public/getmarketsummaries";
+  $.ajax({
+  url: url,
+  method: 'GET',
+  dataType: 'JSON'
+  }).done(function(data){
+  data["result"].forEach(function(element) {
+    // var tempSymbol = element["MarketName"];
+    var tempSymbol = element["MarketName"].includes('BTC-','');
+    if(tempSymbol == true) {
+      var removeBtc = element["MarketName"].replace('BTC-','');
+      symbolArray.push(removeBtc);
+    }
+});
+console.log(symbolArray);
+  return symbolArray
+  // console.log(symbolArray);
+});
+
+
+  $(function() {
+    $('input.autocomplete').autocomplete({
+      select: function( event, ui ) {
+        window.location = 'http://www.google.com'
+      },
+      source: symbolArray
+    });
   });
 
 });

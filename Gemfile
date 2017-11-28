@@ -40,6 +40,7 @@ gem 'material_icons'
 gem 'clockwork'
 gem 'twilio-ruby', '~> 5.5.0'
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 
 gem 'sorcery'
 
