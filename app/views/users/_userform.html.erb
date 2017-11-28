@@ -3,7 +3,10 @@
 <div class="row">
     <form class="col s9 offset-s3" action="">
       <div class="row">
-        <h1><%= @user.username %>'s Page!</h1>
+        <div id="user-info">
+
+          <h1><img id="avatar" src="<%= @avatar %>" alt="avatar"><%= @user.username %>'s Page!</h1>
+        </div>
         <div class="input-field col s6">
           <p>Username:</p>
           <input disabled placeholder="<%= @user.username %>" id="username" type="text" class="validate">

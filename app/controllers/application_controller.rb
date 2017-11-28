@@ -11,10 +11,9 @@ class ApplicationController < ActionController::Base
     client.api.account.messages.create(
       from: ENV['PHONE_NUMBER'],
       to: "+1#{current_user.phone}",
-      body: "Your alert has been triggered"
+      body: "Coinhowl: Phone number linked!"
     )
   end
-
 
   def call_coin_market_cap
     @response = HTTParty.get('https://api.coinmarketcap.com/v1/ticker/?convert=CAD&limit=5')

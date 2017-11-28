@@ -1,6 +1,10 @@
 class FollowingController < ApplicationController
+  before_action :call_bittrex
+    
   def index
-    @following = Following.where(user_id: current_user.id)
+    @user = current_user
+    @following = Following.where(user_id: @user.id)
+    @avatar = @user.avatar_url
     @alert = Alert.new
   end
 

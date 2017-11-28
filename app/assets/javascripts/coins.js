@@ -161,6 +161,17 @@
       } ]
     }
   } );
+  // setInterval(function () {
+  //   $.ajax({
+  //     url: `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=TIX&tsyms=BTC&e=Bittrex`,
+  //     method: 'GET'
+  //
+  //   }).done(function (response) {
+  //     console.log('5 sec');
+  //   })
+  //
+  // },5000)
+
 }// end of if
 
 }); //end of DOMContentLoaded
