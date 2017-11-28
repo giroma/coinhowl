@@ -56,41 +56,43 @@ $(document).ready(function() {
 //     $('.search-hide').removeClass('hide');
 //
 //   });
+var symbolHash = {}
 var myResults = function() {
-  var symbolHash = {}
   var url = "https://cors-anywhere.herokuapp.com/https://bittrex.com/api/v1.1/public/getmarketsummaries";
   $.ajax({
   url: url,
   method: 'GET',
   dataType: 'JSON'
   }).done(function(data){
-  data["result"].forEach(function(element) {
-    var tempSymbol = element["MarketName"].includes('BTC-','');
-    if(tempSymbol == true) {
-      var btcRemoved = element["MarketName"].replace('BTC-','');
-      symbolHash[btcRemoved] = null
-    }
-});
-  return symbolHash;
-});
-console.log(symbolHash);
+      data["result"].forEach(function(element) {
+        var tempSymbol = element["MarketName"].includes('BTC-','');
+          if(tempSymbol == true) {
+            var btcRemoved = element["MarketName"].replace('BTC-','');
+            symbolHash[btcRemoved] = null
+          }
+      });
+      console.log(symbolHash);
 
-};
+      $('input.autocomplete').autocomplete({
+       data: symbolHash,
+       limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+       onAutocomplete: function(val) {
+         console.log(val);
+         // Callback function when value is autcompleted.
+             // select: function( event, ui ) {
+               // var url = ui.item.label;
+               window.location = '/coins/'+val
+             // },
+       },
+       minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+      });
 
-// console.log(dataForIs);
-  $('input.autocomplete').autocomplete({
-   data: myResults(),
-   limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
-   onAutocomplete: function(val) {
-     window.console&&console.log(dataForIs);
-     // Callback function when value is autcompleted.
-         // select: function( event, ui ) {
-         //   var url = ui.item.label;
-         //   window.location = '/coins/'+url
-         // },
-   },
-   minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+
+      return symbolHash;
   });
+};
+myResults();
+
 
 
   // $(function() {
