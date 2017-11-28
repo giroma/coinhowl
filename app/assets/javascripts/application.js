@@ -69,16 +69,15 @@ $("#search").addClass('searchbarfix');
       symbolArray.push(removeBtc);
     }
 });
-console.log(symbolArray);
   return symbolArray
-  // console.log(symbolArray);
 });
 
 
   $(function() {
     $('input.autocomplete').autocomplete({
       select: function( event, ui ) {
-        window.location = 'http://www.google.com'
+        var url = ui.item.label;
+        window.location = '/coins/'+url
       },
       source: symbolArray
     });
