@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     @user.phone = params[:user][:phone]
     @user.email_alert = true
     @user.phone_alert = false
+    @user.avatar_url = "https://api.adorable.io/avatars/60/#{@user.username}.png"
     @user.password = params[:user][:password]
     @user.password_confirmation = params[:user][:password_confirmation]
     if @user.save
@@ -36,6 +37,7 @@ class UsersController < ApplicationController
       flash[:alert] = "You must be logged-in to see this page"
     end
 
+    @avatar = @user.avatar_url
   end
 
   def update
@@ -44,7 +46,7 @@ class UsersController < ApplicationController
     @user.phone_alert = params[:phone_alert] || false
     @user.email_alert = params[:email_alert] || false
     if @user.save
-      send_confirmation_sms
+      # send_confirmation_sms
       flash[:alert] = "Successfully updated"
       redirect_to user_path(@user)
     else

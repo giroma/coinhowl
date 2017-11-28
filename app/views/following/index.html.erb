@@ -1,4 +1,4 @@
-<h1>Portfolio</h1>
+<h1><img id="avatar" src="<%= @avatar %>" alt="avatar"><%= @user.username %>'s Portfolio</h1>
 
 <%= link_to "Back to Coins", root_url %>
 
@@ -7,6 +7,13 @@
   <% @following.each do |follow| %>
      <div class="col s6">
        <h1><%= follow.coin_name %></h1>
+         <% @response_only_btc.each do |coin| %>
+            <% if coin["MarketName"] == "BTC-#{follow.coin_name}" %>
+            <% @coin_last = coin["Last"] %>
+            <% end %>
+         <% end %>
+        <h5>Current Price: &#579; <%= number_with_precision(@coin_last, precision: 8) %></h5>
+
      <table class="bordered">
        <thead>
          <tr>
@@ -46,14 +53,14 @@
                     </ul>
                   </div>
                 <% end %>
-
+                <h5><%= follow.coin_name %></h5>
                 <div class="field">
                   <%= f.label :price_above %><br />
-                  <%= f.text_area :price_above %>
+                  <%= f.text_area :price_above, :value => number_with_precision(@coin_last, precision: 8) %>
                 </div>
                 <div class="field">
                   <%= f.label :price_below %><br />
-                  <%= f.text_area :price_below %>
+                  <%= f.text_area :price_below, :value => number_with_precision(@coin_last, precision: 8) %>
                 </div>
                 <div class="field">
                   <%= f.label '24h percent change' %><br />

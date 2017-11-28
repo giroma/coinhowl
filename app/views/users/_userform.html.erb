@@ -3,7 +3,10 @@
 <div class="row">
     <form class="col s9 offset-s3" action="">
       <div class="row">
-        <h1><%= @user.username %>'s Page!</h1>
+        <div id="user-info">
+
+          <h1><img id="avatar" src="<%= @avatar %>" alt="avatar"><%= @user.username %>'s Page!</h1>
+        </div>
         <div class="input-field col s6">
           <p>Username:</p>
           <input disabled placeholder="<%= @user.username %>" id="username" type="text" class="validate">
@@ -24,11 +27,11 @@
       </div>
       <div class="row">
         <p>Receive alerts by:</p>
-        <div class="input-field col s3">
+        <div class="col s3">
           <%= check_box_tag 'phone_alert', "true", @user.phone_alert %>
           <label for="phone_alert">Text Message</label>
         </div>
-        <div class="input-field col s3">
+        <div class="col s3">
           <%= check_box_tag 'email_alert', 'true', @user.email_alert %>
           <label for="email_alert">e-mail</label>
         </div>
@@ -37,8 +40,7 @@
       </div>
       <div class="row">
         <div class="col s2 push-s2">
-          <button class="btn waves-effect waves-light" type="submit" name="action" action="<%= user_path %>" method="POST">update
-            <i class="material-icons right">edit</i>
+          <button class="btn waves-effect waves-light" type="submit" name="action" action="<%= user_path %>" method="POST">update<i class="material-icons right">edit</i>
           </button>
         </div>
       </div>
