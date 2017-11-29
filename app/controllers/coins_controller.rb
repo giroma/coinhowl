@@ -38,11 +38,10 @@ class CoinsController < ApplicationController
         @local_time = Time.at(DateTime.parse(@last_updated).to_i)
       end
     end
-
   end
 
   def get_chart_data_by_minute
-    @data_by_minute = HTTParty.get("https://min-api.cryptocompare.com/data/histominute?fsym=#{@coin_symbol}&limit=2000&tsym=BTC&aggregate=3&e=Bittrex&allData=true")
+    @data_by_minute = HTTParty.get("https://min-api.cryptocompare.com/data/histominute?fsym=#{@coin_symbol}&limit=100&tsym=BTC&aggregate=3&e=Bittrex&allData=true")
     @data_by_minute_result = JSON.parse(@data_by_minute.body)
     @data_by_minute_result = @data_by_minute_result["Data"]
 

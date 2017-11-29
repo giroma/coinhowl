@@ -161,16 +161,20 @@
       } ]
     }
   } );
-  // setInterval(function () {
-  //   $.ajax({
-  //     url: `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=TIX&tsyms=BTC&e=Bittrex`,
-  //     method: 'GET'
-  //
-  //   }).done(function (response) {
-  //     console.log('5 sec');
-  //   })
-  //
-  // },5000)
+  setInterval(function () {
+    var coinSymbol = $('.js-coin-symbol').text() //get coin name from html element
+    $.ajax({
+      url: `https://cors-anywhere.herokuapp.com/https://bittrex.com/api/v1.1/public/getmarketsummary?market=btc-${coinSymbol}`,
+      method: 'GET'
+    }).done(function (response) {
+      $('.coin-prices-table tr').each(function () { // itterate over each element
+        var field = $(this).find('td').eq(1).find('h5').attr('data-field') // get the field name for the h5 of every second dt
+        $(this).find('td').eq(1).find('h5').html('&#579; ' + (response['result'][0][field]).toFixed(8)) // now change the text with new data
+        // console.log($(this).find('td').eq(1).find('h5').attr('data-field'));
+      })
+    })
+
+  },5000)
 
 }// end of if
 
