@@ -7,9 +7,11 @@
       </div>
       <div class="col s4">
         <div id="show-coin-table-head">
+          <div class="head-info">
           <h3 class='js-coin-symbol'><%= @coin_symbol %></h3>
-
+        </div>
           <!-- FOLLOW/UNFOLLOW BUTTON -->
+          <div class="head-info">
           <a id="unfollow-coin"
           class="waves-effect waves-light btn red darken-4 <%= 'hide' if !@is_following %>"
           href="<%= following_path %>"
@@ -20,9 +22,10 @@
           href="<%= following_path %>"
           data-method="put" rel="nofollow">
           Follow</a>
+        </div>
 
           <!-- ALERT href=" following_alerts_path(@follow) "-->
-      
+          <div class="head-info">
           <a id="alert"
           class="btn btn-floating btn-large cyan accent-4 waves-effect waves-light btn modal-trigger <%= 'hide' if !@is_following %>"
           href="#modal1" action="#modal1">
@@ -36,6 +39,7 @@
             </div>
           </div>
         </div>
+      </div>
         <table id="show-coin-table" class="bordered">
           <tbody class='coin-prices-table'>
             <tr>
