@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :following, only: [:index, :update, :destroy] do
     resources :alerts, except: [:index, :new, :show]
+    get 'alert_form' => 'alerts#alert_form'
   end
 
   resources :sessions, only: [:new, :create]
