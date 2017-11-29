@@ -6,7 +6,10 @@
   <div class="row">
     <% count = 0 %>
     <ul class="collapsible" data-collapsible="accordion">
+
+      <!-- Iterating to display all the coins the current user is following in their portfolio -->
       <% @following.each do |follow| %>
+      <!-- Iteration from Bittrex to display each follow's current price -->
         <% @response_only_btc.each do |coin| %>
           <% if coin["MarketName"] == "BTC-#{follow.coin_name}" %>
             <% @coin_last = coin["Last"] %>
@@ -47,6 +50,7 @@
                 </tr>
               </thead>
               <tbody>
+                <!-- Display all alerts for each followed coin -->
                 <% follow.alerts.each do |alert| %>
                   <tr>
                     <td><%= alert.price_above %></td>
@@ -57,6 +61,7 @@
                   </tr>
                 <% end %>
                 <tr>
+                  <!-- Add an alert to followed coin from portfolio -->
                   <td colspan="4">
                     <button data-target="modal<%= count +=1%>" class="btn modal-trigger cyan accent-4" action="#modal<%= count %>"><i class="material-icons left  modal-trigger">add</i>Add Alert</button>
                   </td>
