@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var followLink = document.getElementById('follow-coin');
   var unfollowLink = document.getElementById('unfollow-coin');
-  var alertIcon = document.getElementById('alert')
+  var alertIcon = document.getElementById('alert');
 
   followLink.addEventListener('click', function(e) {
     e.preventDefault();

@@ -32,7 +32,9 @@
 
                     <div id="modal1" class="modal">
                       <div class="modal-content">
-                        <%= render 'alerts/form', alert: @alert, method: :post %>
+                        <% if @is_following %>
+                          <%= render 'alerts/form', alert: @alert, method: :post %>
+                        <% end %>
                       </div>
                     </div>
                   </th>
