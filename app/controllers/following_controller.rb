@@ -9,7 +9,9 @@ class FollowingController < ApplicationController
   end
 
   def update
-    if current_user
+    @coin_symbol = params[:id]
+    @is_following = Following.find_by(user_id: current_user.id, coin_name: @coin_symbol)
+    if current_user && !@is_following
     @follow = Following.new
     @follow.user_id = current_user.id
     @follow.coin_name = params[:id]
@@ -25,7 +27,7 @@ class FollowingController < ApplicationController
       end
     end
     else
-      flash[:alert] = "You must sign in to follow a coin."
+      # flash[:alert] = "You must sign in to follow a coin."
       redirect_to coin_path
     end
   end

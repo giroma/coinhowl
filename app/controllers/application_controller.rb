@@ -24,7 +24,11 @@ class ApplicationController < ActionController::Base
     response = HTTParty.get("https://bittrex.com/api/v1.1/public/getmarketsummaries")
     @response_only_btc = JSON.parse(response.body)
     @response_only_btc = @response_only_btc["result"].select {|coin| coin["MarketName"].include?("BTC-")}
+
+    @top_3_percent = @response_only_btc
   end
+
+
 
   def call_cryptocompare_api
     @cryptocompare = HTTParty.get('https://www.cryptocompare.com/api/data/coinlist')
