@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
        followLink.classList.add('hide');
        unfollowLink.classList.remove('hide');
        alertIcon.classList.remove('hide');
+       alertIcon.href = "/following/" + data.id + "/alerts";
      }).fail(function(data) {
        alert('Sorry, something went wrong, please try again.')
      });

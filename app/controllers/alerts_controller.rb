@@ -7,12 +7,16 @@ class AlertsController < ApplicationController
     @alert.price_below = params[:alert][:price_below]
     @alert.percent = params[:alert][:percent]
     @alert.state = 'Active'
-
-    if @alert.save!
-      flash.notice = "Alert is activated."
-      redirect_to following_index_path
-    else
-      render :edit
+    respond_to do |format|
+      format.html
+      format.json do
+        if @alert.save
+          render json:{}, nothing: true, status: 204
+          flash.notice = "Alert is activated."
+        else
+          render json:{}, nothing: true, status: 400
+        end
+      end
     end
   end
 

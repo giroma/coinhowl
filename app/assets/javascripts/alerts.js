@@ -3,12 +3,23 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 document.addEventListener("DOMContentLoaded", function(event) {
 
-
-  $(document).ready(function(){
   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
   // $('.modal-trigger').leanModal();
    $('.modal').modal();
-});
-
-
+//
+//     var alert = document.getElementById('alert')
+//
+//     alert.addEventListener('click', function(e) {
+//       e.preventDefault();
+//       $.ajax({
+//          url: e.target.getAttribute('href'),
+//          method: e.target.dataset.method,
+//          dataType: 'json'
+//        }).done(function(data) {
+//          alert('Alert successfully created.')
+//        }).fail(function(data) {
+//          alert('Sorry, something went wrong, please try again.')
+//        });
+//     });
+//
 });
