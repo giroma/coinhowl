@@ -7,13 +7,23 @@ class AlertsController < ApplicationController
     @alert.price_below = params[:alert][:price_below]
     @alert.percent = params[:alert][:percent]
     @alert.state = 'Active'
-
-    if @alert.save!
-      flash.notice = "Alert is activated."
+    @coin = params[:id]
+    if @alert.save
       redirect_to following_index_path
     else
-      render :edit
+      redirect_to coin_path(@coin)
     end
+    # respond_to do |format|
+    #   format.html
+    #   format.json do
+    #     if @alert.save
+    #       render json:{}, nothing: true, status: 204
+    #       flash.notice = "Alert is activated."
+    #     else
+    #       render json:{}, nothing: true, status: 400
+    #     end
+    #   end
+    # end
   end
 
   def edit
@@ -49,5 +59,11 @@ class AlertsController < ApplicationController
   end
   def test_email_alert
     UserMailer.welcome_email(User.first)
+  end
+
+  def alert_form
+    @alert = Alert.new
+    @following = current_user.following.find_by(coin_name: params[:following_id])
+    render 'alerts/_form', layout: false
   end
 end
