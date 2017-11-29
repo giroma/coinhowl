@@ -27,12 +27,11 @@
                   <th>
                     <a
                     class="btn btn-floating btn-large cyan accent-4 waves-effect waves-light btn modal-trigger <%= 'hide' if !@is_following %>"
-                    href="#modal1">
+                    href="#modal1" action="#modal1">
                     <i class="material-icons left">add_alert</i></a>
 
                     <div id="modal1" class="modal">
                       <div class="modal-content">
-                        <%= render 'alerts/form', alert: @alert %>
                       </div>
                     </div>
                   </th>
@@ -92,4 +91,7 @@
         <!-- TIMESTAMP -->
         <h6>LAST UPDATED:</h6>
         <h6><%= @local_time %></h6>
+
+        <%= render 'alerts/form', alert: @alert %>
+
 </div>
