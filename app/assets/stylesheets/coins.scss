@@ -95,7 +95,7 @@ table.highlight > tbody > tr:hover {
 
 .head-info {
   display: inline-block;
-  padding: 1em;
+  padding: 0.2em 1em;
 }
 
 #show-coin-table td {
@@ -104,4 +104,8 @@ table.highlight > tbody > tr:hover {
 
 div#show-coin-table-head {
   text-align: center;
+}
+
+.coin-info {
+  font-size: 1.2rem;
 }

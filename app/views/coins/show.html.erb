@@ -45,47 +45,47 @@
             <tr>
               <!-- LAST -->
               <% if @coin_last < @coin_high %>
-                <td><p class="red-text">LAST:</p></td>
-                <td><p data-field="Last">&#579; <%= number_with_precision(@coin_last, precision: 8) %></p></td>
+                <td><p class="coin-info red-text">LAST:</p></td>
+                <td><p class="coin-info" data-field="Last">&#579; <%= number_with_precision(@coin_last, precision: 8) %></p></td>
                 <td class="text-center"><span class="red-text" ><i class="material-icons valign-wrapper red-text">arrow_drop_down</i></span></td>
               <% elsif @coin_last > @coin_high %>
-                <td><p class="green-text">LAST:</h5></td>
-                <td><p data-field="Last">&#579; <%= number_with_precision(@coin_last, precision: 8) %></p></td>
-                <td class="text-center"><span class="green-text"><i class="material-icons valign-wrapper green-text">arrow_drop_up</i></span></td>
+                <td><p class="coin-info green-text">LAST:</h5></td>
+                <td><p class="coin-info" data-field="Last">&#579; <%= number_with_precision(@coin_last, precision: 8) %></p></td>
+                <td class="coin-info text-center"><span class="green-text"><i class="material-icons valign-wrapper green-text">arrow_drop_up</i></span></td>
               <% else %>
-                <td><p>LAST:</p></td>
-                <td><p data-field="Last">&#579; <%= number_with_precision(@coin_last, precision: 8) %></p></td>
+                <td><p class="coin-info">LAST:</p></td>
+                <td><p class="coin-info" data-field="Last">&#579; <%= number_with_precision(@coin_last, precision: 8) %></p></td>
                 <td class="text-center"><span class="black-text"><i class="material-icons valign-wrapper black-text">drag_handle</i></span></td>
               <% end %>
             </tr>
             <tr>
               <!-- BASE VOL -->
-              <td><p>VOL:</p></td>
-              <td><p data-field="BaseVolume">&#579; <span><%= number_with_precision(@coin_base_volume, precision: 8) %></p></td>
+              <td><p class="coin-info">VOL:</p></td>
+              <td><p class="coin-info" data-field="BaseVolume">&#579; <span><%= number_with_precision(@coin_base_volume, precision: 8) %></p></td>
               <td></td>
             </tr>
             <tr>
               <!-- BID -->
-              <td><p>BID:</p></td>
-              <td><p data-field="Bid">&#579; <%= number_with_precision(@coin_bid, precision: 8) %></p></td>
+              <td><p class="coin-info">BID:</p></td>
+              <td><p class="coin-info" data-field="Bid">&#579; <%= number_with_precision(@coin_bid, precision: 8) %></p></td>
               <td></td>
             </tr>
             <tr>
               <!-- ASK -->
-              <td><p>ASK:</p></td>
-              <td><p data-field="Ask">&#579; <%= number_with_precision(@coin_ask, precision: 8) %></p></td>
+              <td><p class="coin-info">ASK:</p></td>
+              <td><p class="coin-info" data-field="Ask">&#579; <%= number_with_precision(@coin_ask, precision: 8) %></p></td>
               <td></td>
             </tr>
             <tr>
               <!-- HIGH -->
-              <td><p>HIGH:</p></td>
-              <td><p data-field="High">&#579; <%= number_with_precision(@coin_high, precision: 8) %></p></td>
+              <td><p class="coin-info">HIGH:</p></td>
+              <td><p class="coin-info" data-field="High">&#579; <%= number_with_precision(@coin_high, precision: 8) %></p></td>
               <td></td>
             </tr>
             <tr>
               <!-- LOW -->
-              <td><p>LOW:</p></td>
-              <td><p data-field="Low">&#579; <%= number_with_precision(@coin_low, precision: 8) %></p></td>
+              <td><p class="coin-info">LOW:</p></td>
+              <td><p class="coin-info" data-field="Low">&#579; <%= number_with_precision(@coin_low, precision: 8) %></p></td>
               <td></td>
             </tr>
           </tbody>
