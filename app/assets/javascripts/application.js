@@ -39,13 +39,13 @@ var myResults = function() {
             symbolHash[btcRemoved] = null
           }
       });
-      console.log(symbolHash);
+      // console.log(symbolHash);
 
       $('input.autocomplete').autocomplete({
        data: symbolHash,
        limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
        onAutocomplete: function(val) {
-         console.log(val);
+         // console.log(val);
          // Callback function when value is autcompleted.
              // select: function( event, ui ) {
                // var url = ui.item.label;
@@ -62,20 +62,15 @@ var myResults = function() {
 myResults();
 
 
-
-  // $(function() {
-  //   $('input.autocomplete').autocomplete({
-  //     select: function( event, ui ) {
-  //       var url = ui.item.label;
-  //       window.location = '/coins/'+url
-  //     },
-  //     source: symbolArray
-  //   });
-  // });
-
-
+// User logged in dropdown in navbar
 $(".dropdown-button").dropdown(
   { hover: true }
 );
+
+// Carousel timer
+$('.carousel').carousel();
+// setInterval(function() {
+//   $('.carousel').carousel('next');
+// }, 13000);
 
 });
