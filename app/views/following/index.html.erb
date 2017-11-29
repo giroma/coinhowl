@@ -7,11 +7,11 @@
     <% count = 0 %>
     <ul class="collapsible" data-collapsible="accordion">
       <% @following.each do |follow| %>
-      <% @response_only_btc.each do |coin| %>
-      <% if coin["MarketName"] == "BTC-#{follow.coin_name}" %>
-      <% @coin_last = coin["Last"] %>
-      <% end %>
-      <% end %>
+        <% @response_only_btc.each do |coin| %>
+          <% if coin["MarketName"] == "BTC-#{follow.coin_name}" %>
+            <% @coin_last = coin["Last"] %>
+          <% end %>
+        <% end %>
     <li>
       <div class="collapsible-header">
         <div class="col s8">
