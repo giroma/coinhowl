@@ -42,7 +42,7 @@ task alerts: [:environment] do
         UserMailer.alert_email_percent(alert.following.user.email, alert).deliver_now
         alert.state = 'Inactive'
         alert.save
-      end
+      end if alert.percent != nil
     end
 
         #-------SMS--------
@@ -68,7 +68,7 @@ task alerts: [:environment] do
         send_alert_sms(alert, body)
         alert.state = 'Inactive'
         alert.save
-      end
+      end if alert.percent != nil
     end
   end
 end
