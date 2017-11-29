@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
        alertIcon.classList.remove('hide');
        alertIcon.href = "/following/" + data.id + "/alerts";
      }).fail(function(data) {
-       alert('Sorry, something went wrong, please try again.')
+       alert('Sorry, something went wrong, please try again!!!.')
      });
   });
 
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
        followLink.classList.remove('hide');
        alertIcon.classList.add('hide');
      }).fail(function(data) {
-       alert('Sorry, something went wrong, please try again.')
+       alert('!!!Sorry, something went wrong, please try again.')
      });
   });
 
