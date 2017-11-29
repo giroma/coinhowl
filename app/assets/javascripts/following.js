@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var followLink = document.getElementById('follow-coin');
   var unfollowLink = document.getElementById('unfollow-coin');
   var alertIcon = document.getElementById('alert');
+  var alertForm = document.querySelector('.alert-form')
 
   followLink.addEventListener('click', function(e) {
     e.preventDefault();
@@ -18,7 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
        followLink.classList.add('hide');
        unfollowLink.classList.remove('hide');
        alertIcon.classList.remove('hide');
-       alertIcon.href = "/following/" + data.id + "/alerts";
+       var array = this.url.split("/");
+       var followingCode = this.url.split("/")[array.length-1]
+       populate_alert_form(followingCode);
      }).fail(function(data) {
        alert('Sorry, something went wrong, please try again!!!.')
      });
@@ -38,5 +41,13 @@ document.addEventListener('DOMContentLoaded', function() {
        alert('!!!Sorry, something went wrong, please try again.')
      });
   });
-
+  function populate_alert_form(followingCode) {
+    $.ajax ({
+      url: '/following/' + followingCode + '/alert_form',
+      method: 'GET',
+      dataType: 'html',
+    }).done(function(html) {
+      alertForm.innerHTML = html;
+    });
+  };
 });

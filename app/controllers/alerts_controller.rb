@@ -60,4 +60,10 @@ class AlertsController < ApplicationController
   def test_email_alert
     UserMailer.welcome_email(User.first)
   end
+
+  def alert_form
+    @alert = Alert.new
+    @following = current_user.following.find_by(coin_name: params[:following_id])
+    render 'alerts/_form', layout: false
+  end
 end
