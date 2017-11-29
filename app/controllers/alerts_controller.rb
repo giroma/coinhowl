@@ -11,7 +11,7 @@ class AlertsController < ApplicationController
     if @alert.save
       redirect_to following_index_path
     else
-      render coin_path(@coin)
+      redirect_to coin_path(@coin)
     end
     # respond_to do |format|
     #   format.html
