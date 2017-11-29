@@ -22,12 +22,10 @@
   <div class="nav-wrapper blue darken-3">
     <%= link_to "CoinHowl", root_path, class: "brand-logo" %>
     <ul class="right hide-on-med-and-down">
-      <!-- <li><a href="#"><i class="material-icons left">search</i>Search</a></li> -->
       <li>
         <div class="input-field col s12">
           <i class="material-icons prefix">search</i>
           <input type="text" id="autocomplete-input" placeholder="search..." class="autocomplete">
-          <!-- <label for="autocomplete-input">Autocomplete</label> -->
         </div>
       </li>
       <% if !current_user %>
@@ -42,9 +40,6 @@
     </ul>
     <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons right">account_circle</i>My Account</a></li>
       <li><a href="<%= following_index_path %>"><i class="material-icons right">account_balance_wallet</i>My Portfolio</a></li>
-
-      <!-- <%# link_to "Logout", session_path, method: :delete %> |
-      <%# link_to "Portfolio", following_index_path %> -->
     <% end %>
   </div>
 </nav>
