@@ -18,16 +18,19 @@ class CoinsController < ApplicationController
     end
     get_chart_data_by_minute
 
+    @bch = @response_only_btc.select {|coin| coin["MarketName"].include?('BTC-BCC')}
+    @bch = @bch[0]
+
     @response_only_btc.each do |coin|
-      if coin["MarketName"] == "BTC-BCC"
-        coin["MarketName"] = 'BTC-BCH'
-        @coin_last = coin["Last"]
-        @coin_base_volume = coin["BaseVolume"]
-        @coin_bid = coin["Bid"]
-        @coin_ask = coin["Ask"]
-        @coin_high = coin["High"]
-        @coin_low = coin["Low"]
-        @last_updated = coin["TimeStamp"]
+      if @coin_symbol == "BCH"
+        # coin["MarketName"] = 'BTC-BCC'
+        @coin_last = @bch["Last"]
+        @coin_base_volume = @bch["BaseVolume"]
+        @coin_bid = @bch["Bid"]
+        @coin_ask = @bch["Ask"]
+        @coin_high = @bch["High"]
+        @coin_low = @bch["Low"]
+        @last_updated = @bch["TimeStamp"]
       elsif coin["MarketName"] == "BTC-#{@coin_symbol}"
         @coin_last = coin["Last"]
         @coin_base_volume = coin["BaseVolume"]

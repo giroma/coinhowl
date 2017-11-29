@@ -62,20 +62,15 @@ var myResults = function() {
 myResults();
 
 
-
-  // $(function() {
-  //   $('input.autocomplete').autocomplete({
-  //     select: function( event, ui ) {
-  //       var url = ui.item.label;
-  //       window.location = '/coins/'+url
-  //     },
-  //     source: symbolArray
-  //   });
-  // });
-
-
+// User logged in dropdown in navbar
 $(".dropdown-button").dropdown(
   { hover: true }
 );
+
+// Carousel timer
+$('.carousel').carousel();
+// setInterval(function() {
+//   $('.carousel').carousel('next');
+// }, 13000);
 
 });
