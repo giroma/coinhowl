@@ -39,13 +39,13 @@ var myResults = function() {
             symbolHash[btcRemoved] = null
           }
       });
-      console.log(symbolHash);
+      // console.log(symbolHash);
 
       $('input.autocomplete').autocomplete({
        data: symbolHash,
        limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
        onAutocomplete: function(val) {
-         console.log(val);
+         // console.log(val);
          // Callback function when value is autcompleted.
              // select: function( event, ui ) {
                // var url = ui.item.label;
