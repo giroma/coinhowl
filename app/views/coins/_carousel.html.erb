@@ -16,9 +16,10 @@
           <%# name = @response_only_btc.select {|coin| coin["MarketName"].include?("BTC-ADA")} %>
           <h3><%= coin[1][:original]["MarketName"] %></h3>
           <h4>High:<%= coin[1][:original]["High"] %></h4>
-          <h5>High:<%= coin[1][:original]["Low"] %></h5>
-          <h6>High:<%= coin[1][:original]["Volume"] %></h6>
-          <h6>High:<%= coin[1][:original]["BaseVolume"] %></h6>
+          <h5>Low:<%= coin[1][:original]["Low"] %></h5>
+          <h6>Volume:<%= coin[1][:original]["Volume"] %></h6>
+          <h6>Base Volume:<%= coin[1][:original]["BaseVolume"] %></h6>
+          <h6>Percentage change: <%= number_with_precision(coin[1][:change], precision: 2) %></h6>
           <%# @top_5_cc_symbol %>
           <%# p image[count] %>
           <!-- ["BTC-NMR", {:original=>{"MarketName"=>"BTC-NMR", "High"=>0.0041, "Low"=>0.00137576, "Volume"=>705547.52690402, "Last"=>0.00304989, "BaseVolume"=>1888.63459603, "TimeStamp"=>"2017-11-30T03:11:53.337", "Bid"=>0.00303001, "Ask"=>0.00303992, "OpenBuyOrders"=>490, "OpenSellOrders"=>1293, "PrevDay"=>0.00156992, "Created"=>"2017-06-22T21:58:57.657"}, :change=>94.270408683245}] -->

@@ -69,8 +69,8 @@ $(".dropdown-button").dropdown(
 
 // Carousel timer
 $('.carousel').carousel();
-// setInterval(function() {
-//   $('.carousel').carousel('next');
-// }, 13000);
+setInterval(function() {
+  $('.carousel').carousel('next');
+}, 4000);
 
 });
