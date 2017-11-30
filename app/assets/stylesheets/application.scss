@@ -53,6 +53,14 @@ img.carousel-img {
   background-color: lightgray;
 }
 
+.carousel-item.black-text {
+  background: url(carousel-bg-image) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 .brand-logo {
   margin-left: 10px;
 }
