@@ -29,6 +29,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 $('.delete_alert').bind('ajax:success', function() {
         $(this).closest('tr').fadeOut();
-        alert("The alert was deleted.");
 });
 });

@@ -51,7 +51,7 @@ class AlertsController < ApplicationController
 
     respond_to do |format|
     if @alert.destroy
-      format.html { redirect_to @alert, notice: 'Alert was successfully deleted.' }
+      format.html { redirect_to @alert }
       format.js
       format.json { render json: @alert, status: :deleted, location: @alert }
     else
@@ -61,7 +61,7 @@ class AlertsController < ApplicationController
   end
 
   #   if @alert.destroy
-  #     flash[:notice] = "Alert has been successfully deleted."
+
   #   else
   #     flash[:alert] = "Alert has failed to delete."
   #     redirect_to following_index_path
