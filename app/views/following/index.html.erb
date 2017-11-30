@@ -62,8 +62,14 @@
                 <% end %>
                 <tr>
                   <!-- Add an alert to followed coin from portfolio -->
-                  <td colspan="4">
-                    <button data-target="modal<%= count +=1%>" class="btn modal-trigger cyan accent-4" action="#modal<%= count %>"><i class="material-icons left  modal-trigger">add</i>Add Alert</button>
+                  <td colspan="5">
+                    <div class="right-align">
+                      <button data-target="modal<%= count +=1%>"
+                        class="btn modal-trigger cyan accent-4"
+                        action="#modal<%= count %>">
+                        <i class="material-icons left  modal-trigger">add</i>Add Alert
+                      </button>
+                    </div>
                   </td>
                 </tr>
                    <div id="modal<%= count %>" class="modal">
