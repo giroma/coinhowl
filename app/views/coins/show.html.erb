@@ -55,11 +55,11 @@
       <tbody class='coin-prices-table'>
         <tr>
           <!-- LAST -->
-          <% if @coin_last < @coin_high %>
+          <% if @coin_last < @prev_day %>
             <td><p class="coin-info red-text">LAST:</p></td>
             <td><p class="coin-info" data-field="Last">&#579; <%= number_with_precision(@coin_last, precision: 8) %></p></td>
             <td class="text-center"><span class="red-text" ><i class="material-icons valign-wrapper red-text">arrow_drop_down</i></span></td>
-          <% elsif @coin_last > @coin_high %>
+          <% elsif @coin_last > @prev_day %>
             <td><p class="coin-info green-text">LAST:</p></td>
             <td><p class="coin-info" data-field="Last">&#579; <%= number_with_precision(@coin_last, precision: 8) %></p></td>
             <td class="coin-info text-center"><span class="green-text"><i class="material-icons valign-wrapper green-text">arrow_drop_up</i></span></td>

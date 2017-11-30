@@ -32,6 +32,7 @@ class CoinsController < ApplicationController
         @coin_ask = @bch["Ask"]
         @coin_high = @bch["High"]
         @coin_low = @bch["Low"]
+        @prev_day = @bch["PrevDay"]
         @last_updated = @bch["TimeStamp"]
         @local_time = Time.at(DateTime.parse(@last_updated).to_i)
       elsif coin["MarketName"] == "BTC-#{@coin_symbol}"
@@ -41,6 +42,7 @@ class CoinsController < ApplicationController
         @coin_ask = coin["Ask"]
         @coin_high = coin["High"]
         @coin_low = coin["Low"]
+        @prev_day = coin["PrevDay"]
         @last_updated = coin["TimeStamp"]
         @local_time = Time.at(DateTime.parse(@last_updated).to_i)
       end
