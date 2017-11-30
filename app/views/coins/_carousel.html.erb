@@ -11,10 +11,8 @@
           <%# @cryptocompare_result[@top_5_cc_symbol[count]]["ImageUrl"] %>
           <img src="https://www.cryptocompare.com/<%= @cryptocompare_result[@top_5_cc_symbol[count]]["ImageUrl"] %>" class="carousel-img">
         </div>
-        <div class="col s7">
-
-          <%# name = @response_only_btc.select {|coin| coin["MarketName"].include?("BTC-ADA")} %>
-          <h3><%= coin[1][:original]["MarketName"] %></h3>
+        <div class="col s7">          
+          <h3><%= link_to "#{ coin[1][:original]['MarketName'] }", "coins/#{@top_5_cc_symbol[count]}" %></h3>
           <h4>High:<%= coin[1][:original]["High"] %></h4>
           <h5>Low:<%= coin[1][:original]["Low"] %></h5>
           <h6>Volume:<%= coin[1][:original]["Volume"] %></h6>
@@ -31,17 +29,5 @@
       </div>
   </div>
   <% end %>
-    <!-- <div class="carousel-item amber white-text" href="#two!">
-      <h2>Second Panel</h2>
-      <p class="white-text">This is your second panel</p>
-    </div>
-    <div class="carousel-item green white-text" href="#three!">
-      <h2>Third Panel</h2>
-      <p class="white-text">This is your third panel</p>
-    </div>
-    <div class="carousel-item blue white-text" href="#four!">
-      <h2>Fourth Panel</h2>
-      <p class="white-text">This is your fourth panel</p>
-    </div> -->
   </div>
 </div>
