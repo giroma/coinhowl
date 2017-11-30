@@ -3,20 +3,34 @@
     <!-- <div class="carousel-fixed-item center">
       <a class="btn waves-effect blue white-text darken-text-2">button</a>
     </div> -->
-    <div class="carousel-item yellow black-text" href="#one!">
+    <% count = 0 %>
+    <% @top_5_coins.each do |coin| %>
+    <div class="carousel-item black-text" href="<%= @carousel_position[count] %>">
       <div class="row">
         <div class="col s5">
-          <img src="https://bittrexblobstorage.blob.core.windows.net/public/0f3f4789-b356-4091-a006-3761ed41c8bd.png" class="carousel-img">
+          <%# @cryptocompare_result[@top_5_cc_symbol[count]]["ImageUrl"] %>
+          <img src="https://www.cryptocompare.com/<%= @cryptocompare_result[@top_5_cc_symbol[count]]["ImageUrl"] %>" class="carousel-img">
         </div>
         <div class="col s7">
 
-          <% name = @response_only_btc.select {|coin| coin["MarketName"].include?("BTC-ADA")} %>
-          <h3><%= name[0]["MarketName"] %></h3>
+          <%# name = @response_only_btc.select {|coin| coin["MarketName"].include?("BTC-ADA")} %>
+          <h3><%= coin[1][:original]["MarketName"] %></h3>
+          <h4>High:<%= coin[1][:original]["High"] %></h4>
+          <h5>High:<%= coin[1][:original]["Low"] %></h5>
+          <h6>High:<%= coin[1][:original]["Volume"] %></h6>
+          <h6>High:<%= coin[1][:original]["BaseVolume"] %></h6>
+          <%# @top_5_cc_symbol %>
+          <%# p image[count] %>
+          <!-- ["BTC-NMR", {:original=>{"MarketName"=>"BTC-NMR", "High"=>0.0041, "Low"=>0.00137576, "Volume"=>705547.52690402, "Last"=>0.00304989, "BaseVolume"=>1888.63459603, "TimeStamp"=>"2017-11-30T03:11:53.337", "Bid"=>0.00303001, "Ask"=>0.00303992, "OpenBuyOrders"=>490, "OpenSellOrders"=>1293, "PrevDay"=>0.00156992, "Created"=>"2017-06-22T21:58:57.657"}, :change=>94.270408683245}] -->
 
+
+          <!-- <h4>coin[change]</h4> -->
+          <% count+=1 %>
         </div>
       </div>
   </div>
-    <div class="carousel-item amber white-text" href="#two!">
+  <% end %>
+    <!-- <div class="carousel-item amber white-text" href="#two!">
       <h2>Second Panel</h2>
       <p class="white-text">This is your second panel</p>
     </div>
@@ -27,6 +41,6 @@
     <div class="carousel-item blue white-text" href="#four!">
       <h2>Fourth Panel</h2>
       <p class="white-text">This is your fourth panel</p>
-    </div>
+    </div> -->
   </div>
 </div>

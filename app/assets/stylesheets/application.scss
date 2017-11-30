@@ -50,3 +50,9 @@ img.carousel-img {
   // padding: 25px 0;
   // margin: 0 0 68px 0;
 }
+.carousel .indicators .indicator-item.active {
+  background-color: #55ddaa;
+}
+.carousel .indicators .indicator-item {
+  background-color: lightgray;
+}

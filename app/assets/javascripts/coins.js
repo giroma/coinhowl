@@ -17,7 +17,7 @@
     "mouseWheelZoomEnabled": true,
 
     "categoryAxesSettings": {
-      "minPeriod": "hh"
+      "minPeriod": "mm"
     },
 
     "dataSets": [ {
