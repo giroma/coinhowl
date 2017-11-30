@@ -120,8 +120,8 @@
               </tr>
 
               <!-- ADD ALERT FORM -->
-              <div id="modal<%= count %>" class="modal">
-                <div class="modal-content">
+               <div id="modal<%= count %>" class="modal">
+                 <div class="modal-content">
                  <!-- cannot render the partial for the alert. for NEW method, it can't be @following, must be >>follow<< like in the iteration -->
                    <%= form_for([follow, @alert]) do |f| %>
                      <% if @alert.errors.any? %>
@@ -148,7 +148,7 @@
                        <%= f.number_field :percent %>
                      </div>
                      <div class="actions">
-                       <%= f.submit %>
+                       <%= f.submit :class => 'btn modal-trigger cyan accent-4'%>
                      </div>
                    <% end %>
                 </div>
