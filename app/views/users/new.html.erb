@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col s3">
+    <div class="col s4">
       <h1>Sign Up</h1>
       <%= form_for @user do |f| %>
         <div class="field">
@@ -14,6 +14,10 @@
         </div>
 
         <div class="field">
+          <%= f.label :phone %><br/>
+          <%= f.phone_field :phone %>
+        </div>
+        <div class="field">
           <%= f.label :password %><br/>
           <%= f.password_field :password %>
         </div>
@@ -21,11 +25,54 @@
           <%= f.label :password_confirmation %><br/>
           <%= f.password_field :password_confirmation %>
         </div>
-
-        <div class="field">
+        <div class="row">
+          <p>Receive alerts by:</p>
+          <div class="col s6 text-center">
+            <%= check_box_tag 'phone_alert', "true", @user.phone_alert %>
+            <label for="phone_alert">Text Message</label>
+          </div>
+          <div class="col s6 text-center">
+            <%= check_box_tag 'email_alert', 'true', @user.email_alert %>
+            <label for="email_alert">e-mail</label>
+          </div>
+        </div>
+        <div class="field text-center">
           <%= f.submit :class => 'btn modal-trigger cyan accent-4' %>
         </div>
       <% end %>
     </div>
-  </div>
+    <div class="col s1">
+    </div>
+    <div class="col s7">
+      <div class="row">
+        <div class="col s12">
+          <img src="http://via.placeholder.com/200x50/ffffff?text=">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s4">
+          <img src="http://via.placeholder.com/280x180">
+        </div>
+        <div class="col s8">
+          <p>Is we miles ready he might going. Own books built put civil fully blind fanny. Projection appearance at of admiration no. As he totally cousins warrant besides ashamed do. Therefore by applauded acuteness supported affection it. Except had sex limits county enough the figure former add. Do sang my he next mr soon. It merely waited do unable. </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s8">
+          <p>Is we miles ready he might going. Own books built put civil fully blind fanny. Projection appearance at of admiration no. As he totally cousins warrant besides ashamed do. Therefore by applauded acuteness supported affection it. Except had sex limits county enough the figure former add. Do sang my he next mr soon. It merely waited do unable. </p>
+        </div>
+        <div class="col s4">
+          <img src="http://via.placeholder.com/280x180">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s4">
+          <img src="http://via.placeholder.com/280x180">
+        </div>
+        <div class="col s8">
+          <p>Is we miles ready he might going. Own books built put civil fully blind fanny. Projection appearance at of admiration no. As he totally cousins warrant besides ashamed do. Therefore by applauded acuteness supported affection it. Except had sex limits county enough the figure former add. Do sang my he next mr soon. It merely waited do unable. </p>
+        </div>
+      </div>
+    </div>
+</div>
 </div>
