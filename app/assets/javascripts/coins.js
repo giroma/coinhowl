@@ -165,7 +165,7 @@
       } ]
     }
   } );
-  // update show page prices every 5 seconds
+  // update show page prices every 3 seconds
   setInterval(function () {
     var coinSymbol = $('.js-coin-symbol').text() //get coin name from html element
     $.ajax({
