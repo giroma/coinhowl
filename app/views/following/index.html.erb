@@ -58,7 +58,49 @@
                   <td><%= alert.price_below %></td>
                   <td><%= alert.percent %>%</td>
                   <td><%= alert.state %></td>
-                  <td><%= link_to "Edit", edit_following_alert_path(follow, alert) %> | <%= link_to "Delete", following_alert_path(follow, alert), method: :delete, data: {confirm: "Are you sure you want to delete this alert?" } %></td>
+                  <td>
+
+                      <a data-target="modal<%= count +=1%>"
+                        class="modal-trigger"
+                        action="#modal<%= count %>">
+                        Edit
+                      </a>
+
+
+                    <!-- EDIT ALERT FORM -->
+                    <div id="modal<%= count %>" class="modal">
+                      <div class="modal-content">
+                         <%= form_for([follow, alert]) do |f| %>
+                           <% if alert.errors.any? %>
+                             <div id="error_explanation">
+                               <h2><%= pluralize(alert.errors.count, "error") %> prohibited this alert from being saved:</h2>
+                               <ul>
+                                 <% alert.errors.full_messages.each do |msg| %>
+                                   <li><%= msg %></li>
+                                 <% end %>
+                               </ul>
+                             </div>
+                           <% end %>
+                           <h5><%= follow.coin_name %></h5>
+                           <div class="field">
+                             <%= f.label :price_above %><br />
+                             <%= f.number_field :price_above %>
+                           </div>
+                           <div class="field">
+                             <%= f.label :price_below %><br />
+                             <%= f.number_field :price_below %>
+                           </div>
+                           <div class="field">
+                             <%= f.label '24h percent change' %><br />
+                             <%= f.number_field :percent %>
+                           </div>
+                           <div class="actions">
+                             <%= f.submit %>
+                           </div>
+                         <% end %>
+                      </div>
+                    </div>
+                    | <%= link_to "Delete", following_alert_path(follow, alert), method: :delete, data: {confirm: "Are you sure you want to delete this alert?" } %></td>
                 </tr>
               <% end %> <!-- END OF ALERT LOOP -->
 
