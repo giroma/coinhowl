@@ -60,7 +60,7 @@
             <td><p class="coin-info" data-field="Last">&#579; <%= number_with_precision(@coin_last, precision: 8) %></p></td>
             <td class="text-center"><span class="red-text" ><i class="material-icons valign-wrapper red-text">arrow_drop_down</i></span></td>
           <% elsif @coin_last > @coin_high %>
-            <td><p class="coin-info green-text">LAST:</h5></td>
+            <td><p class="coin-info green-text">LAST:</p></td>
             <td><p class="coin-info" data-field="Last">&#579; <%= number_with_precision(@coin_last, precision: 8) %></p></td>
             <td class="coin-info text-center"><span class="green-text"><i class="material-icons valign-wrapper green-text">arrow_drop_up</i></span></td>
           <% else %>
@@ -101,7 +101,7 @@
         </tr>
       </tbody>
     </table>
+    <!-- TIMESTAMP -->
+    <p class="center-align">LAST UPDATED: <%= @local_time %></p>
   </div>
-  <!-- TIMESTAMP -->
-  <p class="center-align">LAST UPDATED: <%= @local_time %></p>
 </div>
