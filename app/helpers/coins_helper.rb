@@ -7,4 +7,5 @@ module CoinsHelper
       string
     end
   end
+
 end

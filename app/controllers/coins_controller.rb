@@ -3,6 +3,8 @@ class CoinsController < ApplicationController
   before_action :call_coin_market_cap
   before_action :call_bittrex
   before_action :call_cryptocompare_api
+  before_action :top_5_coins
+  before_action :cc_image_url
 
   def index
     @response = HTTParty.get('https://api.coinmarketcap.com/v1/ticker/?convert=CAD&limit=50')
