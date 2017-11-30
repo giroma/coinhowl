@@ -22,10 +22,6 @@
   width: 95%;
 }
 
-.brand-logo {
-  margin-left: 10px;
-}
-
 body {
   display: flex;
   min-height: 100vh;
@@ -55,4 +51,13 @@ img.carousel-img {
 }
 .carousel .indicators .indicator-item {
   background-color: lightgray;
+}
+
+.brand-logo {
+  margin-left: 10px;
+}
+
+img.menu-logo {
+  margin: 7px 10px;
+
 }

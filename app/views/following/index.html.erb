@@ -22,11 +22,10 @@
             </div>
             <% if follow.alerts.length > 0 %>
             <div class="right col s1">
-              <i class="material-icons">alarm</i><br/>
+              <h4><%= image_tag("alerts", size: "30x30") %>&nbsp;<%= follow.alerts.count %></h4>
             </div>
             <% else %>
             <div class="right col s1">
-              <!-- <i class="material-icons">alarm</i><br/> -->
             </div>
             <% end %>
             <div class="row">
@@ -52,7 +51,11 @@
                 <td><%= alert.price_above %></td>
                 <td><%= alert.price_below %></td>
                 <td><%= alert.percent %>%</td>
-                <td><%= alert.state %></td>
+                <% if alert.state == "Active" %>
+                <td><p><%= alert.state %>&nbsp;<%= image_tag("active-alert", size: "20x20") %></p></td>
+                <% elsif alert.state == "Inactive" %>
+                <td><p><%= alert.state %>&nbsp;<%= image_tag("inactive-alert", size: "20x20") %></p></td>
+                <% end %>
                 <td><%= link_to "Edit", edit_following_alert_path(follow, alert) %> | <%= link_to "Delete", following_alert_path(follow, alert), method: :delete, data: {confirm: "Are you sure you want to delete this alert?" } %></td>
               </tr>
             <% end %>
