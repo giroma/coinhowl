@@ -55,8 +55,8 @@
 
 
     "panels": [ {
-        "title": "Value",
-        "showCategoryAxis": false,
+        "title": "Price",
+        "showCategoryAxis": true,
         "percentHeight": 70,
         "valueAxes": [ {
           "dashLength": 5
@@ -76,8 +76,8 @@
           "valueField": "close",
           "lineColor": "green",
           "fillColors": "green",
-          "negativeLineColor": "red",
-          "negativeFillColors": "red",
+          "negativeLineColor": "#DF1313",
+          "negativeFillColors": "#DF1313",
           "fillAlphas": 1,
           "useDataSetColors": false,
           "comparable": true,
@@ -100,7 +100,7 @@
       },
 
       {
-        "title": "Price",
+        "title": "Volume",
         "percentHeight": 30,
         "marginTop": 1,
         "showCategoryAxis": true,
@@ -161,6 +161,7 @@
       } ]
     }
   } );
+  // update show page prices every 5 seconds
   setInterval(function () {
     var coinSymbol = $('.js-coin-symbol').text() //get coin name from html element
     $.ajax({
@@ -170,10 +171,8 @@
       $('.coin-prices-table tr').each(function () { // itterate over each element
         var field = $(this).find('td').eq(1).find('h5').attr('data-field') // get the field name for the h5 of every second dt
         $(this).find('td').eq(1).find('h5').html('&#579; ' + (response['result'][0][field]).toFixed(8)) // now change the text with new data
-        // console.log($(this).find('td').eq(1).find('h5').attr('data-field'));
       })
     })
-
   },5000)
 
 }// end of if
