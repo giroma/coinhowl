@@ -140,17 +140,21 @@
       "position": "top",
       "periods": [ {
         "period": "hh",
-        "count": 2,
+        "count": 1,
         "label": "1 hour"
 
       }, {
         "period": "hh",
-        "count": 48,
-        "label": "2 days"
+        "count": 6,
+        "label": "6 hours"
       }, {
         "period": "hh",
-        "count": 120,
-        "label": "5 days"
+        "count": 24,
+        "label": "1 days"
+      }, {
+        "period": "hh",
+        "count": 72,
+        "label": "3 days"
       }, {
         "period": "hh",
         "count": 144,
