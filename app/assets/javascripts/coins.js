@@ -165,7 +165,7 @@
       } ]
     }
   } );
-  // update show page prices every 5 seconds
+  // update show page prices every 3 seconds
   setInterval(function () {
     var coinSymbol = $('.js-coin-symbol').text() //get coin name from html element
     $.ajax({
@@ -173,11 +173,12 @@
       method: 'GET'
     }).done(function (response) {
       $('.coin-prices-table tr').each(function () { // itterate over each element
-        var field = $(this).find('td').eq(1).find('h5').attr('data-field') // get the field name for the h5 of every second dt
-        $(this).find('td').eq(1).find('h5').html('&#579; ' + (response['result'][0][field]).toFixed(8)) // now change the text with new data
+        var field = $(this).find('td').eq(1).find('p').attr('data-field') // get the field name for the h5 of every second dt
+        $(this).find('td').eq(1).find('p').html('&#579; ' + (response['result'][0][field]).toFixed(8))
       })
+      $('#last-updated').html('LAST UPDATED: ' + Date(response['result'][0]['TimeStamp']))
     })
-  },5000)
+  },3000)
 
 }// end of if
 

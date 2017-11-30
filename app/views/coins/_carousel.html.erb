@@ -5,43 +5,24 @@
     </div> -->
     <% count = 0 %>
     <% @top_5_coins.each do |coin| %>
-    <div class="carousel-item black-text" href="<%= @carousel_position[count] %>">
-      <div class="row">
-        <div class="col s5">
-          <%# @cryptocompare_result[@top_5_cc_symbol[count]]["ImageUrl"] %>
-          <img src="https://www.cryptocompare.com/<%= @cryptocompare_result[@top_5_cc_symbol[count]]["ImageUrl"] %>" class="carousel-img">
-        </div>
-        <div class="col s7">
-
-          <%# name = @response_only_btc.select {|coin| coin["MarketName"].include?("BTC-ADA")} %>
-          <h3><%= coin[1][:original]["MarketName"] %></h3>
-          <h4>High:<%= coin[1][:original]["High"] %></h4>
-          <h5>Low:<%= coin[1][:original]["Low"] %></h5>
-          <h6>Volume:<%= coin[1][:original]["Volume"] %></h6>
-          <h6>Base Volume:<%= coin[1][:original]["BaseVolume"] %></h6>
-          <h6>Percentage change: <%= number_with_precision(coin[1][:change], precision: 2) %></h6>
-          <%# @top_5_cc_symbol %>
-          <%# p image[count] %>
-          <!-- ["BTC-NMR", {:original=>{"MarketName"=>"BTC-NMR", "High"=>0.0041, "Low"=>0.00137576, "Volume"=>705547.52690402, "Last"=>0.00304989, "BaseVolume"=>1888.63459603, "TimeStamp"=>"2017-11-30T03:11:53.337", "Bid"=>0.00303001, "Ask"=>0.00303992, "OpenBuyOrders"=>490, "OpenSellOrders"=>1293, "PrevDay"=>0.00156992, "Created"=>"2017-06-22T21:58:57.657"}, :change=>94.270408683245}] -->
-
-
-          <!-- <h4>coin[change]</h4> -->
-          <% count+=1 %>
-        </div>
+      <div class="carousel-item black-text" href="<%= @carousel_position[count] %>">
+        <div class="row">
+          <div class="col s5 coin-logo" id="carousel-item<%= count %>">
+          <img src="https://www.cryptocompare.com<%= @cryptocompare_result[@top_5_cc_symbol[count]]["ImageUrl"] %>">
+          </div>
+          <div class="col s7 text-left">
+            <h5>Biggest % Gain</h5>
+            <h3><%= link_to "#{ coin[1][:original]['MarketName'] }", "coins/#{@top_5_cc_symbol[count]}" %></h3>
+            <h5> <%= number_with_precision(coin[1][:change], precision: 2) %>%</h5>
+            <h5>Last Price<%= number_with_precision(coin[1][:original]["Last"], precision: 8) %></h5>
+            <h5>24hr Volume<%= number_with_precision(coin[1][:original]["BaseVolume"], precision: 2) %> BTC</h5>
+            <%# @top_5_cc_symbol %>
+            <%# p image[count] %>
+            <!-- ["BTC-NMR", {:original=>{"MarketName"=>"BTC-NMR", "High"=>0.0041, "Low"=>0.00137576, "Volume"=>705547.52690402, "Last"=>0.00304989, "BaseVolume"=>1888.63459603, "TimeStamp"=>"2017-11-30T03:11:53.337", "Bid"=>0.00303001, "Ask"=>0.00303992, "OpenBuyOrders"=>490, "OpenSellOrders"=>1293, "PrevDay"=>0.00156992, "Created"=>"2017-06-22T21:58:57.657"}, :change=>94.270408683245}] -->
+              <% count+=1 %>
+            </div>
+          </div>
       </div>
-  </div>
-  <% end %>
-    <!-- <div class="carousel-item amber white-text" href="#two!">
-      <h2>Second Panel</h2>
-      <p class="white-text">This is your second panel</p>
-    </div>
-    <div class="carousel-item green white-text" href="#three!">
-      <h2>Third Panel</h2>
-      <p class="white-text">This is your third panel</p>
-    </div>
-    <div class="carousel-item blue white-text" href="#four!">
-      <h2>Fourth Panel</h2>
-      <p class="white-text">This is your fourth panel</p>
-    </div> -->
+    <% end %>
   </div>
 </div>

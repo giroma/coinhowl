@@ -35,8 +35,12 @@ var myResults = function() {
       data["result"].forEach(function(element) {
         var tempSymbol = element["MarketName"].includes('BTC-','');
           if(tempSymbol == true) {
+            if (element["MarketName"] == 'BTC-BCC') {
+              symbolHash['BCH'] = null
+            } else {
             var btcRemoved = element["MarketName"].replace('BTC-','');
             symbolHash[btcRemoved] = null
+            }
           }
       });
       // console.log(symbolHash);

@@ -24,13 +24,12 @@
             Current Price: Ƀ <%= number_with_precision(@coin_last, precision: 8) %>
           </div>
           <% if follow.alerts.length > 0 %>
-            <div class="right col s1">
-              <i class="material-icons">alarm</i><br/>
-            </div>
+          <div class="right col s1">
+            <h4><%= image_tag("alerts", size: "30x30") %>&nbsp;<%= follow.alerts.count %></h4>
+          </div>
           <% else %>
-            <div class="right col s1">
-              <!-- <i class="material-icons">alarm</i><br/> -->
-            </div>
+          <div class="right col s1">
+          </div>
           <% end %>
           <div class="row">
             <div class="col s12">
@@ -58,6 +57,11 @@
                   <td><%= alert.price_below %></td>
                   <td><%= alert.percent %>%</td>
                   <td><%= alert.state %></td>
+                  <% if alert.state == "Active" %>
+                  <td><p><%= alert.state %>&nbsp;<%= image_tag("active-alert", size: "20x20") %></p></td>
+                  <% elsif alert.state == "Inactive" %>
+                  <td><p><%= alert.state %>&nbsp;<%= image_tag("inactive-alert", size: "20x20") %></p></td>
+                  <% end %>
                   <td>
 
                       <a data-target="modal<%= count +=1%>"
@@ -104,7 +108,7 @@
 
               <tr>
                 <!-- ADD ALERT TO LIST OF FOLLOWED COINS -->
-                <td colspan="5">
+                <td colspan="6">
                   <div class="right-align">
                     <button data-target="modal<%= count +=1%>"
                       class="btn modal-trigger cyan accent-4"
