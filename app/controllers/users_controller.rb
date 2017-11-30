@@ -19,9 +19,9 @@ class UsersController < ApplicationController
     @user.password_confirmation = params[:user][:password_confirmation]
     if @user.save
       auto_login(@user)
-      redirect_to root_url
       # Tell the UserMailer to send a welcome email after save
-        UserMailer.welcome_email(@user).deliver_now
+      UserMailer.welcome_email(@user).deliver_now
+      redirect_to root_url
 
 
     else
