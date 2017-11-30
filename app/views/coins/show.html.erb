@@ -9,37 +9,43 @@
 
   <!-- MAIN COIN INFO SECTION -->
   <div class="col s4">
-    <div id="show-coin-table-head">
-      <div class="head-info">
-        <h3 class='js-coin-symbol'><%= @coin_symbol %></h3>
+    <div class="row">
+      <div class="col s4">
+        <div class="head-info valign-wrapper">
+          <h3 class="js-coin-symbol"><%= @coin_symbol %></h3>
+        </div>
       </div>
-
-      <!-- FOLLOW/UNFOLLOW BUTTON -->
-      <div class="head-info">
-        <a id="unfollow-coin"
-        class="waves-effect waves-light btn red darken-4 <%= 'hide' if !@is_following %>"
-        href="<%= following_path %>"
-        data-method="delete" rel="nofollow">
-        Unfollow</a>
-        <a id="follow-coin"
-        class="waves-effect waves-light btn green darken-4 <%= 'hide' if @is_following %>"
-        href="<%= following_path %>"
-        data-method="put" rel="nofollow">
-        Follow</a>
+      <div class="col s4">
+        <div class="head-info valign-wrapper">
+          <!-- FOLLOW/UNFOLLOW BUTTON -->
+          <div class="center-align">
+            <a id="unfollow-coin"
+              class="waves-effect waves-light btn red darken-4 <%= 'hide' if !@is_following %>"
+              href="<%= following_path %>"
+              data-method="delete" rel="nofollow">
+              Unfollow
+            </a>
+            <a id="follow-coin"
+              class="waves-effect waves-light btn green darken-4 <%= 'hide' if @is_following %>"
+              href="<%= following_path %>"
+              data-method="put" rel="nofollow">Follow
+            </a>
+          </div>
+        </div>
       </div>
+      <div class="col s4">
+        <div class="head-info valign-wrapper">
+          <a id="alert"
+            class="btn btn-floating btn-large cyan accent-4 waves-effect waves-light btn modal-trigger <%= 'hide' if !@is_following %>"
+            href="#modal1" action="#modal1">
+          <i class="material-icons left">add_alert</i></a>
 
-      <!-- ALERT href=" following_alerts_path(@follow) "-->
-      <div class="head-info">
-        <a id="alert"
-        class="btn btn-floating btn-large cyan accent-4 waves-effect waves-light btn modal-trigger <%= 'hide' if !@is_following %>"
-        href="#modal1" action="#modal1">
-        <i class="material-icons left">add_alert</i></a>
-
-        <div id="modal1" class="modal">
-          <div class="modal-content alert-form">
-            <% if @is_following %>
-              <%= render 'alerts/form', alert: @alert, method: :post %>
-            <% end %>
+          <div id="modal1" class="modal">
+            <div class="modal-content alert-form">
+              <% if @is_following %>
+                <%= render 'alerts/form', alert: @alert, method: :post %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
