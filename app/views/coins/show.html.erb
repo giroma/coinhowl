@@ -36,12 +36,13 @@
       <div class="col s4">
         <div class="head-info valign-wrapper text-right">
           <!-- FOLLOW/UNFOLLOW BUTTON -->
+          <% if @is_following %>
           <a id="alert"
-            class="btn btn-floating btn-large cyan accent-4 waves-effect waves-light modal-trigger<%= 'hide' if !@is_following %>"
+            class="btn btn-floating btn-large cyan accent-4 waves-effect waves-light btn modal-trigger<%= 'hide' if !@is_following %>"
             href="#modal1" action="#modal1">
           <i class="material-icons left">add_alert</i></a>
-
-          <div id="modal1" class="modal">
+          <% end %>
+          <div id="modal1" class="modal  text-left">
             <div class="modal-content alert-form">
               <% if @is_following %>
                 <%= render 'alerts/form', alert: @alert, method: :post %>
