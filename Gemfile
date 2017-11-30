@@ -49,6 +49,8 @@ gem 'delayed_job_active_record' #integrates easiest with rails, uses active_reco
 
 gem "letter_opener", :group => :development
 
+gem "puma"
+
 # gem 'whenever', :require => false
 
 group :development, :test do
