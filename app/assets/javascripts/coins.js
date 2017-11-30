@@ -174,10 +174,11 @@
     }).done(function (response) {
       $('.coin-prices-table tr').each(function () { // itterate over each element
         var field = $(this).find('td').eq(1).find('p').attr('data-field') // get the field name for the h5 of every second dt
-        $(this).find('td').eq(1).find('p').html('&#579; ' + (response['result'][0][field]).toFixed(8)) // now change the text with new data
+        $(this).find('td').eq(1).find('p').html('&#579; ' + (response['result'][0][field]).toFixed(8))
       })
+      $('#last-updated').html('LAST UPDATED: ' + Date(response['result'][0]['TimeStamp']))
     })
-  },5000)
+  },3000)
 
 }// end of if
 
