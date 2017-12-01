@@ -65,7 +65,7 @@
                   <td>
 
                       <a data-target="modal<%= count +=1%>"
-                        class="modal-trigger"
+                        class="modal-trigger link-pointer"
                         action="#modal<%= count %>">
                         Edit</a>
 
@@ -97,7 +97,7 @@
                                <%= f.number_field :percent %>
                              </div>
                              <div class="actions">
-                               <%= f.submit %>
+                               <%= f.submit :class => 'btn modal-trigger cyan accent-4' %>
                              </div>
                            <% end %>
                         </div>
@@ -148,7 +148,7 @@
                        <%= f.number_field :percent %>
                      </div>
                      <div class="actions">
-                       <%= f.submit :class => 'btn modal-trigger cyan accent-4'%>
+                       <%= f.submit :class => 'btn modal-trigger cyan accent-4' %>
                      </div>
                    <% end %>
                 </div>
