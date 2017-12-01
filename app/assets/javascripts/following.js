@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
        var followingCode = this.url.split("/")[array.length-1]
        populate_alert_form(followingCode);
      }).fail(function(data) {
-       alert('Sorry, something went wrong, please try again!!!.')
      });
   });
 
@@ -38,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
        followLink.classList.remove('hide');
        alertIcon.classList.add('hide');
      }).fail(function(data) {
-       alert('!!!Sorry, something went wrong, please try again.')
      });
   });
   function populate_alert_form(followingCode) {
