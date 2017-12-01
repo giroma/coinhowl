@@ -2,10 +2,15 @@ class FollowingController < ApplicationController
   before_action :call_bittrex
 
   def index
-    @user = current_user
-    @following = Following.where(user_id: @user.id)
-    @avatar = @user.avatar_url
-    @alert = Alert.new
+    if current_user
+      @user = current_user
+      @following = Following.where(user_id: @user.id)
+      @avatar = @user.avatar_url
+      @alert = Alert.new
+    else
+      flash[:alert] = "You must have an account to check your portfolio."
+      redirect_to new_user_path
+    end
   end
 
   def update
