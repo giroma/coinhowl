@@ -137,11 +137,11 @@
                      <h5><%= follow.coin_name %></h5>
                      <div class="field">
                        <%= f.label :price_above %><br />
-                       <%= f.number_field :price_above, :value => number_with_precision(@coin_last, precision: 8), step: 0.00001 %>
+                       <%= f.number_field :price_above, :value => number_with_precision(@coin_last, precision: 8), step: 0.0000001 %>
                      </div>
                      <div class="field">
                        <%= f.label :price_below %><br />
-                       <%= f.number_field :price_below, :value => number_with_precision(@coin_last, precision: 8), step: 0.00001%>
+                       <%= f.number_field :price_below, :value => number_with_precision(@coin_last, precision: 8), step: 0.0000001%>
                      </div>
                      <div class="field">
                        <%= f.label '24h percent change' %><br />

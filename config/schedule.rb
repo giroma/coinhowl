@@ -18,6 +18,6 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-every 10.minute do
-  rake 'alerts'
-end
+# every 10.minute do
+#   rake 'alerts'
+# end
