@@ -1,24 +1,76 @@
-<%= form_for @user do |f| %>
-  <div class="field">
-     <%= f.label :username %><br />
-     <%= f.text_field :username %>
-  </div>
+<div class="container">
+  <div class="row">
+    <div class="col s4">
+      <h1>Sign Up</h1>
+      <%= form_for @user do |f| %>
+        <div class="field">
+          <%= f.label :username %><br/>
+          <%= f.text_field :username %>
+        </div>
 
-  <div class="field">
-     <%= f.label :email %><br />
-     <%= f.text_field :email %>
-  </div>
+        <div class="field">
+          <%= f.label :email %><br/>
+          <%= f.text_field :email %>
+        </div>
 
-  <div class="field">
-     <%= f.label :password %><br />
-     <%= f.password_field :password %>
-  </div>
-  <div class="field">
-     <%= f.label :password_confirmation %><br />
-     <%= f.password_field :password_confirmation %>
-  </div>
-
-  <div class="field">
-     <%= f.submit %>
-  </div>
-<% end %>
+        <div class="field">
+          <%= f.label :phone %><br/>
+          <%= f.phone_field :phone %>
+        </div>
+        <div class="field">
+          <%= f.label :password %><br/>
+          <%= f.password_field :password %>
+        </div>
+        <div class="field">
+          <%= f.label :password_confirmation %><br/>
+          <%= f.password_field :password_confirmation %>
+        </div>
+        <div class="row">
+          <p class="grey-text">Receive alerts by:</p>
+          <div class="col s6 text-center">
+            <%= check_box_tag 'phone_alert', "true", @user.phone_alert %>
+            <label for="phone_alert">Text Message</label>
+          </div>
+          <div class="col s6 text-center">
+            <%= check_box_tag 'email_alert', 'true', @user.email_alert %>
+            <label for="email_alert">e-mail</label>
+          </div>
+        </div>
+        <div class="field text-center">
+          <%= f.submit :class => 'btn modal-trigger cyan accent-4' %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col s1">
+    </div>
+    <div class="col s7 signup-first-row grey-text">
+      <div class="row">
+        <div class="col s4 text-center">
+          <%= image_tag("follow-coin", size: "150x150", class: 'circle center-align z-depth-3') %>
+        </div>
+        <div class="col s8">
+          <h5>Follow a coin!</h5>
+          <p>Is we miles ready he might going. Own books built put civil fully blind fanny. Projection appearance at of admiration no. As he totally cousins warrant besides ashamed do. </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s8 text-right">
+          <h5>Maintain your portfolio!</h5>
+          <p>Is we miles ready he might going. Own books built put civil fully blind fanny. Projection appearance at of admiration no. As he totally cousins warrant besides ashamed do.</p>
+        </div>
+        <div class="col s4 text-center">
+          <%= image_tag("follow-coin", size: "150x150", class: 'circle center-align z-depth-3') %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s4 text-center">
+          <%= image_tag("follow-coin", size: "150x150", class: 'circle center-align z-depth-3') %>
+        </div>
+        <div class="col s8 text-left">
+          <h5>Add an alert!</h5>
+          <p>Is we miles ready he might going. Own books built put civil fully blind fanny. Projection appearance at of admiration no. As he totally cousins warrant besides ashamed do. </p>
+        </div>
+      </div>
+    </div>
+</div>
+</div>

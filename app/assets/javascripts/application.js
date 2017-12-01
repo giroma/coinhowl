@@ -26,7 +26,7 @@ $(document).ready(function() {
 
 var symbolHash = {}
 var myResults = function() {
-  var url = "https://cors-anywhere.herokuapp.com/https://bittrex.com/api/v1.1/public/getmarketsummaries";
+  var url = "https://cors-anywhere.herokuapp.com/https://bittrex.com/api/v1.1/public/getmarkets";
   $.ajax({
   url: url,
   method: 'GET',
@@ -35,8 +35,12 @@ var myResults = function() {
       data["result"].forEach(function(element) {
         var tempSymbol = element["MarketName"].includes('BTC-','');
           if(tempSymbol == true) {
+            if (element["MarketName"] == 'BTC-BCC') {
+              symbolHash['BCH Bitcoin Cash'] = "https://www.cryptocompare.com/media/1383919/bch.jpg"
+            } else {
             var btcRemoved = element["MarketName"].replace('BTC-','');
-            symbolHash[btcRemoved] = null
+            symbolHash[btcRemoved+' '+element["MarketCurrencyLong"]] = element["LogoUrl"]
+            }
           }
       });
       // console.log(symbolHash);
@@ -49,7 +53,7 @@ var myResults = function() {
          // Callback function when value is autcompleted.
              // select: function( event, ui ) {
                // var url = ui.item.label;
-               window.location = '/coins/'+val
+               window.location = '/coins/'+val.split(" ")[0];
              // },
        },
        minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.

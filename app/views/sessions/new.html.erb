@@ -1,3 +1,4 @@
+<div class="container">
 <h1>Login</h1>
 
 <%= form_tag sessions_path, :method => :post do %>
@@ -11,6 +12,7 @@
   </div>
 
   <div class="actions">
-    <%= submit_tag "Login" %>
+    <%= submit_tag "Login", :class => 'btn modal-trigger cyan accent-4' %>
   </div>
 <% end %>
+</div>

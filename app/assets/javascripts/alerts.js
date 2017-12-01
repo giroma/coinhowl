@@ -22,4 +22,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 //        });
 //     });
 //
+
+
+//   $("a[data-remote]").on("ajax:success", (e, data, status, xhr) => alert("The alert was deleted."))
+// });
+
+$('.delete_alert').bind('ajax:success', function() {
+        $(this).closest('tr').fadeOut();
+});
 });

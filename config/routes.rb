@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root 'coins#index'
 
+  resources :creators, only: [:index]
+
   resources :coins, only: [:index, :show]
 
   resources :users, except: [:index, :destroy]

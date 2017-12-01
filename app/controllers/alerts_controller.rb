@@ -49,13 +49,23 @@ class AlertsController < ApplicationController
   def destroy
     @alert = Alert.find(params[:id])
 
+    respond_to do |format|
     if @alert.destroy
-      flash[:notice] = "Alert has been successfully deleted."
-      redirect_to following_index_path
+      format.html { redirect_to @alert }
+      format.js
+      format.json { render json: @alert, status: :deleted, location: @alert }
     else
-      flash[:alert] = "Alert has failed to delete."
-      redirect_to following_index_path
+      format.html { render action: "delete" }
+      format.json { render json: @alert.errors, status: :unprocessable_entity }
     end
+  end
+
+  #   if @alert.destroy
+
+  #   else
+  #     flash[:alert] = "Alert has failed to delete."
+  #     redirect_to following_index_path
+  #   end
   end
   def test_email_alert
     UserMailer.welcome_email(User.first)
