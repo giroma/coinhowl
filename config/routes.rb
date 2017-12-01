@@ -15,6 +15,5 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create]
   delete 'sessions' => 'sessions#destroy', as: 'session'
-  get 'testalert' => 'alerts#test_email_alert'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
