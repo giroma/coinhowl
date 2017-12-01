@@ -33,8 +33,8 @@ class CoinsController < ApplicationController
         @coin_high = @bch["High"]
         @coin_low = @bch["Low"]
         @prev_day = @bch["PrevDay"]
-        @last_updated = @bch["TimeStamp"]
-        @local_time = Time.at(DateTime.parse(@last_updated).to_i)
+        # @last_updated = @bch["TimeStamp"]
+        # @local_time = Time.at(DateTime.parse(@last_updated).to_i)
       elsif coin["MarketName"] == "BTC-#{@coin_symbol}"
         @coin_last = coin["Last"]
         @coin_base_volume = coin["BaseVolume"]
@@ -43,8 +43,8 @@ class CoinsController < ApplicationController
         @coin_high = coin["High"]
         @coin_low = coin["Low"]
         @prev_day = coin["PrevDay"]
-        @last_updated = coin["TimeStamp"]
-        @local_time = Time.at(DateTime.parse(@last_updated).to_i)
+        # @last_updated = coin["TimeStamp"]
+        # @local_time = Time.at(DateTime.parse(@last_updated).to_i)
       end
     end
   end
