@@ -14,7 +14,7 @@ task alerts: [:environment] do
   database_alerts = Alert.where(state: 'Active') #from our database, active alerts only
 
   database_alerts.each do |alert|
-    if alert.following == nil #clean up alerts if any are left over that are unassociated, this way loop wont break
+    if alert.following == nil #clean up alerts if any are left over that are unassociated, this way logic wont break if any database issues exist
       alert.destroy
       next
     end

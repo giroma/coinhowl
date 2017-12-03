@@ -67,9 +67,6 @@ class AlertsController < ApplicationController
   #     redirect_to following_index_path
   #   end
   end
-  def test_email_alert
-    UserMailer.welcome_email(User.first)
-  end
 
   def alert_form
     @alert = Alert.new
