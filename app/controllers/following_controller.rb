@@ -45,9 +45,7 @@ class FollowingController < ApplicationController
   def destroy
     @coin_symbol = params[:id]
     @follow = Following.find_by(user_id: current_user.id, coin_name: @coin_symbol)
-    if @follow != nil
-      @follow.alerts.delete_all
-    end
+    @follow.alerts.destroy_all
     respond_to do |format|
       format.html
       format.json do
