@@ -17,10 +17,10 @@
       <% end %>
       <li>
         <div class="collapsible-header">
-          <div class="col s8">
-            <h2><%= follow.coin_name %></h2>
+          <div class="col s4">
+            <h4><%= follow.coin_name %></h4>
           </div>
-          <div class="right col s3">
+          <div class="right col s7" id="followings-price">
             Current Price: Ƀ <%= number_with_precision(@coin_last, precision: 8) %>
           </div>
           <% if follow.alerts.length > 0 %>
