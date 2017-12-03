@@ -14,6 +14,11 @@ task alerts: [:environment] do
   database_alerts = Alert.where(state: 'Active') #from our database, active alerts only
 
   database_alerts.each do |alert|
+    if alert.following == nil #clean up alerts if any are left over that are unassociated, this way loop wont break
+      alert.destroy
+      next
+    end
+
     api_coin = response_only_btc_name_price_prevday.select {|coin| coin['MarketName'] == "BTC-#{alert.following.coin_name}"} #returns an active record container with an array of 1 element so need to do [0]
 
     api_coin_name = api_coin[0]['MarketName']
