@@ -59,11 +59,11 @@
         "showCategoryAxis": true,
         "percentHeight": 70,
         "valueAxes": [ {
-          "dashLength": 5
+          "dashLength": 0
         } ],
 
         "categoryAxis": {
-          "dashLength": 5
+          "dashLength": 0
         },
 
         "stockGraphs": [ {
