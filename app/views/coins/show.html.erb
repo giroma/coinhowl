@@ -35,11 +35,11 @@
       </div>
 
       <div class="col s4 alert-container">
-        <div class="head-info valign-wrapper text-right alert-div">
+        <div id="alert" class="head-info valign-wrapper text-right <% 'hide' if !@is_following %>">
           <!-- ALERT BUTTON-->
           <% if @is_following %>
-          <a id="alert"
-            class="btn btn-floating btn-large cyan accent-4 waves-effect waves-light btn modal-trigger <% 'hide' if !@is_following  %>"
+          <a
+            class="btn btn-floating btn-large cyan accent-4 waves-effect waves-light btn modal-trigger"
             href="#modal1" action="#modal1">
           <i class="material-icons left">add_alert</i></a>
           <% end %>
