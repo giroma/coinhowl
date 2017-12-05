@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
   if (followLink != undefined) {
     followLink.addEventListener('click', function(e) {
       e.preventDefault();
+      e.stopPropagation();
       $.ajax({
          url: e.target.getAttribute('href'),
          method: e.target.dataset.method,
@@ -34,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
   if (unfollowLink != undefined) {
     unfollowLink.addEventListener('click', function(e) {
       e.preventDefault();
+      e.stopPropagation();
       $.ajax({
          url: e.target.getAttribute('href'),
          method: e.target.dataset.method,
