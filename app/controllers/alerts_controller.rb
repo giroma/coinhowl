@@ -9,15 +9,14 @@ class AlertsController < ApplicationController
     @alert.state = 'Active'
     @coin = params[:id]
     if @alert.save
-      flash.notice = "Alert has been successfully created."
+      flash.notice = 'Alert successfully created.'
       # redirect_to following_index_path
     else
-      flash.notice = "Alert failed to save."
+      flash.notice = 'Alert failed to save'
       # redirect_to coin_path(@coin)
     end
     # respond_to do |format|
     #   format.html
-    #   format.js {}
     #   format.json do
     #     if @alert.save
     #       render json:{}, nothing: true, status: 204
@@ -76,6 +75,6 @@ class AlertsController < ApplicationController
   def alert_form
     @alert = Alert.new
     @following = current_user.following.find_by(coin_name: params[:following_id])
-    render 'alerts/_form', layout: false
+    render 'alerts/_form1', layout: false
   end
 end
