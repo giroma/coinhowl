@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Coinhowl</title>
+    <%= favicon_link_tag 'alerts' %>
     <%= csrf_meta_tags %>
     <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
     <script src="https://www.amcharts.com/lib/3/serial.js"></script>
@@ -20,7 +21,7 @@
       <% end %>
     <nav>
   <div class="nav-wrapper blue darken-3">
-    <%= link_to image_tag("logo.png", size: "50x50", class: "menu-logo"), {action: 'index', controller: 'coins'} %><%= link_to "CoinHowl", root_path, class: "brand-logo" %>
+    <%= link_to image_tag("logo", size: "50x50", class: "menu-logo"), {action: 'index', controller: 'coins'} %><%= link_to "CoinHowl", root_path, class: "brand-logo" %>
     <ul class="right hide-on-med-and-down">
       <li>
         <div class="input-field col s12">
