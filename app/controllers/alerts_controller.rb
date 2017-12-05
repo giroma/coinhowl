@@ -9,12 +9,15 @@ class AlertsController < ApplicationController
     @alert.state = 'Active'
     @coin = params[:id]
     if @alert.save
-      redirect_to following_index_path
+      flash.notice = "Alert has been successfully created."
+      # redirect_to following_index_path
     else
-      redirect_to coin_path(@coin)
+      flash.notice = "Alert failed to save."
+      # redirect_to coin_path(@coin)
     end
     # respond_to do |format|
     #   format.html
+    #   format.js {}
     #   format.json do
     #     if @alert.save
     #       render json:{}, nothing: true, status: 204

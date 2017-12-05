@@ -44,7 +44,7 @@
           <div id="modal1" class="modal  text-left">
             <div class="modal-content alert-form">
               <% if @is_following %>
-                <%= render 'alerts/form', alert: @alert, method: :post %>
+                <%= render 'alerts/form', alert: @alert, method: :post, remote: true%>
               <% end %>
             </div>
           </div>
