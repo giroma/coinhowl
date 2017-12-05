@@ -18,6 +18,6 @@ FactoryBot.define do
     phone {rand.to_s[1..10]}
     email_alert Faker::Boolean.boolean(0.9)
     phone_alert Faker::Boolean.boolean(0.5)
-    avatar_url "https://api.adorable.io/avatars/60/name.png"
+    avatar_url {"https://api.adorable.io/avatars/60/#{username}.png"}
   end
 end
