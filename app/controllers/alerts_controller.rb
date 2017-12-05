@@ -48,6 +48,8 @@ class AlertsController < ApplicationController
 
   def destroy
     @alert = Alert.find(params[:id])
+    @following = Following.find(params[:following_id])
+    @alerts = @following.alerts
 
     respond_to do |format|
     if @alert.destroy

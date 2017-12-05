@@ -45,7 +45,13 @@ class FollowingController < ApplicationController
   def destroy
     @coin_symbol = params[:id]
     @follow = Following.find_by(user_id: current_user.id, coin_name: @coin_symbol)
-    @follow.alerts.destroy_all
+    @alerts = @follow.alerts
+    @nil_following_ids = Alert.where(following_id: nil)
+
+    if @alerts.present?
+      @alerts.delete_all # this deletes the following_id foreign key so we don't get the error "violates foreign key rule"
+      @nil_following_ids.destroy_all # after the foreign key is removed, we delete the alerts with the following_id: nil
+    end
     respond_to do |format|
       format.html
       format.json do
