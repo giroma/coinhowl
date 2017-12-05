@@ -1,4 +1,4 @@
-<%= form_for([@following, @alert]) do |f| %>
+<%= form_for([follow, @alert]) do |f| %>
   <% if @alert.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@alert.errors.count, "error") %> prohibited this alert from being saved:</h2>
@@ -9,22 +9,22 @@
       </ul>
     </div>
   <% end %>
-
+  <h5><%= follow.coin_name %></h5>
   <div class="field">
     <%= f.label :price_above %><br />
-    <%= f.number_field :price_above %>
+    <%= f.text_field :price_above, :value => number_with_precision(@coin_last, precision: 8) %>
   </div>
   <div class="field">
     <%= f.label :price_below %><br />
-    <%= f.number_field :price_below %>
+    <%= f.text_field :price_below, :value => number_with_precision(@coin_last, precision: 8)%>
   </div>
   <div class="field">
-    <%= f.label :percent %><br />
-    <%= f.number_field :percent %>
+    <%= f.label '24h percent change' %><br />
+    <%= f.text_field :percent %>
   </div>
   <div class="actions modal-close submit-alert">
-    <%= f.submit :class => 'btn cyan accent-4' %>
+    <%= f.submit data: { disable_with: false }, :class => 'btn cyan accent-4 create-alert' %>
   </div>
 <% end %>
 
-<!-- FORM FOR A NEW ALERT IN COINS SHOW PAGE -->
+<!-- ADD ALERT FORM IN THE PORTFOLIO -->
