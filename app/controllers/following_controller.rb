@@ -14,32 +14,29 @@ class FollowingController < ApplicationController
   end
 
   def update
-      if current_user
-        @coin_symbol = params[:id]
-        @is_following = Following.find_by(user_id: current_user.id, coin_name: @coin_symbol)
-        if !@is_following
-          @follow = Following.new
-          @follow.user_id = current_user.id
-          @follow.coin_name = params[:id]
+    if current_user
+      @coin_symbol = params[:id]
+      @is_following = Following.find_by(user_id: current_user.id, coin_name: @coin_symbol)
+      if !@is_following
+        @follow = Following.new
+        @follow.user_id = current_user.id
+        @follow.coin_name = params[:id]
 
-          respond_to do |format|
-            format.html
-            format.json do
-              if @follow.save
-                render json:{}, nothing: true, status: 204
-              else
-                render json:{}, nothing: true, status: 400
-              end
+        respond_to do |format|
+          format.html
+          format.json do
+            if @follow.save
+              render json:{}, nothing: true, status: 204
+            else
+              render json:{}, nothing: true, status: 400
             end
           end
-        else
-          flash[:alert] = "Sorry, something went wrong. Please try again."
-          redirect_to coin_path
         end
-      else
-          flash[:alert] = "You must have an account to follow a coin."
-          redirect_to new_user_path
-        end
+      end
+    else
+      flash[:alert] = "You must have an account to follow a coin."
+      redirect_to new_user_path
+    end
   end
 
   def destroy
