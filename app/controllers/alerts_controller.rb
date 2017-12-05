@@ -11,7 +11,9 @@ class AlertsController < ApplicationController
     if @alert.save
       redirect_to following_index_path
     else
-      redirect_to coin_path(@coin)
+      # redirect_to coin_path(@coin)
+      flash.alert = "Can't be blank"
+      redirect_to following_index_path
     end
     # respond_to do |format|
     #   format.html
