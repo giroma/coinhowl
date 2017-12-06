@@ -14,7 +14,7 @@ class AlertsController < ApplicationController
       redirect_to following_index_path
     else
       # redirect_to coin_path(@coin)
-      flash.alert = "Can't be blank"
+      flash.alert = "Must fill in at least 1 field."
       redirect_to following_index_path
     end
   end
