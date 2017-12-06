@@ -22,7 +22,6 @@ RSpec.describe Alert, type: :model do
       expect(alert.save).to eq(true)
     end
 
-
   end
 end
 
