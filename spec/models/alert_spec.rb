@@ -13,6 +13,11 @@ RSpec.describe Alert, type: :model do
       expect(alert.save).to eq(false)
     end
 
+    it "ensure alert has a following_id" do
+      alert.following_id = nil
+      expect(alert.save).to eq(false)
+    end
+
     it "ensures alert can be saved" do
       expect(alert.save).to eq(true)
     end
