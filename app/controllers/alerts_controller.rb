@@ -8,13 +8,33 @@ class AlertsController < ApplicationController
     @alert.percent = params[:alert][:percent]
     @alert.state = 'Active'
     @coin = params[:id]
+
     if @alert.save
+      flash.notice = 'Alert successfully created.'
       redirect_to following_index_path
     else
       # redirect_to coin_path(@coin)
       flash.alert = "Can't be blank"
       redirect_to following_index_path
     end
+
+
+  #   if @alert.save
+  #   respond_to do |format|
+  #     format.html do
+  #       if request.xhr?
+  #         render partial: 'alert3', locals: { alert: @alert }
+  #       else
+  #         redirect_to following_index_path
+  #       end
+  #     end
+  #
+  #     format.json { render json: @alert }
+  #   end
+  # end
+
+
+
     # respond_to do |format|
     #   format.html
     #   format.json do
@@ -75,6 +95,6 @@ class AlertsController < ApplicationController
   def alert_form
     @alert = Alert.new
     @following = current_user.following.find_by(coin_name: params[:following_id])
-    render 'alerts/_form', layout: false
+    render 'alerts/_form1', layout: false
   end
 end

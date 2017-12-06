@@ -16,101 +16,101 @@
 
   <body>
     <header>
-    <% flash.each do |key, message| %>
-      <div class="alert alert-<%= key %>"><%= message %></div>
+      <% flash.each do |key, message| %>
+        <div class="alert alert-<%= key %>"><p class="toast-alert"><%= message %></p></div>
       <% end %>
-    <nav>
-  <div class="nav-wrapper blue darken-3">
-    <%= link_to image_tag("logo", size: "50x50", class: "menu-logo"), {action: 'index', controller: 'coins'} %><%= link_to "CoinHowl", root_path, class: "brand-logo" %>
-    <ul class="right hide-on-med-and-down">
-      <li>
-        <div class="input-field col s12">
-          <i class="material-icons prefix">search</i>
-          <input type="text" id="autocomplete-input" placeholder="search..." class="autocomplete">
+      <nav>
+        <div class="nav-wrapper blue darken-3">
+          <%= link_to image_tag("logo", size: "50x50", class: "menu-logo"), {action: 'index', controller: 'coins'} %><%= link_to "CoinHowl", root_path, class: "brand-logo" %>
+          <ul class="right hide-on-med-and-down">
+            <li>
+              <div class="input-field col s12">
+                <i class="material-icons prefix">search</i>
+                <input type="text" id="autocomplete-input" placeholder="search..." class="autocomplete">
+              </div>
+            </li>
+            <% if !current_user %>
+              <li><a href="<%= new_user_path %>"><i class="material-icons right">add</i>Signup</a></li>
+              <li><a href="<%= new_session_path %>"><i class="material-icons right">account_circle</i>Log In</a></li>
+          </ul>
+          <% else %>
+            <ul id="dropdown1" class="dropdown-content">
+              <li><a href="<%= user_path(current_user) %>">User settings</a></li>
+              <li class="divider"></li>
+              <li><%= link_to "Logout", session_path, method: :delete %></li>
+            </ul>
+            <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons right">account_circle</i>My Account</a></li>
+            <li><a href="<%= following_index_path %>"><i class="material-icons right">account_balance_wallet</i>My Portfolio</a></li>
+          <% end %>
         </div>
-      </li>
-      <% if !current_user %>
-      <li><a href="<%= new_user_path %>"><i class="material-icons right">add</i>Signup</a></li>
-      <li><a href="<%= new_session_path %>"><i class="material-icons right">account_circle</i>Log In</a></li>
-    </ul>
-    <% else %>
-    <ul id="dropdown1" class="dropdown-content">
-      <li><a href="<%= user_path(current_user) %>">User settings</a></li>
-      <li class="divider"></li>
-      <li><%= link_to "Logout", session_path, method: :delete %></li>
-    </ul>
-    <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons right">account_circle</i>My Account</a></li>
-      <li><a href="<%= following_index_path %>"><i class="material-icons right">account_balance_wallet</i>My Portfolio</a></li>
-    <% end %>
-  </div>
-</nav>
-</header>
-<main>
-    <%= yield %>
-  </main>
+      </nav>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
     <footer class="page-footer blue-grey darken-3">
-  <div class="container">
-    <div class="row">
-      <div class="col l6 s12">
-        <h5 class="white-text valign-wrapper"><%= image_tag("logo", size: "35x35", class: "menu-logo") %>CoinHowl</h5>
-        <p class="grey-text text-lighten-4">Coin Howl provides an easy-to-use service when monitoring cryptocurrencies in the Bitcoin market. Follow a coin, set up your alerts on our site, and you'll be sure to get a real time <strong>"Howl"</strong> via SMS and e-mail.</p>
-      </div>
-      <div class="col l4 offset-l2 s12">
-        <h5 class="white-text">Creators</h5>
-        <ul>
-          <li>
-            <div class="row">
-            <div class="col s4">
-              Ari Argirov
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text valign-wrapper"><%= image_tag("logo", size: "35x35", class: "menu-logo") %>CoinHowl</h5>
+            <p class="grey-text text-lighten-4">Coin Howl provides an easy-to-use service when monitoring cryptocurrencies in the Bitcoin market. Follow a coin, set up your alerts on our site, and you'll be sure to get a real time <strong>"Howl"</strong> via SMS and e-mail.</p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text"><%= link_to "Creators", creators_url, class: "white-text" %></h5>
+            <ul>
+              <li>
+                <div class="row">
+                <div class="col s4">
+                  Ari Argirov
+                </div>
+                <div class="col s1 text-left">
+                  <%= link_to image_tag("linkedin", size: "24x24", :class => 'footer-link-img'), 'https://www.linkedin.com/in/ari-argirov-64a7b86b/' %>
+                </div>
+                <div class="col s1">
+                  <%= link_to image_tag("github", size: "24x24", :class => 'footer-link-img'), 'https://github.com/giroma' %></span>
+                </div>
+                <div class="col s6">&nbsp;
+              </div>
             </div>
-            <div class="col s1 text-left">
-              <%= link_to image_tag("linkedin", size: "24x24", :class => 'footer-link-img'), 'https://www.linkedin.com/in/ari-argirov-64a7b86b/' %>
-            </div>
-            <div class="col s1">
-              <%= link_to image_tag("github", size: "24x24", :class => 'footer-link-img'), 'https://github.com/giroma' %></span>
-            </div>
-            <div class="col s6">&nbsp;
+              </li>
+              <li>
+                <div class="row">
+                <div class="col s4">
+                  Michelle Cinello
+                </div>
+                <div class="col s1 text-left">
+                  <%= link_to image_tag("linkedin", size: "24x24", :class => 'footer-link-img'), 'https://www.linkedin.com/in/michelle-cinello-5a896231/' %>
+                </div>
+                <div class="col s1">
+                  <%= link_to image_tag("github", size: "24x24", :class => 'footer-link-img'), 'https://github.com/mcinello' %></span>
+                </div>
+
+              </div>
+              </li>
+              <li>
+                <div class="row">
+                <div class="col s4">
+                  Horacio Coronel
+                </div>
+                <div class="col s1 text-left">
+                  <%= link_to image_tag("linkedin", size: "24x24", :class => 'footer-link-img'), 'https://www.linkedin.com/in/horacio-coronel-6a25543a/' %>
+                </div>
+                <div class="col s1">
+                  <%= link_to image_tag("github", size: "24x24", :class => 'footer-link-img'), 'https://github.com/horaciocoronel' %></span>
+                </div>
+                <div class="col s6">&nbsp;
+                </div>
+              </div>
+              </li>
+            </ul>
           </div>
         </div>
-          </li>
-          <li>
-            <div class="row">
-            <div class="col s4">
-              Michelle Cinello
-            </div>
-            <div class="col s1 text-left">
-              <%= link_to image_tag("linkedin", size: "24x24", :class => 'footer-link-img'), 'https://www.linkedin.com/in/michelle-cinello-5a896231/' %>
-            </div>
-            <div class="col s1">
-              <%= link_to image_tag("github", size: "24x24", :class => 'footer-link-img'), 'https://github.com/mcinello' %></span>
-            </div>
-
-          </div>
-          </li>
-          <li>
-            <div class="row">
-            <div class="col s4">
-              Horacio Coronel
-            </div>
-            <div class="col s1 text-left">
-              <%= link_to image_tag("linkedin", size: "24x24", :class => 'footer-link-img'), 'https://www.linkedin.com/in/horacio-coronel-6a25543a/' %>
-            </div>
-            <div class="col s1">
-              <%= link_to image_tag("github", size: "24x24", :class => 'footer-link-img'), 'https://github.com/horaciocoronel' %></span>
-            </div>
-            <div class="col s6">&nbsp;
-            </div>
-          </div>
-          </li>
-        </ul>
       </div>
-    </div>
-  </div>
-  <div class="footer-copyright">
-    <div class="container valign-wrapper">
-    <%= image_tag("logo", size: "15x15", class: "menu-logo") %>© 2017 &nbsp; <strong><%= link_to "Coin Howl", creators_url, class: "white-text" %></strong>
-    </div>
-  </div>
-</footer>
+      <div class="footer-copyright">
+        <div class="container valign-wrapper">
+        <%= image_tag("logo", size: "15x15", class: "menu-logo") %>© 2017 &nbsp; <strong>Coin Howl</strong>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
