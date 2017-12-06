@@ -17,7 +17,7 @@
   <body>
     <header>
     <% flash.each do |key, message| %>
-      <div class="toast-alert alert alert-<%= key %>"><%= message %></div>
+        <div class="alert alert-<%= key %>"><p class="toast-alert"><%= message %></p></div>
     <% end %>
     <nav>
       <div class="nav-wrapper blue darken-3">

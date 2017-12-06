@@ -77,7 +77,5 @@ $(document).ready(function() {
     $('.carousel').carousel('next');
   }, 4000);
 
-  // flash alerts/notices
   Materialize.toast($('.toast-alert'), 4000);
-
 });
