@@ -56,7 +56,6 @@
                   <td><%= alert.price_above %></td>
                   <td><%= alert.price_below %></td>
                   <td><%= alert.percent %>%</td>
-                  <td><%= alert.state %></td>
                   <% if alert.state == "Active" %>
                   <td><p><%= alert.state %>&nbsp;<%= image_tag("active-alert", size: "20x20") %></p></td>
                   <% elsif alert.state == "Inactive" %>
