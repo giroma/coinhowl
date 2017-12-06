@@ -1,112 +1,120 @@
 <div class="container">
-<h1><img id="avatar" src="<%= @avatar %>" alt="avatar"><%= @user.username %>'s Portfolio</h1>
+  <h1><img id="avatar" src="<%= @avatar %>" alt="avatar"><%= @user.username %>'s Portfolio</h1>
 
-<%= link_to "Back to Coins", root_url %>
+  <%= link_to "Back to Coins", root_url %>
 
-<div class="row">
-  <% count = 0 %>
-  <ul class="collapsible" data-collapsible="accordion">
+  <div class="row">
+    <% count = 0 %>
+    <ul class="collapsible" data-collapsible="accordion">
 
-    <% if @following.empty? %>
-      <h4 class="center-align">This is where all the coins you follow are listed, and where you can view the alerts!</h4>
-    <% end %>
-
-    <!-- Iterating to display all the coins the current user is following in their portfolio -->
-    <% @following.each do |follow| %>
-    <!-- Iteration from Bittrex to display each follow's current price -->
-      <% @response_only_btc.each do |coin| %>
-        <% if coin["MarketName"] == "BTC-#{follow.coin_name}" %>
-          <% @coin_last = coin["Last"] %>
-        <% end %>
+      <!-- if the user portfolio is empty, display this message -->
+      <% if @following.empty? %>
+        <h4 class="center-align">This is where all the coins you follow are listed, and where you can view the alerts!</h4>
       <% end %>
-      <li>
-        <div class="collapsible-header">
-          <div class="col s4">
-            <h4> <%= link_to follow.coin_name, coin_path(follow.coin_name) %> </h4>
-          </div>
-          <div class="right col s7" id="followings-price">
-            Current Price: Ƀ <%= number_with_precision(@coin_last, precision: 8) %>
-          </div>
-          <% if follow.alerts.length > 0 %>
-            <div class="right col s1">
-              <h4 id="wolf-alert" class="alert"><%= image_tag("alerts", size: "30x30") %>&nbsp;<span class="alert-count"><%= follow.alerts.count %></span></h4>
-            </div>
-          <% else %>
-            <div class="right col s1">
-            </div>
+
+      <!-- Iterating to display all the coins the current user is following in their portfolio -->
+      <% @following.each do |follow| %>
+        <!-- Iteration from Bittrex to display each follow's current price -->
+        <% @response_only_btc.each do |coin| %>
+          <% if coin["MarketName"] == "BTC-#{follow.coin_name}" %>
+            <% @coin_last = coin["Last"] %><% end %>
           <% end %>
-          <div class="row">
-            <div class="col s12">
-              <i class="material-icons">arrow_drop_down</i>
+          <li>
+            <div class="collapsible-header">
+              <div class="col s4">
+                <h4>
+                <%= link_to follow.coin_name, coin_path(follow.coin_name) %>
+                </h4>
+              </div>
+              <div class="right col s7" id="followings-price">
+                Current Price: Ƀ
+                <%= number_with_precision(@coin_last, precision: 8) %>
+              </div>
+              <% if follow.alerts.length > 0 %>
+                <div class="right col s1">
+                  <h4 id="wolf-alert" class="alert"><%= image_tag("alerts", size: "30x30") %>&nbsp;<span class="alert-count"><%= follow.alerts.count %></span></h4>
+                </div>
+              <% else %>
+                <div class="right col s1"></div>
+              <% end %>
+
+              <div class="row">
+                <div class="col s12">
+                  <i class="material-icons">arrow_drop_down</i>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <div class="collapsible-body">
-          <table class="bordered">
-            <thead>
-              <tr>
-                  <th data-sortable="false">Price above</th>
-                  <th data-sortable="false">Price below</th>
-                  <th data-sortable="false">24h change</th>
-                  <th data-sortable="false">Status</th>
-                  <th></th>
-              </tr>
-            </thead>
-            <tbody class="alerts-table">
-              <!-- Display all alerts for each followed coin -->
-              <% follow.alerts.each do |alert| %>
-                <tr class="alerts-info">
-                  <td><%= alert.price_above %></td>
-                  <td><%= alert.price_below %></td>
-                  <td><%= alert.percent %>%</td>
-                  <% if alert.state == "Active" %>
-                  <td><p><%= alert.state %>&nbsp;<%= image_tag("active-alert", size: "20x20") %></p></td>
-                  <% elsif alert.state == "Inactive" %>
-                  <td><p><%= alert.state %>&nbsp;<%= image_tag("inactive-alert", size: "20x20") %></p></td>
-                  <% end %>
-                  <td>
-
-                      <a data-target="modal<%= count +=1%>"
-                        class="modal-trigger link-pointer"
-                        action="#modal<%= count %>">
+            <div class="collapsible-body">
+              <table class="bordered">
+                <thead>
+                  <tr>
+                    <th data-sortable="false">Price above</th>
+                    <th data-sortable="false">Price below</th>
+                    <th data-sortable="false">24h change</th>
+                    <th data-sortable="false">Status</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody class="alerts-table">
+                  <!-- Display all alerts for each followed coin -->
+                  <% follow.alerts.each do |alert| %>
+                    <tr class="alerts-info">
+                      <td><%= alert.price_above %></td>
+                      <td><%= alert.price_below %></td>
+                      <td><%= alert.percent %>%</td>
+                      <% if alert.state == "Active" %>
+                        <td>
+                          <p><%= alert.state %>&nbsp;<%= image_tag("active-alert", size: "20x20") %></p>
+                        </td>
+                      <% elsif alert.state == "Inactive" %>
+                        <td>
+                          <p><%= alert.state %>&nbsp;<%= image_tag("inactive-alert", size: "20x20") %></p>
+                        </td>
+                      <% end %>
+                      <td>
+                        <a data-target="modal<%= count +=1%>" class="modal-trigger link-pointer" action="#modal<%= count %>">
                         Edit</a>
 
                       <!-- EDIT ALERT FORM -->
-                      <div id="modal<%= count %>" class="modal">
-                        <div class="modal-content">
-                           <%= render 'alerts/form2', follow: follow, alert: alert, method: :put, remote: true %>
+                        <div id="modal<%= count %>" class="modal">
+                          <div class="modal-content">
+                            <%= render 'alerts/form2', follow: follow, alert: alert, method: :put, remote: true %>
+                          </div>
                         </div>
+                      |
+                      <%= link_to "Delete", following_alert_path(follow, alert), remote: true, method: :delete, class: 'delete_alert', data: {confirm: "Are you sure you want to delete this alert?" } %>
+                      </td>
+                    </tr>
+                  <% end %>
+                  <!-- END OF ALERT LOOP -->
+
+                  <tr>
+                  <!-- ADD ALERT TO LIST OF FOLLOWED COINS -->
+                    <td colspan="6">
+                      <div class="right-align">
+                        <button data-target="modal<%= count +=1%>" class="btn modal-trigger cyan accent-4" action="#modal<%= count %>">
+                          <i class="material-icons left">add</i>Add Alert
+                        </button>
                       </div>
-                    | <%= link_to "Delete", following_alert_path(follow, alert), remote: true, method: :delete, class: 'delete_alert', data: {confirm: "Are you sure you want to delete this alert?" } %></td>
-                </tr>
-              <% end %> <!-- END OF ALERT LOOP -->
+                    </td>
+                  </tr>
 
-              <tr>
-                <!-- ADD ALERT TO LIST OF FOLLOWED COINS -->
-                <td colspan="6">
-                  <div class="right-align">
-                    <button data-target="modal<%= count +=1%>"
-                      class="btn modal-trigger cyan accent-4"
-                      action="#modal<%= count %>">
-                      <i class="material-icons left">add</i>Add Alert
-                    </button>
+                  <!-- ADD ALERT FORM -->
+                  <div id="modal<%= count %>" class="modal">
+                    <div class="modal-content">
+                    <!-- cannot render the partial for the alert. for NEW method, it can't be @following, must be >>follow<< like in the iteration -->
+                      <%= render 'alerts/form3', follow: follow, alert: @alert, method: :put, remote: true%>
+                    </div>
                   </div>
-                </td>
-              </tr>
+                  <!-- END OF ADD ALERT MODAL -->
 
-              <!-- ADD ALERT FORM -->
-               <div id="modal<%= count %>" class="modal">
-                 <div class="modal-content">
-                 <!-- cannot render the partial for the alert. for NEW method, it can't be @following, must be >>follow<< like in the iteration -->
-                  <%= render 'alerts/form3', follow: follow, alert: @alert, method: :put, remote: true%>
-                </div>
-              </div> <!-- END OF ADD ALERT MODAL -->
-
-            </tbody>
-          </table>
-        </div>
-      </li>
-    <% end %> <!-- END OF FOLLOWING LOOP -->
-  </ul>
+                </tbody>
+              </table>
+            </div>
+          </li>
+      <% end %>
+      <!-- END OF FOLLOWING LOOP -->
+    </ul>
+  </div>
 </div>
