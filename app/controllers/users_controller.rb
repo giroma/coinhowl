@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   before_action :call_coin_market_cap
   before_action :call_bittrex
 
@@ -51,5 +50,4 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-
 end
