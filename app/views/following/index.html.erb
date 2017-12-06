@@ -7,6 +7,10 @@
   <% count = 0 %>
   <ul class="collapsible" data-collapsible="accordion">
 
+    <% if @following.empty? %>
+      <h4 class="center-align">This is where all the coins you follow are listed, and where you can view the alerts!</h4>
+    <% end %>
+
     <!-- Iterating to display all the coins the current user is following in their portfolio -->
     <% @following.each do |follow| %>
     <!-- Iteration from Bittrex to display each follow's current price -->
