@@ -26,7 +26,6 @@ $(document).ready(function() {
   var symbolHash = {}
   var myResults = function() {
     var url = "https://cors-anywhere.herokuapp.com/https://bittrex.com/api/v1.1/public/getmarkets";
-
     $.ajax({
       url: url,
       method: 'GET',
@@ -35,7 +34,7 @@ $(document).ready(function() {
     .done(function(data) {
       data["result"].forEach(function(element) {
         var tempSymbol = element["MarketName"].includes('BTC-','');
-        if (tempSymbol == true) {
+        if (tempSymbol === true) {
           if (element["MarketName"] == 'BTC-BCC') {
             symbolHash['BCH Bitcoin Cash'] = "https://www.cryptocompare.com/media/1383919/bch.jpg"
           } else {
@@ -43,23 +42,22 @@ $(document).ready(function() {
             symbolHash[btcRemoved+' '+element["MarketCurrencyLong"]] = element["LogoUrl"]
           }
         }
-      }
     });
 
-      $('input.autocomplete').autocomplete({
-         data: symbolHash,
-         limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
-         onAutocomplete: function(val) {
-           // Callback function when value is autcompleted.
-               // select: function( event, ui ) {
-                 // var url = ui.item.label;
-                 window.location = '/coins/'+val.split(" ")[0];
-               // },
-         },
-         minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
-      });
-
-      return symbolHash;
+    $('input.autocomplete').autocomplete({
+       data: symbolHash,
+       limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+       onAutocomplete: function(val) {
+         // Callback function when value is autcompleted.
+             // select: function( event, ui ) {
+               // var url = ui.item.label;
+               window.location = '/coins/'+val.split(" ")[0];
+             // },
+       },
+       minLength: 1 // The minimum length of the input for the autocomplete to start. Default: 1.
+    });
+        return symbolHash;
+    });
   };
 
   myResults();
@@ -75,11 +73,9 @@ $(document).ready(function() {
     $('.carousel').carousel('next');
   }, 4000);
 
-  // for the toast alerts
-  var toastAlert = document.querySelector('.toast-alert')
+  var flashAlert = document.querySelector('.flash-alert')
 
-  if ( toastAlert && toastAlert.innerText != null) {
-    Materialize.toast(toastAlert, 4000);
+  if ( flashAlert && flashAlert.innerText != null) {
+    Materialize.toast(flashAlert, 4000);
   }
-
 });
