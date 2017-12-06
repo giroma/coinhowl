@@ -24,12 +24,12 @@
             Current Price: Ƀ <%= number_with_precision(@coin_last, precision: 8) %>
           </div>
           <% if follow.alerts.length > 0 %>
-          <div class="right col s1">
-            <h4 id="wolf-alert" class="alert"><%= image_tag("alerts", size: "30x30") %>&nbsp;<span class="alert-count"><%= follow.alerts.count %></span></h4>
-          </div>
+            <div class="right col s1">
+              <h4 id="wolf-alert" class="alert"><%= image_tag("alerts", size: "30x30") %>&nbsp;<span class="alert-count"><%= follow.alerts.count %></span></h4>
+            </div>
           <% else %>
-          <div class="right col s1">
-          </div>
+            <div class="right col s1">
+            </div>
           <% end %>
           <div class="row">
             <div class="col s12">

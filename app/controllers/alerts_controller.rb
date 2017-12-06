@@ -10,27 +10,30 @@ class AlertsController < ApplicationController
     @coin = params[:id]
 
     if @alert.save
-    respond_to do |format|
-      format.html do
-        if request.xhr?
-          render partial: 'alert3', locals: { alert: @alert }
-        else
-          redirect_to following_index_path
-        end
-      end
-
-      format.json { render json: @alert }
+      flash.notice = 'Alert successfully created.'
+      redirect_to following_index_path
+    else
+      flash.notice = 'Alert failed to save'
+      redirect_to coin_path(@coin)
     end
-  end
 
 
-    # if @alert.save
-    #   flash.notice = 'Alert successfully created.'
-    #   # redirect_to following_index_path
-    # else
-    #   flash.notice = 'Alert failed to save'
-    #   # redirect_to coin_path(@coin)
-    # end
+  #   if @alert.save
+  #   respond_to do |format|
+  #     format.html do
+  #       if request.xhr?
+  #         render partial: 'alert3', locals: { alert: @alert }
+  #       else
+  #         redirect_to following_index_path
+  #       end
+  #     end
+  #
+  #     format.json { render json: @alert }
+  #   end
+  # end
+
+
+
     # respond_to do |format|
     #   format.html
     #   format.json do
