@@ -1,63 +1,63 @@
 <div class="container">
   <div class="row">
     <%= render "carousel" %>
-  <div class="row">
-    <div class="col s12 m12 l12">
-      <h5><strong>BITCOIN MARKETS</strong></h5>
-      <table class="striped highlight sortable-theme-bootstrap" id="coinsIndex" data-sortable>
-        <thead>
-          <tr>
-            <th class="center" id="currency">Currency</th>
-            <th class="hide-on-med-and-down text-center" id="market">Market</th>
-            <th class="text-right" id="volume">Volume(BTC)</th>
-            <th class="text-center" id="change">% Change</th>
-            <th class="text-center" id="last">Last Price</th>
-            <th class="text-center hide-on-med-and-down" id="high">24hr High</th>
-            <th class="text-center hide-on-med-and-down" id="low">24hr Low</th>
-            <th class="text-center hide-on-med-and-down" id="added">Added</th>
-          </tr>
-        </thead>
-        <tbody>
-          <%# @cryptocompare_result %>
-          <% @response_only_btc.each do |element| %>
-          <% cc_symbol = element["MarketName"] %>
-          <% cc_symbol = cc_symbol.slice(4..-1) %>
-            <tr class="item">
-              <% if @cryptocompare_result[cc_symbol] != nil %>
-              <% base_cc_url = "https://www.cryptocompare.com" %>
-              <% coin_image = @cryptocompare_result[cc_symbol]["ImageUrl"] %>
-              <% coin_image_url = "#{base_cc_url}#{coin_image}"  %>
-              <% end %>
-              <% if @cryptocompare_result[cc_symbol] != nil %>
-              <td class="coin-title"><a href="coins/<%= element['MarketName'].slice(4..-1) %>"><%= image_tag(coin_image_url, alt:element["name"], class: "coin-image") %><span>&nbsp;&nbsp;<%= truncate_coin_name(@cryptocompare_result[cc_symbol]["CoinName"]) %></span></a></td>
-              <% elsif element["MarketName"] == 'BTC-BCC' %>
-              <% base_cc_url = "https://www.cryptocompare.com" %>
-              <% coin_image = @cryptocompare_result['BCH']["ImageUrl"] %>
-              <% coin_image_url = "#{base_cc_url}#{coin_image}"  %>
-              <td class="coin-title"><a href="coins/BCH"><%= image_tag(coin_image_url, alt:element["name"], class: "coin-image") %><span>&nbsp;&nbsp;Bitcoin Cash<span></a></td>
-              <% else %>
-              <td class="no-image"><a href="coins/<%= element['MarketName'].slice(4..-1) %>"><span><%= element["MarketName"] %></span></a>
-              <% end %>
-              <td class="text-center hide-on-med-and-down"><%= element["MarketName"] %></td>
-              <td data-value="<%= number_with_precision(element["BaseVolume"], precision: 3) %>" class="text-right"><%= number_with_precision(element["BaseVolume"], precision: 3) %></td>
-              <% @percentage_change = number_with_precision((( element["Last"] - element["PrevDay"])/element["PrevDay"])*100, precision: 2) %>
-              <% if element["PrevDay"].to_f > element["Last"] %>
-              <td data-value="<%= @percentage_change %>" class="text-right"><span class="red-text" ><i class="material-icons valign-wrapper red-text">arrow_drop_down</i>
-                <%= @percentage_change %>%</span></td>
-              <% elsif element["PrevDay"].to_f < element["Last"] %>
-              <td data-value="<%= @percentage_change %>" class="text-right"><span class="green-text"><i class="material-icons valign-wrapper green-text">arrow_drop_up</i><%= @percentage_change  %>%</span></td>
-              <% else element["PrevDay"].to_f == element["Last"] %>
-              <td data-value="<%= @percentage_change %>" class="text-right"><span class="black-text"><i class="material-icons valign-wrapper black-text">drag_handle</i><%= @percentage_change %>%</span></td>
-              <% end %>
-              <td data-value="<%= number_with_precision(element["Last"], precision: 8) %>" class="text-right"><%= number_with_precision(element["Last"], precision: 8) %></td>
-              <td data-value="<%= number_with_precision(element["High"], precision: 8) %>" class="text-right hide-on-med-and-down"><%= number_with_precision(element["High"], precision: 8) %></td>
-              <td data-value="<%= number_with_precision(element["Low"], precision: 8) %>" class="text-right hide-on-med-and-down"><%= number_with_precision(element["Low"], precision: 8) %></td>
-              <td class="text-center hide-on-med-and-down"><%= Date.parse(element["Created"]) %></td>
-
+    <div class="row">
+      <div class="col s12 m12 l12">
+        <h5><strong>BITCOIN MARKETS</strong></h5>
+        <table class="striped highlight sortable-theme-bootstrap" id="coinsIndex" data-sortable>
+          <thead>
+            <tr>
+              <th class="center" id="currency">Currency</th>
+              <th class="hide-on-med-and-down text-center" id="market">Market</th>
+              <th class="text-right" id="volume">Volume(BTC)</th>
+              <th class="text-center" id="change">% Change</th>
+              <th class="text-center" id="last">Last Price</th>
+              <th class="text-center hide-on-med-and-down" id="high">24hr High</th>
+              <th class="text-center hide-on-med-and-down" id="low">24hr Low</th>
+              <th class="text-center hide-on-med-and-down" id="added">Added</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <%# @cryptocompare_result %>
+            <% @response_only_btc.each do |element| %>
+              <% cc_symbol = element["MarketName"] %>
+              <% cc_symbol = cc_symbol.slice(4..-1) %>
+              <tr class="item">
+                <% if @cryptocompare_result[cc_symbol] != nil %>
+                  <% base_cc_url = "https://www.cryptocompare.com" %>
+                  <% coin_image = @cryptocompare_result[cc_symbol]["ImageUrl"] %>
+                  <% coin_image_url = "#{base_cc_url}#{coin_image}"  %>
+                <% end %>
+                <% if @cryptocompare_result[cc_symbol] != nil %>
+                  <td class="coin-title"><a href="coins/<%= element['MarketName'].slice(4..-1) %>"><%= image_tag(coin_image_url, alt:element["name"], class: "coin-image") %><span>&nbsp;&nbsp;<%= truncate_coin_name(@cryptocompare_result[cc_symbol]["CoinName"]) %></span></a></td>
+                <% elsif element["MarketName"] == 'BTC-BCC' %>
+                  <% base_cc_url = "https://www.cryptocompare.com" %>
+                  <% coin_image = @cryptocompare_result['BCH']["ImageUrl"] %>
+                  <% coin_image_url = "#{base_cc_url}#{coin_image}"  %>
+                  <td class="coin-title"><a href="coins/BCH"><%= image_tag(coin_image_url, alt:element["name"], class: "coin-image") %><span>&nbsp;&nbsp;Bitcoin Cash<span></a></td>
+                <% else %>
+                  <td class="no-image"><a href="coins/<%= element['MarketName'].slice(4..-1) %>"><span><%= element["MarketName"] %></span></a>
+                <% end %>
+                <td class="text-center hide-on-med-and-down"><%= element["MarketName"] %></td>
+                <td data-value="<%= number_with_precision(element["BaseVolume"], precision: 3) %>" class="text-right"><%= number_with_precision(element["BaseVolume"], precision: 3) %></td>
+                <% @percentage_change = number_with_precision((( element["Last"] - element["PrevDay"])/element["PrevDay"])*100, precision: 2) %>
+                <% if element["PrevDay"].to_f > element["Last"] %>
+                  <td data-value="<%= @percentage_change %>" class="text-right"><span class="red-text" ><i class="material-icons valign-wrapper red-text">arrow_drop_down</i>
+                  <%= @percentage_change %>%</span></td>
+                <% elsif element["PrevDay"].to_f < element["Last"] %>
+                  <td data-value="<%= @percentage_change %>" class="text-right"><span class="green-text"><i class="material-icons valign-wrapper green-text">arrow_drop_up</i><%= @percentage_change  %>%</span></td>
+                <% else element["PrevDay"].to_f == element["Last"] %>
+                  <td data-value="<%= @percentage_change %>" class="text-right"><span class="black-text"><i class="material-icons valign-wrapper black-text">drag_handle</i><%= @percentage_change %>%</span></td>
+                <% end %>
+                <td data-value="<%= number_with_precision(element["Last"], precision: 8) %>" class="text-right"><%= number_with_precision(element["Last"], precision: 8) %></td>
+                <td data-value="<%= number_with_precision(element["High"], precision: 8) %>" class="text-right hide-on-med-and-down"><%= number_with_precision(element["High"], precision: 8) %></td>
+                <td data-value="<%= number_with_precision(element["Low"], precision: 8) %>" class="text-right hide-on-med-and-down"><%= number_with_precision(element["Low"], precision: 8) %></td>
+                <td class="text-center hide-on-med-and-down"><%= Date.parse(element["Created"]) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
