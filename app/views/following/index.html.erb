@@ -18,7 +18,7 @@
       <li>
         <div class="collapsible-header">
           <div class="col s4">
-            <h4><%= follow.coin_name %></h4>
+            <h4> <%= link_to follow.coin_name, coin_path(follow.coin_name) %> </h4>
           </div>
           <div class="right col s7" id="followings-price">
             Current Price: Ƀ <%= number_with_precision(@coin_last, precision: 8) %>

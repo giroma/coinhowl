@@ -13,8 +13,9 @@ class AlertsController < ApplicationController
       flash.notice = 'Alert successfully created.'
       redirect_to following_index_path
     else
-      flash.notice = 'Alert failed to save'
-      redirect_to coin_path(@coin)
+      # redirect_to coin_path(@coin)
+      flash.alert = "Can't be blank"
+      redirect_to following_index_path
     end
 
 

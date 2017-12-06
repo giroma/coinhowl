@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :following
   has_many :alerts, through: :following
 
+  validates :username, presence: true
   validates :password, length: { minimum: 1 }, on: :create
   validates :password, confirmation: true, on: :create
   validates :password_confirmation, presence: true, on: :create
