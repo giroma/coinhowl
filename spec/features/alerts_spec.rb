@@ -20,5 +20,14 @@ feature 'Alerts', %q{
     visit('/following')
       expect(page).to have_css('ul.collapsible')
   end
-
+  scenario 'User creates alert' do
+    login(user)
+    follow_coin(user, following)
+    visit('/following')
+    find("ul.collapsible").click
+    click_on('Add Alert')
+    fill_in('alert[percent]', :with => '1.1')
+    click_on('Create Alert')
+    expect(page).to have_css('tr.alerts-info')
+  end
 end
