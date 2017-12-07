@@ -16,6 +16,10 @@ module  UserHelper
   def follow_coin(user, coin)
     visit following_index_path(:user_id => user.id, :coin_name => coin.coin_name)
   end
+
+  def delete_alert(follow, alert)
+    visit following_alert_path(follow, alert)
+  end
   def activate(a)
     visit activate_path(:code => a.activation_code)
   end

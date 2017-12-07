@@ -46,7 +46,7 @@ class AlertsController < ApplicationController
 
     respond_to do |format|
       if @alert.destroy
-        format.html { redirect_to @alert }
+        # format.html { redirect_to @alert }
         format.js
         format.json { render json: @alert, status: :deleted, location: @alert }
       else
