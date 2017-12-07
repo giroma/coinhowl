@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  helper_method :current_user
+
   def send_confirmation_sms
     client = Twilio::REST::Client.new(ENV['TWILIO_ID'], ENV['TWILIO_TOKEN'])
 
@@ -21,6 +23,7 @@ class ApplicationController < ActionController::Base
     @response_only_btc = JSON.parse(response.body)
     @response_only_btc = @response_only_btc["result"].select {|coin| coin["MarketName"].include?("BTC-")}
   end
+
   def top_5_coins
     call_bittrex
     @top_5_coins = @response_only_btc.map do |element|
@@ -29,12 +32,11 @@ class ApplicationController < ActionController::Base
          original: element,
          change: ((element["Last"] - element["PrevDay"])/element["PrevDay"]) * 100
        }
-     ]
+      ]
     end.to_h
     @carousel_position = ["#one!","#two!","#three!","#four!","#five!"]
     @top_5_coins = @top_5_coins.sort_by {|coin, values| values[:change]}[-5..-1].reverse
   end
-
 
   def call_cryptocompare_api
     @cryptocompare = HTTParty.get('https://www.cryptocompare.com/api/data/coinlist')
@@ -49,8 +51,6 @@ class ApplicationController < ActionController::Base
     @top_5_cc_symbol = @top_5_coins.map {|coin| coin[0].remove("BTC-")}
     # @top_5_cc_symbol = @top_5_cc_symbol)
   end
-
-  helper_method :current_user
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]

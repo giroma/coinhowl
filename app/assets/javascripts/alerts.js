@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   // $('.modal-trigger').leanModal();
    $('.modal').modal();
 
+   // portfolio list of alerts delete method
    $('.delete_alert').bind('ajax:success', function() {
     var alertCount = $(this).closest('.active')[0].childNodes[1].childNodes[4].nextSibling.childNodes[1].childNodes[2];
     var alertWolf = $(this).closest('.active')[0].childNodes[1].childNodes[4].nextSibling.childNodes[1]

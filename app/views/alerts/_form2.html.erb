@@ -1,15 +1,15 @@
-<%= form_for([@following, @alert]) do |f| %>
-  <% if @alert.errors.any? %>
+<%= form_for([follow, alert]) do |f| %>
+  <% if alert.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@alert.errors.count, "error") %> prohibited this alert from being saved:</h2>
+      <h2><%= pluralize(alert.errors.count, "error") %> prohibited this alert from being saved:</h2>
       <ul>
-        <% @alert.errors.full_messages.each do |msg| %>
+        <% alert.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
-
+  <h5><%= follow.coin_name %></h5>
   <div class="field">
     <%= f.label :price_above %><br />
     <%= f.number_field :price_above %>
@@ -19,10 +19,12 @@
     <%= f.number_field :price_below %>
   </div>
   <div class="field">
-    <%= f.label :percent %><br />
+    <%= f.label '24h percent change' %><br />
     <%= f.number_field :percent %>
   </div>
-  <div class="actions">
+  <div class="actions modal-close submit-alert">
     <%= f.submit :class => 'btn cyan accent-4' %>
   </div>
 <% end %>
+
+<!-- EDIT ALERT FORM -->

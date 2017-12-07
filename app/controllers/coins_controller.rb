@@ -1,5 +1,4 @@
 class CoinsController < ApplicationController
-
   before_action :call_coin_market_cap
   before_action :call_bittrex
   before_action :call_cryptocompare_api
@@ -18,6 +17,7 @@ class CoinsController < ApplicationController
       @is_following = @following.present? ? true : false
       @alert = Alert.new
     end
+
     get_chart_data_by_minute
 
     @bch = @response_only_btc.select {|coin| coin["MarketName"].include?('BTC-BCC')}
@@ -58,7 +58,5 @@ class CoinsController < ApplicationController
     @data_by_minute_result.each do |element|
       element["date"] = Time.at(element["time"]).to_s
     end
-
   end
-
 end

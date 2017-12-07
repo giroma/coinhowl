@@ -8,24 +8,15 @@ class AlertsController < ApplicationController
     @alert.percent = params[:alert][:percent]
     @alert.state = 'Active'
     @coin = params[:id]
+
     if @alert.save
+      flash.notice = 'Alert successfully created.'
       redirect_to following_index_path
     else
       # redirect_to coin_path(@coin)
-      flash.alert = "Can't be blank"
+      flash.alert = "Must fill in at least 1 field."
       redirect_to following_index_path
     end
-    # respond_to do |format|
-    #   format.html
-    #   format.json do
-    #     if @alert.save
-    #       render json:{}, nothing: true, status: 204
-    #       flash.notice = "Alert is activated."
-    #     else
-    #       render json:{}, nothing: true, status: 400
-    #     end
-    #   end
-    # end
   end
 
   def edit
@@ -54,27 +45,20 @@ class AlertsController < ApplicationController
     @alerts = @following.alerts
 
     respond_to do |format|
-    if @alert.destroy
-      format.html { redirect_to @alert }
-      format.js
-      format.json { render json: @alert, status: :deleted, location: @alert }
-    else
-      format.html { render action: "delete" }
-      format.json { render json: @alert.errors, status: :unprocessable_entity }
+      if @alert.destroy
+        format.html { redirect_to @alert }
+        format.js
+        format.json { render json: @alert, status: :deleted, location: @alert }
+      else
+        format.html { render action: "delete" }
+        format.json { render json: @alert.errors, status: :unprocessable_entity }
+      end
     end
-  end
-
-  #   if @alert.destroy
-
-  #   else
-  #     flash[:alert] = "Alert has failed to delete."
-  #     redirect_to following_index_path
-  #   end
   end
 
   def alert_form
     @alert = Alert.new
     @following = current_user.following.find_by(coin_name: params[:following_id])
-    render 'alerts/_form', layout: false
+    render 'alerts/_form1', layout: false
   end
 end
