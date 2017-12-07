@@ -63,8 +63,38 @@ var myResults = function() {
       return symbolHash;
   });
 };
-myResults();
 
+function searchCoinsTable() {
+  // Get input element
+  var filterInput = document.getElementById('filterInput');
+  // Add event listener
+  filterInput.addEventListener('keyup', filterNames);
+
+  function filterNames(){
+    // Get value of input
+    var filterValue = document.getElementById('filterInput').value.toUpperCase();
+
+    // Get coins table
+    var table = document.getElementById('coinsIndex');
+    // Get td and tr from table
+    var td = table.querySelectorAll('td.coin-title');
+    var tr = table.querySelectorAll('tr.item');
+    // Loop through collection-item tds
+    for(var i = 0;i < tr.length;i++){
+      var title = tr[i].getElementsByTagName('td')[0];
+      // If matched
+      if(title.innerHTML.toUpperCase().indexOf(filterValue) > -1){
+        tr[i].style.display = '';
+      } else {
+        tr[i].style.display = 'none';
+      }
+    }
+
+  }
+}// end of searchCoinsTable function
+
+myResults();
+searchCoinsTable();
 
 // User logged in dropdown in navbar
 $(".dropdown-button").dropdown(
