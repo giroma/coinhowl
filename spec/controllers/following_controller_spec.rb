@@ -3,20 +3,19 @@ require "spec_helper"
 
 RSpec.describe FollowingController, :type => :controller do
 
-    render_views
-     describe "GET index" do
-       let(:user) { create(:random_user) }
-       let(:following) { create(:following, user_id: user.id) }
-       let(:following2) { create(:following, user_id: user.id) }
-       let(:current_user) { user.id }
-      it "check if the user has any followings" do
-        # post :session, params { user_id: user.id }
-        get :index, params: { user_id: user.id }
-        # get(:index, { 'user_id' => user.id })
-        expect(response.body).to match /collapsible-header/im
-      end
-    end
-
+    # render_views
+    #  describe "GET index" do
+    #    let(:user) { create(:random_user) }
+    #    let(:following) { create(:following, user_id: user.id) }
+    #    let(:following2) { create(:following, user_id: user.id) }
+    #    let(:current_user) { user.id }
+    #   it "check if the user has any followings" do
+    #     # post :session, params { user_id: user.id }
+    #     get :index, params: { user_id: user.id }
+    #     # get(:index, { 'user_id' => user.id })
+    #     expect(response.body).to match /collapsible-header/im
+    #   end
+    # end
 
 
   # describe "Read response from Bittrex API" do
