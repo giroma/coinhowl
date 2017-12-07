@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'support@coinhowl.com'
+  default from: 'coinhowl@gmail.com'
   layout 'mailer'
 end
