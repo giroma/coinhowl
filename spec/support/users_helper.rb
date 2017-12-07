@@ -10,7 +10,7 @@ module  UserHelper
 
   def logout(a)
     visit root_path
-    click_link 'Log Out'
+    click_link 'Logout'
   end
 
   def activate(a)

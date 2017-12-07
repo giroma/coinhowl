@@ -3,14 +3,16 @@
     <%= render "carousel" %>
   <div class="row">
     <div class="col s12 m12 l12">
+      <table data-sortable="false">
+      <tr>
+        <td colspan="4" style="border:none;"><h5><strong>BITCOIN MARKETS</strong></h5></td>
+        <td colspan="4" style="border:none;">
+          <input type="text" id="filterInput" placeholder="Search coins...">
+        </td>
+      </tr>
+      </table>
       <table class="striped highlight sortable-theme-bootstrap" id="coinsIndex" data-sortable>
         <thead>
-          <tr>
-            <td colspan="4"><h5><strong>BITCOIN MARKETS</strong></h5></td>
-            <td colspan="4">
-              <input type="text" id="filterInput" placeholder="Search coins...">
-            </td>
-          </tr>
           <tr>
             <th class="center" id="currency">Currency</th>
             <th class="hide-on-med-and-down text-center" id="market">Market</th>

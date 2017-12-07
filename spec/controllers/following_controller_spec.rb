@@ -9,9 +9,12 @@ RSpec.describe FollowingController, :type => :controller do
     #    let(:following) { create(:following, user_id: user.id) }
     #    let(:following2) { create(:following, user_id: user.id) }
     #    let(:current_user) { user.id }
+    #    before(:all) do
+    #    end
     #   it "check if the user has any followings" do
     #     # post :session, params { user_id: user.id }
-    #     get :index, params: { user_id: user.id }
+    #     login(user)
+    #     get :index
     #     # get(:index, { 'user_id' => user.id })
     #     expect(response.body).to match /collapsible-header/im
     #   end

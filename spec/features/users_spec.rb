@@ -4,17 +4,29 @@ require "rails_helper"
 
 
 feature 'User Management', %q{
-  As the site owner
-  I want to provide an user management
-  so that I can protect functions and grant access based on roles
+  Create User and test Login
 } do
 
   background do
     @user = create(:random_user)
   end
   scenario 'User log in' do
-# activate(@user)
-login(@user)
-expect(page).to have_content "BITCOIN MARKETS"
+  login(@user)
+  expect(page).to have_content "BITCOIN MARKETS"
+  end
 end
+
+feature 'User Management', %q{
+  Create User, login and test Logout
+} do
+
+  background do
+    @user = create(:random_user)
+  end
+  scenario 'User log in' do
+  login(@user)
+  expect(page).to have_content "BITCOIN MARKETS"
+  logout(@user)
+  expect(page).to have_content "Logged out!"
+  end
 end
