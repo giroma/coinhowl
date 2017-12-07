@@ -14,5 +14,11 @@ feature 'Alerts', %q{
     login(user)
     expect(page).to have_content "BITCOIN MARKETS"
   end
+  scenario 'User visits portfolio' do
+    login(user)
+    follow_coin(user, following)
+    visit('/following')
+      expect(page).to have_css('ul.collapsible')
+  end
 
 end
