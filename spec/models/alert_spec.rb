@@ -6,7 +6,8 @@ RSpec.describe Alert, type: :model do
     let(:user) { create(:random_user) }
     let(:following) { create(:following, user_id: user.id) }
     let(:alert) { build(:alert, following_id: following.id) }
-    it "ensures alert can't be empty" do
+
+    it "ensures all alert fields can't be empty" do
       alert.price_above = nil
       alert.price_below = nil
       alert.percent = nil
@@ -21,7 +22,6 @@ RSpec.describe Alert, type: :model do
     it "ensures alert can be saved" do
       expect(alert.save).to eq(true)
     end
-
   end
 end
 

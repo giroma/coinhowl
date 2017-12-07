@@ -11,8 +11,8 @@ feature 'User Management', %q{
     @user = create(:random_user)
   end
   scenario 'User log in' do
-  login(@user)
-  expect(page).to have_content "BITCOIN MARKETS"
+    login(@user)
+    expect(page).to have_content "My Portfolio"
   end
 end
 
@@ -23,10 +23,10 @@ feature 'User Management', %q{
   background do
     @user = create(:random_user)
   end
-  scenario 'User log in' do
-  login(@user)
-  expect(page).to have_content "BITCOIN MARKETS"
-  logout(@user)
-  expect(page).to have_content "Logged out!"
+  scenario 'User log in and log out' do
+    login(@user)
+    expect(page).to have_content "BITCOIN MARKETS"
+    logout(@user)
+    expect(page).to have_content "Logged out!"
   end
 end

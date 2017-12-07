@@ -20,8 +20,5 @@ module  UserHelper
   def delete_alert(follow, alert)
     visit following_alert_path(follow, alert)
   end
-  def activate(a)
-    visit activate_path(:code => a.activation_code)
-  end
-
+  
 end
