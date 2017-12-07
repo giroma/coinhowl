@@ -16,7 +16,6 @@ RSpec.describe ApplicationController, :type => :controller do
   end
 
   describe "Read response from CryptoCompare API" do
-
     it "checks the response includes a popular coin called 'Bitcoin Cash'" do
       expect(controller.call_cryptocompare_api).to include("BCH")
     end

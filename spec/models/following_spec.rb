@@ -5,6 +5,7 @@ RSpec.describe Following, type: :model do
   context 'validation tests' do
     let(:user) { create(:random_user) }
     let(:following) { build(:following) }
+
     it "ensures following coin name can't be empty" do
       following.user_id = user.id
       following.coin_name = nil

@@ -2,7 +2,7 @@ require "rails_helper"
 require "spec_helper"
 
 RSpec.describe FollowingController, :type => :controller do
-
+    # 
     # render_views
     #  describe "GET index" do
     #    let(:user) { create(:random_user) }

@@ -30,4 +30,21 @@ feature 'Alerts', %q{
     click_on('Create Alert')
     expect(page).to have_css('tr.alerts-info')
   end
+  # scenario 'User deletes alert', js: true do
+  #   login(user)
+  #   follow_coin(user, following)
+  #   visit('/following')
+  #   find("ul.collapsible").click
+  #   click_on('Add Alert')
+  #   fill_in('alert[percent]', :with => '1.1')
+  #   click_on('Create Alert')
+  #   click_on('Delete')
+  #   # alert_id_partial = find('a.delete_alert')['href']
+  #   # alert_id = "#{alert_id_partial.sub(/[a-z].*\/|$/im)}"
+  #   # delete_alert(following.id, alert_id)
+  #   # end
+  #   # save_and_open_page
+  #   # expect(page).to has_no_css('tr.alerts-info')
+  #   expect(page).to have_no_content("1.1"), :driver => :webkit
+  # end
 end
