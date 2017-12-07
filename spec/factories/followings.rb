@@ -1,10 +1,10 @@
 FactoryBot.define do
   factory :following do
-    coin_name { ['BCC','ETH', 'TIX', 'XRP', 'LTC'].sample }
+    coin_name { 'BCH' }
   end
 
   factory :random_following, class: Following do
-    coin_name { ['BCC','ETH', 'TIX', 'XRP', 'LTC'].sample }
+    coin_name { ['BCH','ETH', 'TIX', 'XRP', 'LTC'].sample }
   end
 end
 
