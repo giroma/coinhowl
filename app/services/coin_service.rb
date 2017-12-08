@@ -4,8 +4,10 @@ class CoinService
   #code
   def self.summary
     #bittrex coin summary
-    coin_summary = BittrexClient.summary
+    return BittrexClient.summary
+  end
 
-    return coin_summary
+  def self.logo_urls
+    return BittrexClient.coin_images
   end
 end

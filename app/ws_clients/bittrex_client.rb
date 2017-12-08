@@ -7,13 +7,14 @@ class BittrexClient
   def self.summary
     response = HTTParty.get(@@base_url + "getmarketsummaries")
     response_only_btc = JSON.parse(response.body)
-    response_only_btc = response_only_btc["result"].select {|coin| coin["MarketName"].include?("BTC-")}
+    response_only_btc = response_only_btc["result"].select {|coin|
+      coin["MarketName"].include?("BTC-")}
 
     coin_rows = []
     response_only_btc.each do |coin|
       coin_row = CoinRow.new
       coin_row.name = coin["MarketName"]
-      coin_row.symbol = coin["MarketName"].slice(4..-1)
+      coin_row.symbol = symbol_for(coin)
       coin_row.volume = number_with_precision(coin["BaseVolume"], precision: 8)
       coin_row.pct_change = coin_row.percentage_change(coin["Last"], coin["PrevDay"])# Math
       coin_row.last_price = number_with_precision(coin["Last"], precision: 8)
@@ -24,5 +25,21 @@ class BittrexClient
       coin_rows << coin_row
     end
     return coin_rows
+  end
+
+  def self.coin_images
+    response = HTTParty.get(@@base_url + "getmarkets")
+    response_images = JSON.parse(response.body)
+    response_images = response_images["result"].select {|coin|
+      coin["MarketName"].include?("BTC-")}
+    images = {}
+    response_images.each do | coin |
+      images[symbol_for(coin)] = coin["LogoUrl"]
+    end
+    return images
+  end
+
+  def self.symbol_for(coin)
+    return coin["MarketName"].slice(4..-1)
   end
 end

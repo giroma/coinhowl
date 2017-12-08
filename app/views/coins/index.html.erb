@@ -28,7 +28,7 @@
             <% @coin_summary.each do |coin| %>
             <tr class="item">
               <td class="coin-title">
-                <a href="coins/<%= coin.symbol %>"><%= coin.name %></a>
+                <a href="coins/<%= coin.symbol %>"><img src="<%= @logo_urls[coin.symbol] %>" class="coin-image"> <%= coin.name %></a>
               </td>
               <td class="text-center hide-on-med-and-down">
                 BTC-<%= coin.symbol %>
@@ -36,9 +36,19 @@
               <td class="text-right" data-value="<%= coin.volume %>">
                 <%= coin.volume %>
               </td>
+              <% if coin.prev_day > coin.last_price %>
               <td class="text-right" data-value="<%= coin.pct_change %>">
-                <%= coin.pct_change %> %
+                <span class="red-text"><i class="material-icons valign-wrapper red-text">arrow_drop_down</i><%= coin.pct_change %> %</span>
               </td>
+              <% elsif coin.prev_day < coin.last_price %>
+              <td class="text-right" data-value="<%= coin.pct_change %>">
+                <span class="green-text"><i class="material-icons valign-wrapper green-text">arrow_drop_up</i><%= coin.pct_change %> %</span>
+              </td>
+              <% else %>
+              <td class="text-right" data-value="<%= coin.pct_change %>">
+                <i class="material-icons valign-wrapper black-text">drag_handle</i><%= coin.pct_change %> %</span>
+              </td>
+              <% end %>
               <td class="text-right" data-value="<%= coin.last_price %>">
                 <%= coin.last_price %>
               </td>

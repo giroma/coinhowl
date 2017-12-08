@@ -9,6 +9,7 @@ class CoinsController < ApplicationController
 
   def index
     @coin_summary = CoinService.summary
+    @logo_urls = CoinService.logo_urls
   end
 
   def show
