@@ -7,7 +7,7 @@ class CoinService
     return BittrexClient.summary
   end
 
-  def self.logo_urls
-    return BittrexClient.coin_images
+  def self.ext_data(all_rows)
+    return BittrexClient.ext_data(all_rows)
   end
 end

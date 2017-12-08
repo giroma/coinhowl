@@ -27,16 +27,37 @@ class BittrexClient
     return coin_rows
   end
 
-  def self.coin_images
+  def self.ext_data(all_rows)
     response = HTTParty.get(@@base_url + "getmarkets")
     response_images = JSON.parse(response.body)
     response_images = response_images["result"].select {|coin|
       coin["MarketName"].include?("BTC-")}
-    images = {}
-    response_images.each do | coin |
-      images[symbol_for(coin)] = coin["LogoUrl"]
+
+    # prefill the ext_data hash with ALL symbol names and nil data
+    ext_data = {}
+    all_rows.each do |coin|
+      ext_data[coin.symbol] = {
+        image_url: "https://cdn.browshot.com/static/images/not-found.png",
+        full_name: "N/A"
+      }
     end
-    return images
+
+    # look for ext data for each symbol name and fill when available
+    response_images.each do |ext|
+      coin_ext = ext_data[symbol_for(ext)]
+      logo_url = ext["LogoUrl"]
+      full_name = ext["MarketCurrencyLong"]
+
+      if (logo_url != nil)
+        coin_ext[:image_url] = logo_url
+      end
+
+      if (full_name != nil)
+        coin_ext[:full_name] = full_name
+      end
+    end
+
+    return ext_data
   end
 
   def self.symbol_for(coin)

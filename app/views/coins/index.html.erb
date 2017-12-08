@@ -28,7 +28,7 @@
             <% @coin_summary.each do |coin| %>
             <tr class="item">
               <td class="coin-title">
-                <a href="coins/<%= coin.symbol %>"><img src="<%= @logo_urls[coin.symbol] %>" class="coin-image"> <%= coin.name %></a>
+                <a href="coins/<%= coin.symbol %>"><img src="<%= @ext_data[coin.symbol][:image_url] %>" class="coin-image"> <%= @ext_data[coin.symbol][:full_name] %></a>
               </td>
               <td class="text-center hide-on-med-and-down">
                 BTC-<%= coin.symbol %>
@@ -46,7 +46,7 @@
               </td>
               <% else %>
               <td class="text-right" data-value="<%= coin.pct_change %>">
-                <i class="material-icons valign-wrapper black-text">drag_handle</i><%= coin.pct_change %> %</span>
+                <i class="material-icons valign-wrapper black-text">drag_handle</i><%= coin.pct_change %> %
               </td>
               <% end %>
               <td class="text-right" data-value="<%= coin.last_price %>">

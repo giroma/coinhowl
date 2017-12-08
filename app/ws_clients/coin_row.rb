@@ -9,6 +9,8 @@ class CoinRow
     @low_24hr
     @prev_day
     @added
+    @image_url
+    @full_name
 
     def percentage_change(last_price, prev_day)
       pct_change = number_with_precision((( last_price - prev_day)/prev_day )*100, precision: 2)
