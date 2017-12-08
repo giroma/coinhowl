@@ -17,14 +17,15 @@ feature 'Followings', %q{
     visit('/coins/BCH')
   expect(page).to have_content "BCH"
   end
-  # scenario 'User follows a coin' do
-  #   login(user)
-  #   visit('/coins/BCH')
-  #   find("a#follow-coin", :text => "Follow").click
-  #   visit( '/following/BCH', { :params => { :user_id => user.id, :coin_name => 'BCH' } })
-  #   visit('/coins/BCH')
-  #   # expect(page).to have_css('a#unfollow-coin', visible: true)
-  #   # save_and_open_page
-  # end
+  scenario 'User follows a coin', js: true do
+    login(user)
+    visit('/coins/BCH')
+    click_link('Follow')
+    # find("a#follow-coin", :text => "Follow").click
+    # visit( '/following/BCH', { :params => { :user_id => user.id, :coin_name => 'BCH' } })
+    visit('/coins/BCH')
+    expect(page).to have_css('a#unfollow-coin', visible: true)
+    # save_and_open_page
+  end
 
 end

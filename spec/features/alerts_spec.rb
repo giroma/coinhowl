@@ -39,7 +39,7 @@ feature 'Alerts', %q{
     fill_in('alert[percent]', :with => '1.1')
     click_on('Create Alert')
     find("ul.collapsible").click
-    click_link('Delete')
+    click_link('Delete', visibility: true)
     page.driver.browser.switch_to.alert.accept
     expect(page).to have_no_content("1.1"), :driver => :webkit
   end

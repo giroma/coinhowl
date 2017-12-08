@@ -4,8 +4,10 @@ class CoinService
   #code
   def self.summary
     #bittrex coin summary
-    coin_summary = BittrexClient.summary
+    return BittrexClient.summary
+  end
 
-    return coin_summary
+  def self.ext_data(all_rows)
+    return BittrexClient.ext_data(all_rows)
   end
 end

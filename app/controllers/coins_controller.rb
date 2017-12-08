@@ -9,6 +9,7 @@ class CoinsController < ApplicationController
 
   def index
     @coin_summary = CoinService.summary
+    @ext_data = CoinService.ext_data(@coin_summary)
   end
 
   def show
