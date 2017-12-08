@@ -1,4 +1,4 @@
-require 'bittrex_client.rb'
+require_relative './../ws_clients/bittrex_client.rb'
 
 class CoinService
   #code

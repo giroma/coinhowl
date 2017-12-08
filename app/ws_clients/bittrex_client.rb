@@ -1,4 +1,4 @@
-require 'coin_row.rb'
+require_relative './../ws_clients/coin_row.rb'
 require 'httparty'
 
 class BittrexClient
@@ -12,14 +12,15 @@ class BittrexClient
     coin_rows = []
     response_only_btc.each do |coin|
       coin_row = CoinRow.new
-      coin_row.name = element["MarketName"]
-      coin_row.symbol = element["MarketName"].slice(4..-1)
-      coin_row.volume = element["BaseVolume"]
-      coin_row.pct_change = element[""]# Math
-      coin_row.last_price = element["Last"]
-      coin_row.high_24hr = element["High"]
-      coin_row.low_24hr = element["Low"]
-      coin_row.added = element["Created"]
+      coin_row.name = coin["MarketName"]
+      coin_row.symbol = coin["MarketName"].slice(4..-1)
+      coin_row.volume = number_with_precision(coin["BaseVolume"], precision: 8)
+      coin_row.pct_change = coin_row.percentage_change(coin["Last"], coin["PrevDay"])# Math
+      coin_row.last_price = number_with_precision(coin["Last"], precision: 8)
+      coin_row.high_24hr = number_with_precision(coin["High"], precision: 8)
+      coin_row.low_24hr = number_with_precision(coin["Low"], precision: 8)
+      coin_row.prev_day = number_with_precision(coin["PrevDay"], precision: 8)
+      coin_row.added = Date.parse(coin["Created"])
       coin_rows << coin_row
     end
     return coin_rows

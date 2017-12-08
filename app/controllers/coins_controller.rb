@@ -1,4 +1,4 @@
-require 'coin_service.rb'
+require_relative './../services/coin_service.rb'
 
 class CoinsController < ApplicationController
   before_action :call_coin_market_cap
