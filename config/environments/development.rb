@@ -21,9 +21,8 @@ Rails.application.configure do
       'Cache-Control' => "public, max-age=#{2.days.seconds.to_i}"
     }
   else
-    config.action_controller.perform_caching = false
-
-    config.cache_store = :null_store
+    config.action_controller.perform_caching = true
+    config.cache_store = :dalli_store, 'localhost', { :namespace => 'coinhowl' }
   end
 
   # Uses Letter Opener to send emails on development

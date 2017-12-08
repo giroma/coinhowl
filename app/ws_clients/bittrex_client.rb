@@ -63,5 +63,4 @@ class BittrexClient
   def self.symbol_for(coin)
     return coin["MarketName"].slice(4..-1)
   end
-
 end
