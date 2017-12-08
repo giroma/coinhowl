@@ -16,7 +16,7 @@ class BittrexClient
       coin_row.name = coin["MarketName"]
       coin_row.symbol = symbol_for(coin)
       coin_row.volume = number_with_precision(coin["BaseVolume"], precision: 8)
-      coin_row.pct_change = coin_row.percentage_change(coin["Last"], coin["PrevDay"])# Math
+      coin_row.pct_change = percentage_change(coin["Last"], coin["PrevDay"])
       coin_row.last_price = number_with_precision(coin["Last"], precision: 8)
       coin_row.high_24hr = number_with_precision(coin["High"], precision: 8)
       coin_row.low_24hr = number_with_precision(coin["Low"], precision: 8)
@@ -62,5 +62,9 @@ class BittrexClient
 
   def self.symbol_for(coin)
     return coin["MarketName"].slice(4..-1)
+  end
+  def self.percentage_change(last_price, prev_day)
+    pct_change = number_with_precision((( last_price - prev_day)/prev_day )*100, precision: 2)
+    return pct_change
   end
 end

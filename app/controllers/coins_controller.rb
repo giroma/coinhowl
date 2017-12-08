@@ -1,18 +1,18 @@
 require_relative './../services/coin_service.rb'
 
 class CoinsController < ApplicationController
-  before_action :call_coin_market_cap
-  before_action :call_bittrex
-  before_action :call_cryptocompare_api
-  before_action :top_5_coins
-  before_action :cc_image_url
-
   def index
     @coin_summary = CoinService.summary
     @ext_data = CoinService.ext_data(@coin_summary)
+
+    # Data needed for carousel top 5
+    sorted_summary = @coin_summary.sort_by { |coin| coin.pct_change.to_i }
+    @top_5_coins = sorted_summary[-5..-1].reverse
+    @carousel_position = ["#one!","#two!","#three!","#four!","#five!"]
   end
 
   def show
+    call_bittrex
     @coin_symbol = params[:id]
     if current_user
       @following = Following.find_by(user_id: current_user.id, coin_name: @coin_symbol)

@@ -44,14 +44,14 @@
               <td class="text-right" data-value="<%= coin.volume %>">
                 <%= coin.volume %>
               </td>
-              <% if coin.prev_day > coin.last_price %>
-                <td class="text-right" data-value="<%= coin.pct_change %>">
-                  <span class="red-text">
-                    <i class="material-icons valign-wrapper red-text">arrow_drop_down</i>
-                    <%= coin.pct_change %>
-                    %
-                  </span>
-                </td>
+                <% if coin.prev_day > coin.last_price %>
+                  <td class="text-right" data-value="<%= coin.pct_change %>">
+                    <span class="red-text">
+                      <i class="material-icons valign-wrapper red-text">arrow_drop_down</i>
+                      <%= coin.pct_change %>
+                      %
+                    </span>
+                  </td>
                 <% elsif coin.prev_day < coin.last_price %>
                   <td class="text-right" data-value="<%= coin.pct_change %>">
                     <span class="green-text">
