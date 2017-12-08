@@ -5,7 +5,9 @@
     <div class="col s12 m12 l12">
       <table data-sortable="false">
       <tr>
-        <td colspan="4" style="border:none;"><h5><strong>BITCOIN MARKETS</strong></h5></td>
+        <td colspan="4" style="border:none;">
+          <h5><strong>BITCOIN MARKETS</strong></h5>
+        </td>
         <td colspan="4" style="border:none;">
           <input type="text" id="filterInput" placeholder="Search coins...">
         </td>
@@ -28,7 +30,10 @@
             <% @coin_summary.each do |coin| %>
               <tr class="item">
                 <td class="coin-title">
-                  <a href="coins/<%= coin.symbol %>"><img src="<%= @ext_data[coin.symbol][:image_url] %>" class="coin-image"> <%= @ext_data[coin.symbol][:full_name] %></a>
+                  <a href="coins/<%= coin.symbol %>">
+                    <img src="<%= @ext_data[coin.symbol][:image_url] %>" class="coin-image">
+                    <%= @ext_data[coin.symbol][:full_name] %>
+                  </a>
                 </td>
                 <td class="text-center hide-on-med-and-down">
                   BTC-<%= coin.symbol %>
@@ -38,15 +43,22 @@
                 </td>
                 <% if coin.prev_day > coin.last_price %>
                   <td class="text-right" data-value="<%= coin.pct_change %>">
-                    <span class="red-text"><i class="material-icons valign-wrapper red-text">arrow_drop_down</i><%= coin.pct_change %> %</span>
+                    <span class="red-text">
+                      <i class="material-icons valign-wrapper red-text">arrow_drop_down</i>
+                      <%= coin.pct_change %> %
+                    </span>
                   </td>
                 <% elsif coin.prev_day < coin.last_price %>
                   <td class="text-right" data-value="<%= coin.pct_change %>">
-                    <span class="green-text"><i class="material-icons valign-wrapper green-text">arrow_drop_up</i><%= coin.pct_change %> %</span>
+                    <span class="green-text">
+                      <i class="material-icons valign-wrapper green-text">arrow_drop_up</i>
+                      <%= coin.pct_change %> %
+                    </span>
                   </td>
                 <% else %>
                   <td class="text-right" data-value="<%= coin.pct_change %>">
-                    <i class="material-icons valign-wrapper black-text">drag_handle</i><%= coin.pct_change %> %
+                    <i class="material-icons valign-wrapper black-text">drag_handle</i>
+                    <%= coin.pct_change %> %
                   </td>
                 <% end %>
                 <td class="text-right" data-value="<%= coin.last_price %>">

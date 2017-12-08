@@ -5,9 +5,9 @@ class BittrexClient
   @@base_url = "https://bittrex.com/api/v1.1/public/"
 
   def self.summary
-    response = HTTParty.get(@@base_url + "getmarketsummaries")
-    response_only_btc = JSON.parse(response.body)
-    response_only_btc = response_only_btc["result"].select {|coin|
+    request = HTTParty.get(@@base_url + "getmarketsummaries")
+    response = JSON.parse(request.body)
+    response_only_btc = response["result"].select {|coin|
       coin["MarketName"].include?("BTC-")}
 
     coin_rows = []
@@ -63,4 +63,5 @@ class BittrexClient
   def self.symbol_for(coin)
     return coin["MarketName"].slice(4..-1)
   end
+
 end
