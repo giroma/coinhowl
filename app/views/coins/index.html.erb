@@ -25,7 +25,35 @@
             </tr>
           </thead>
           <tbody>
-            
+            <% @coin_summary.each do |coin| %>
+              <tr>
+                <td>
+                  <%= coin.image_url %>
+                  <%= coin.name %>
+                </td>
+                <td>
+                  "BTC-<%= coin.symbol %>"
+                </td>
+                <td>
+                  <%= coin.volume %>
+                </td>
+                <td>
+                  <%= coin.pct_change %>
+                </td>
+                <td>
+                  <%= coin.last_price %>
+                </td>
+                <td>
+                  <%= coin.high_24hr %>
+                </td>
+                <td>
+                  <%= coin.low_24hr %>
+                </td>
+                <td>
+                  <%= coin.added %>
+                </td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
       </div>
