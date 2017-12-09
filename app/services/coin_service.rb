@@ -19,4 +19,9 @@ class CoinService
       BittrexClient.ext_data(all_rows)
     end
   end
+
+  def self.get_coin(symbol)
+    full_summary = summary
+    return full_summary.detect { |e| e.symbol == symbol }
+  end
 end
