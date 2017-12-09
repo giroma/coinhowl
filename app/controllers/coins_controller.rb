@@ -25,34 +25,6 @@ class CoinsController < ApplicationController
     end
 
     @data_by_minute_result = get_chart_data_by_minute(coin_symbol, 100)
-
-    # @bch = @response_only_btc.select {|coin| coin["MarketName"].include?('BTC-BCC')}
-    # @bch = @bch[0]
-    #
-    # @response_only_btc.each do |coin|
-    #   if @coin_symbol == "BCH"
-    #     # coin["MarketName"] = 'BTC-BCC'
-    #     @coin_last = @bch["Last"]
-    #     @coin_base_volume = @bch["BaseVolume"]
-    #     @coin_bid = @bch["Bid"]
-    #     @coin_ask = @bch["Ask"]
-    #     @coin_high = @bch["High"]
-    #     @coin_low = @bch["Low"]
-    #     @prev_day = @bch["PrevDay"]
-    #     # @last_updated = @bch["TimeStamp"]
-    #     # @local_time = Time.at(DateTime.parse(@last_updated).to_i)
-    #   elsif coin["MarketName"] == "BTC-#{@coin_symbol}"
-    #     @coin_last = coin["Last"]
-    #     @coin_base_volume = coin["BaseVolume"]
-    #     @coin_bid = coin["Bid"]
-    #     @coin_ask = coin["Ask"]
-    #     @coin_high = coin["High"]
-    #     @coin_low = coin["Low"]
-    #     @prev_day = coin["PrevDay"]
-    #     # @last_updated = coin["TimeStamp"]
-    #     # @local_time = Time.at(DateTime.parse(@last_updated).to_i)
-    #   end
-    # end
   end
 
   def get_chart_data_by_minute(symbol, limit)
