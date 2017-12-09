@@ -4,6 +4,7 @@ require 'httparty'
 class BittrexClient
   @@base_url = "https://bittrex.com/api/v1.1/public/"
 
+  # gets the complete summary of BTC coins
   def self.summary
     response = HTTParty.get(@@base_url + "getmarketsummaries")
     response_body = JSON.parse(response.body)
@@ -30,6 +31,7 @@ class BittrexClient
     return coin_rows
   end
 
+  # gets all extended data (images and full name)
   def self.ext_data(all_rows)
     response = HTTParty.get(@@base_url + "getmarkets")
     response_body = JSON.parse(response.body)
@@ -64,15 +66,18 @@ class BittrexClient
     return ext_data
   end
 
+  # extracts symbol from market name
   def self.symbol_for(coin_name)
     return coin_name.slice(4..-1)
   end
 
+  # math lol
   def self.percentage_change(last_price, prev_day)
     pct_change = number_with_precision((( last_price - prev_day)/prev_day )*100, precision: 2)
     return pct_change
   end
 
+  # remaps name to correct market name
   def self.remap_name(element)
     if element["MarketName"] == "BTC-BCC"
       element["MarketName"] = "BTC-BCH"
