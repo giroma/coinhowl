@@ -5,16 +5,17 @@ class BittrexClient
   @@base_url = "https://bittrex.com/api/v1.1/public/"
 
   def self.summary
-    request = HTTParty.get(@@base_url + "getmarketsummaries")
-    response = JSON.parse(request.body)
-    response_only_btc = response["result"].select {|coin|
+    response = HTTParty.get(@@base_url + "getmarketsummaries")
+    response_body = JSON.parse(response.body)
+    response_only_btc = response_body["result"].select {|coin|
       coin["MarketName"].include?("BTC-")}
 
     coin_rows = []
     response_only_btc.each do |coin|
+      remap_name(coin)
       coin_row = CoinRow.new
       coin_row.name = coin["MarketName"]
-      coin_row.symbol = symbol_for(coin)
+      coin_row.symbol = symbol_for(coin_row.name)
       coin_row.volume = number_with_precision(coin["BaseVolume"], precision: 8)
       coin_row.bid = number_with_precision(coin["Bid"], precision: 8)
       coin_row.ask = number_with_precision(coin["Ask"], precision: 8)
@@ -31,8 +32,8 @@ class BittrexClient
 
   def self.ext_data(all_rows)
     response = HTTParty.get(@@base_url + "getmarkets")
-    response_images = JSON.parse(response.body)
-    response_images = response_images["result"].select {|coin|
+    response_body = JSON.parse(response.body)
+    response_images = response_body["result"].select {|coin|
       coin["MarketName"].include?("BTC-")}
 
     # prefill the ext_data hash with ALL symbol names and nil data
@@ -46,7 +47,8 @@ class BittrexClient
 
     # look for ext data for each symbol name and fill when available
     response_images.each do |ext|
-      coin_ext = ext_data[symbol_for(ext)]
+      remap_name(ext)
+      coin_ext = ext_data[symbol_for(ext["MarketName"])]
       logo_url = ext["LogoUrl"]
       full_name = ext["MarketCurrencyLong"]
 
@@ -62,11 +64,18 @@ class BittrexClient
     return ext_data
   end
 
-  def self.symbol_for(coin)
-    return coin["MarketName"].slice(4..-1)
+  def self.symbol_for(coin_name)
+    return coin_name.slice(4..-1)
   end
+
   def self.percentage_change(last_price, prev_day)
     pct_change = number_with_precision((( last_price - prev_day)/prev_day )*100, precision: 2)
     return pct_change
+  end
+
+  def self.remap_name(element)
+    if element["MarketName"] == "BTC-BCC"
+      element["MarketName"] = "BTC-BCH"
+    end
   end
 end
