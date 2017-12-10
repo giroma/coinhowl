@@ -18,4 +18,10 @@ RSpec.describe CoinsController, :type => :controller do
     end
   end
 
+  describe "Check Top 5 coins method" do
+    it "checks length of the variable equals to 5" do
+      get :index
+      expect(assigns(:top_5_coins).length).to equal(5)
+    end
+  end
 end
