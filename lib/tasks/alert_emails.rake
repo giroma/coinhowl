@@ -1,4 +1,5 @@
 desc 'Call Bittrex api and get last price of each coin, check against prices in alerts table'
+
 task alerts: [:environment] do
   response = HTTParty.get('https://bittrex.com/api/v1.1/public/getmarketsummaries')
   response = JSON.parse(response.body)
@@ -24,7 +25,6 @@ task alerts: [:environment] do
     api_coin_name = api_coin[0]['MarketName']
     api_coin_price = api_coin[0]['Last'] # to acces the 0 array and return ony price
     api_coin_percent = ((api_coin[0]['Last'])/(api_coin[0]['PrevDay'])-1)*100 # gives percent change from prev day
-
 
     def set_alert_to_inactive
       alert.state = 'Inactive' #change alert state to inactive once triggered
@@ -79,7 +79,6 @@ end
 
 def send_alert_sms(alert, body)
   client = Twilio::REST::Client.new(ENV['TWILIO_ID'], ENV['TWILIO_TOKEN'])
-
   client.api.account.messages.create(
     from: ENV['PHONE_NUMBER'],
     to: "+1#{alert.following.user.phone}",
