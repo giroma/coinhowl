@@ -5,7 +5,7 @@
     </div> -->
     <% count = 0 %>
     <% @top_5_coins.each do |coin| %>
-    <% ext = @ext_data[coin.symbol] %>
+    <% ext = @cc_coin_list[coin.symbol] %>
       <% #if @top_5_cc_symbol[count] == "GBG"  %>
         <% #@top_5_cc_symbol[count] = "GOLOS" %>
       <div class="carousel-item black-text" href="<%= @carousel_position[count] %>">

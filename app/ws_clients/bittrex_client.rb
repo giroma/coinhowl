@@ -15,7 +15,7 @@ class BittrexClient
       coin_row = CoinRow.new
       coin_row.name = coin["MarketName"]
       coin_row.symbol = symbol_for(coin)
-      coin_row.volume = number_with_precision(coin["BaseVolume"], precision: 8)
+      coin_row.volume = number_with_precision(coin["BaseVolume"], precision: 2)
       coin_row.pct_change = percentage_change(coin["Last"], coin["PrevDay"])
       coin_row.last_price = number_with_precision(coin["Last"], precision: 8)
       coin_row.high_24hr = number_with_precision(coin["High"], precision: 8)
@@ -56,7 +56,6 @@ class BittrexClient
         coin_ext[:full_name] = full_name
       end
     end
-
     return ext_data
   end
 

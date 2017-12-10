@@ -34,8 +34,11 @@
             <tr class="item">
               <td class="coin-title">
                 <a href="coins/<%= coin.symbol %>">
-                  <img src="<%= @ext_data[coin.symbol][:image_url] %>" class="coin-image">
-                  <%= @ext_data[coin.symbol][:full_name] %>
+                  <% if @cc_coin_list[coin.symbol] != nil %>
+                  <!-- <img src="<%# @ext_data[coin.symbol][:image_url] %>" class="coin-image"> -->
+                  <img src="<%= @cc_coin_list[coin.symbol][:image_url] %>" class="coin-image" title="<%= @cc_coin_list[coin.symbol][:full_name] %>">
+                  <%= @cc_coin_list[coin.symbol][:full_name] %>
+                  <% end %>
                 </a>
               </td>
               <td class="text-center hide-on-med-and-down">

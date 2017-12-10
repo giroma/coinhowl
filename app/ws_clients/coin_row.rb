@@ -9,6 +9,4 @@ class CoinRow
     @low_24hr
     @prev_day
     @added
-    @image_url
-    @full_name
 end

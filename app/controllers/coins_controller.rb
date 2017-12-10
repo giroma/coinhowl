@@ -4,6 +4,7 @@ class CoinsController < ApplicationController
   def index
     @coin_summary = CoinService.summary
     @ext_data = CoinService.ext_data(@coin_summary)
+    @cc_coin_list = CoinService.cc_coin_list(@coin_summary)
 
     # Data needed for carousel top 5
     sorted_summary = @coin_summary.sort_by { |coin| coin.pct_change.to_i }
