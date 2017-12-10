@@ -12,7 +12,6 @@ class CoinsController < ApplicationController
   end
 
   def show
-    # call_bittrex
     coin_symbol = params[:id]
     coin_summary = CoinService.summary
     @coin = CoinService.get_coin(coin_symbol)
@@ -32,7 +31,6 @@ class CoinsController < ApplicationController
     data_by_minute_result = JSON.parse(data_by_minute.body)
     data_by_minute_result = data_by_minute_result["Data"]
 
-# {"time"=>1510660800, "close"=>0.0499, "high"=>0.05, "low"=>0.04969, "open"=>0.04991, "volumefrom"=>219.73999999999998, "volumeto"=>10.97}
     data_by_minute_result.each do |element|
       element["date"] = Time.at(element["time"]).to_s
     end

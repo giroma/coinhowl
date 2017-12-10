@@ -15,10 +15,11 @@
       <!-- Iterating to display all the coins the current user is following in their portfolio -->
       <% @following.each do |follow| %>
         <!-- Iteration from Bittrex to display each follow's current price -->
-        <% @response_only_btc.each do |coin| %>
-          <% if coin["MarketName"] == "BTC-#{follow.coin_name}" %>
-            <% @coin_last = coin["Last"] %><% end %>
+        <% @coin_summary.each do |coin| %>
+          <% if coin.name == "BTC-#{follow.coin_name}" %>
+            <% @coin_last = coin.last_price %>
           <% end %>
+        <% end %>
           <li>
             <div class="collapsible-header">
               <div class="col s4">
@@ -28,7 +29,7 @@
               </div>
               <div class="right col s7" id="followings-price">
                 Current Price: Ƀ
-                <%= number_with_precision(@coin_last, precision: 8) %>
+                <%= @coin_last %>
               </div>
               <% if follow.alerts.length > 0 %>
                 <div class="right col s1">

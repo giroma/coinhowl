@@ -5,6 +5,13 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+  def check_logged_in
+    if current_user.nil?
+      flash[:alert] = "You must be logged in to continue."
+      redirect_to new_session_url
+    end
+  end
+
   def send_confirmation_sms
     client = Twilio::REST::Client.new(ENV['TWILIO_ID'], ENV['TWILIO_TOKEN'])
 
