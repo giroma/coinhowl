@@ -12,11 +12,11 @@
 
   <div class="field">
     <%= f.label :price_above %><br />
-    <%= f.number_field :price_above %>
+    <%= f.number_field :price_above, :value => @coin.last_price %>
   </div>
   <div class="field">
     <%= f.label :price_below %><br />
-    <%= f.number_field :price_below %>
+    <%= f.number_field :price_below, :value => @coin.last_price %>
   </div>
   <div class="field">
     <%= f.label :percent %><br />

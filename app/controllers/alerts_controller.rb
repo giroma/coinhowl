@@ -57,8 +57,11 @@ class AlertsController < ApplicationController
   end
 
   def alert_form
+    coin_symbol = params[:following_id]
+    @coin = CoinService.get_coin(coin_symbol)
+
     @alert = Alert.new
-    @following = current_user.following.find_by(coin_name: params[:following_id])
+    @following = current_user.following.find_by(coin_name: coin_symbol)
     render 'alerts/_form1', layout: false
   end
 end

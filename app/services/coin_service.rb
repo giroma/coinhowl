@@ -29,4 +29,9 @@ class CoinService
       CryptoCompare.cc_coin_list(all_rows)
     end
   end
+
+  def self.get_coin(symbol)
+    full_summary = summary
+    return full_summary.detect { |e| e.symbol == symbol }
+  end
 end
