@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
        populate_alert_form(followingCode);
      })
      .fail(function(data) {
-       alert("You must have an account to follow a coin.");
+       window.location.href = '/login';
      });
     });
   };

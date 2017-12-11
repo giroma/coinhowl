@@ -26,6 +26,7 @@ class ApplicationController < ActionController::Base
 
   def require_login
     if !logged_in?
+      flash[:alert] = "You must log in first."
       redirect_to login_path, status: 200
     end
   end
