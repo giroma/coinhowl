@@ -8,17 +8,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // var coinSymbol = $('.js-coin-symbol').text() //get coin name from html element
 
     $.ajax({
-      url: "https://cors-anywhere.herokuapp.com/https://bittrex.com/api/v1.1/public/getmarketsummaries",
+      url: "https://cors.now.sh/https://bittrex.com/api/v1.1/public/getmarketsummaries",
       method: 'GET'
     })
     .done(function (response) {
-      $('tbody .item').each(function () { // iterate over each .item/coin in the html index table
-        var coinName = $(this).find('td').eq(1).text() //get coin name from td tag value
+      var items = document.querySelectorAll('tbody .item');
+      items.forEach(function (item) { // iterate over each .item/coin in the html index table
+        var coinName = item.querySelector('.coin-symbol').innerText //get coin name from td tag value
         var apiCoin = response['result'].find(function (coin) { //return coin data from api matching coinName from current html row
           return coin['MarketName'] === coinName
         })
-        $(this).find('td').eq(2).html(apiCoin['BaseVolume'].toFixed(3)) //update volume
-        $(this).find('td').eq(4).html(apiCoin['Last'].toFixed(8))       //update last price
+        item.querySelector('.coin-volume').innerText = (apiCoin['BaseVolume'].toFixed(3)) //update volume
+        item.querySelector('.coin-last').innerText = (apiCoin['Last'].toFixed(8))       //update last price
       })
     });
   },3000);
