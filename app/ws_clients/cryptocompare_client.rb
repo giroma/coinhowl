@@ -12,31 +12,33 @@ class CryptoCompare
     # prefill the cc_images_url hash with ALL symbol names and nil data
     cc_images_url = Hash.new
     all_rows.each do |coin|
+      remap_name(coin.symbol)
       cc_images_url[coin.symbol] = {
         image_url: "https://cdn.browshot.com/static/images/not-found.png",
         full_name: "N/A"
       }
     end
+  end
+
+  def self.remap_name(element, data)
     base_image_url = 'https://www.cryptocompare.com'
     # Add images from Cryptocompare api call to the hash, replacing the ones that exist
-    all_rows.each do | coin |
-      if coin.symbol == 'BCC'
+      if element == 'BCC'
         cc_images_url['BCC'] = {
           image_url: base_image_url + data['BCH']["ImageUrl"],
           full_name: data['BCH']["CoinName"]
         }
-      elsif coin.symbol == 'GBG'
+      elsif element == 'GBG'
         cc_images_url['GBG'] = {
           image_url: base_image_url + data['GOLOS']["ImageUrl"],
           full_name: data['GOLOS']["CoinName"]
         }
       else
-        cc_images_url[coin.symbol] = {
-          image_url: base_image_url + data[coin.symbol]["ImageUrl"],
-          full_name: data[coin.symbol]["CoinName"]
+        cc_images_url[element] = {
+          image_url: base_image_url + data[element]["ImageUrl"],
+          full_name: data[element]["CoinName"]
         }
       end
-    end
     return cc_images_url
   end
 
