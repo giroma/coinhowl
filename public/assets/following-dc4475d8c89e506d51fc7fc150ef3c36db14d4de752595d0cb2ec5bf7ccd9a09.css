@@ -1,0 +1,10 @@
+/* line 5, /Users/arielc/Desktop/bitmaker/projects/final-project/coinhowl/app/assets/stylesheets/following.scss */
+.link-pointer {
+  cursor: pointer;
+}
+
+/* line 8, /Users/arielc/Desktop/bitmaker/projects/final-project/coinhowl/app/assets/stylesheets/following.scss */
+#followings-price {
+  line-height: 65px;
+  font-size: larger;
+}
