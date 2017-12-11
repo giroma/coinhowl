@@ -12,15 +12,15 @@
 
   <div class="field">
     <%= f.label :price_above %><br />
-    <%= f.number_field :price_above, :value => @coin.last_price %>
+    <%= f.text_field :price_above, :value => @coin.last_price %>
   </div>
   <div class="field">
     <%= f.label :price_below %><br />
-    <%= f.number_field :price_below, :value => @coin.last_price %>
+    <%= f.text_field :price_below, :value => @coin.last_price %>
   </div>
   <div class="field">
     <%= f.label :percent %><br />
-    <%= f.number_field :percent %>
+    <%= f.text_field :percent %>
   </div>
   <div class="actions modal-close submit-alert">
     <%= f.submit :class => 'btn cyan accent-4' %>

@@ -23,7 +23,7 @@
           <li>
             <div class="collapsible-header">
               <div class="col s4">
-                <h4>
+                <h4><%= image_tag("#{@cc_coin_list[follow.coin_name][:image_url]}", size: "40x40", alt: "#{@cc_coin_list[follow.coin_name][:full_name]}") %>
                 <%= link_to follow.coin_name, coin_path(follow.coin_name) %>
                 </h4>
               </div>

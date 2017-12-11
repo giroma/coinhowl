@@ -7,8 +7,8 @@ class FollowingController < ApplicationController
     @following = Following.where(user_id: @user.id)
     @avatar = @user.avatar_url
     @alert = Alert.new
-
     @coin_summary = CoinService.summary
+    @cc_coin_list = CoinService.cc_coin_list(@coin_summary)
   end
 
   def update
