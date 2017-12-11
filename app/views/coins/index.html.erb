@@ -16,7 +16,7 @@
           </td>
         </tr>
       </table>
-      <table class="striped highlight sortable-theme-bootstrap" id="coinsIndex" data-sortable="data-sortable">
+      <table class="striped highlight sortable-theme-bootstrap" id="coinsIndex" data-sortable>
         <thead>
           <tr>
             <th class="center" id="currency">Currency</th>
@@ -35,7 +35,6 @@
               <td class="coin-title">
                 <a href="coins/<%= coin.symbol %>">
                   <% if @cc_coin_list[coin.symbol] != nil %>
-                  <!-- <img src="<%# @ext_data[coin.symbol][:image_url] %>" class="coin-image"> -->
                   <img src="<%= @cc_coin_list[coin.symbol][:image_url] %>" class="coin-image" title="<%= @cc_coin_list[coin.symbol][:full_name] %>">
                   <%= @cc_coin_list[coin.symbol][:full_name] %>
                   <% end %>
