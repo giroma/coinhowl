@@ -1,4 +1,4 @@
-# COINHOWL
+# Coin Howl
 
 Coin Howl provides an easy-to-use service when monitoring cryptocurrencies in the Bitcoin market. Follow a coin, set up your alerts on our site, and you'll be sure to get a real time "Howl" via SMS and e-mail.
 
