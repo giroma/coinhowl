@@ -1,5 +1,3 @@
-require_relative './../services/coin_service.rb'
-
 class CoinsController < ApplicationController
   def index
     @coin_summary = CoinService.summary
