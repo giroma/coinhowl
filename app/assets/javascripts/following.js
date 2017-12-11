@@ -28,6 +28,9 @@ document.addEventListener('DOMContentLoaded', function() {
        var array = this.url.split("/");
        var followingCode = this.url.split("/")[array.length-1]
        populate_alert_form(followingCode);
+     })
+     .fail(function(data) {
+       window.location.href = '/login';
      });
     });
   };
