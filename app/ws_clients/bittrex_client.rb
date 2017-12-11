@@ -79,7 +79,7 @@ class BittrexClient
   # remaps name to correct market name
   def self.remap_name(element)
     if element["MarketName"] == "BTC-BCC"
-      element["MarketName"] = "BTC-BCC"
+      element["MarketName"] = "BTC-BCH"
     end
   end
 end

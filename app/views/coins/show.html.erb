@@ -12,7 +12,7 @@
   <div class="row">
     <div class="col l6">
       <div class="head-info valign-wrapper">
-        <h3 class="js-coin-symbol"><%= image_tag("#{@cc_coin_list[@coin.symbol][:image_url]}", size: "40x40", alt: "#{@coin.symbol}") %><%= @coin.symbol %></h3>
+        <h3 class="js-coin-symbol"><%= image_tag("#{@cc_coin_list[@coin.symbol][:image_url]}", size: "40x40", alt: "#{@coin.symbol}", id: "coin-show-img") %><%= @coin.symbol %></h3>
       </div>
     </div>
     <div class="col l4">

@@ -25,6 +25,11 @@ class CryptoCompare
           image_url: base_image_url + data['BCH']["ImageUrl"],
           full_name: data['BCH']["CoinName"]
         }
+      elsif coin.symbol == 'BCH'
+        cc_images_url['BCH'] = {
+          image_url: base_image_url + data['BCH']["ImageUrl"],
+          full_name: data['BCH']["CoinName"]
+        }
       elsif coin.symbol == 'GBG'
         cc_images_url['GBG'] = {
           image_url: base_image_url + data['GOLOS']["ImageUrl"],
