@@ -40,10 +40,10 @@
                   <% end %>
                 </a>
               </td>
-              <td class="text-center hide-on-med-and-down">
+              <td class="text-center hide-on-med-and-down coin-symbol">
                 BTC-<%= coin.symbol %>
               </td>
-              <td class="text-right" data-value="<%= coin.volume %>">
+              <td class="text-right coin-volume" data-value="<%= coin.volume %>">
                 <%= coin.volume %>
               </td>
                 <% if coin.prev_day > coin.last_price %>
@@ -69,7 +69,7 @@
                     %
                   </td>
                 <% end %>
-                <td class="text-right" data-value="<%= coin.last_price %>">
+                <td class="text-right coin-last" data-value="<%= coin.last_price %>">
                   <%= coin.last_price %>
                 </td>
                 <td class="text-right hide-on-med-and-down" data-value="<%= coin.high_24hr %>">
