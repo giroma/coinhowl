@@ -7,7 +7,7 @@ class CoinService
   @@cache_key_cc_coin_list = "cc_coin_list"
   @@cache_expiry_summary = 15 # seconds
   @@cache_expiry_ext_data = 24 # hours
-  @@cache_expiry_cc_coin_list = 4 # hours
+  @@cache_expiry_cc_coin_list = 24 # hours
 
   def self.summary
     # bittrex coin summary
