@@ -17,13 +17,12 @@ Please donate to keep us running :)
 
 * 2 Cryptocurrency APIs
     * Bittrex - current data
-    * CryptoCompare - historical data for the charts 
+    * CryptoCompare - historical data for the charts and cryptocoin images
 
 ### Key Gems:
 
 * [Dalli](https://github.com/petergoldstein/dalli) - accessing memcached servers
 * [DelayedJob ActiveRecord](https://github.com/collectiveidea/delayed_job_active_record/tree/v4.1.2) - development scheduling tasks
-* [Materialize](https://github.com/mkhairi/materialize-sass) - simplistic styling
 * [Twilio](https://github.com/twilio/twilio-ruby) - SMS alerts
 
 ## Thanks
