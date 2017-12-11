@@ -25,7 +25,7 @@ class CoinService
 
   def self.cc_coin_list(all_rows)
     # try getting cached version
-    return Rails.cache.fetch(@@cache_key_cc_coin_list, :expires_in => @@cache_expiry_cc_coin_list.seconds) do
+    return Rails.cache.fetch(@@cache_key_cc_coin_list, :expires_in => @@cache_expiry_cc_coin_list.hours) do
       CryptoCompare.cc_coin_list(all_rows)
     end
   end

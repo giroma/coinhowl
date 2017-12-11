@@ -39,4 +39,15 @@ class CryptoCompare
     end
     return cc_images_url
   end
+
+  def self.get_chart_data_by_minute(symbol, limit)
+    data_by_minute = HTTParty.get("https://min-api.cryptocompare.com/data/histominute?fsym=#{symbol}&limit=#{limit}&tsym=BTC&aggregate=3&e=Bittrex&allData=true")
+    data_by_minute_result = JSON.parse(data_by_minute.body)
+    data_by_minute_result = data_by_minute_result["Data"]
+
+    data_by_minute_result.each do |element|
+      element["date"] = Time.at(element["time"]).to_s
+    end
+    return data_by_minute_result
+  end
 end
