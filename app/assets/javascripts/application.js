@@ -33,7 +33,8 @@ $(document).ready(function() {
   // Get data from API for Search function
   var symbolHash = {}
   var myResults = function() {
-    var url = "https://cors-anywhere.herokuapp.com/https://bittrex.com/api/v1.1/public/getmarkets";
+    // var url = "https://cors-anywhere.herokuapp.com/https://bittrex.com/api/v1.1/public/getmarkets";
+    var url = "https://cors.now.sh/https://bittrex.com/api/v1.1/public/getmarkets";
     $.ajax({
       url: url,
       method: 'GET',

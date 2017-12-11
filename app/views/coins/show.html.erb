@@ -2,20 +2,20 @@
 
 <!-- GRAPH -->
 <div class="container row">
-  <div class="col s8">
+  <div class="col l7 m12 s12">
     <%= content_tag "div", id: "chartdiv", data: {chartArray: @data_by_minute_result, coinSymbol: @coin.symbol} do %>
   <% end %>
 </div>
 
 <!-- MAIN COIN INFO SECTION -->
-<div class="col s4">
+<div class="col l5 m12 s12">
   <div class="row">
-    <div class="col s4">
+    <div class="col l6">
       <div class="head-info valign-wrapper">
-        <h3 class="js-coin-symbol"><%= @coin.symbol %></h3>
+        <h3 class="js-coin-symbol"><%= image_tag("#{@cc_coin_list[@coin.symbol][:image_url]}", size: "40x40", alt: "#{@coin.symbol}") %><%= @coin.symbol %></h3>
       </div>
     </div>
-    <div class="col s4">
+    <div class="col l4">
       <div class="head-info valign-wrapper">
         <!-- FOLLOW/UNFOLLOW BUTTON -->
         <div class="center-align">
@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <div class="col s4">
+    <div class="col l2">
       <div id="alert-container" class="head-info valign-wrapper text-right">
         <!-- ALERT BUTTON-->
         <a id="alert-icon" class="btn btn-floating btn-medium cyan accent-4 waves-effect waves-light modal-trigger <%= 'hide' if !@is_following %>" href="#modal1" action="#modal1">

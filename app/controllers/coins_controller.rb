@@ -15,7 +15,7 @@ class CoinsController < ApplicationController
     coin_summary = CoinService.summary
     @coin = CoinService.get_coin(coin_symbol)
     @image_url = CoinService.ext_data(coin_summary)[coin_symbol][:image_url]
-
+    @cc_coin_list = CoinService.cc_coin_list(@coin)
     if current_user
       @following = Following.find_by(user_id: current_user.id, coin_name: coin_symbol)
       @is_following = @following.present? ? true : false
