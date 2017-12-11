@@ -1,7 +1,4 @@
 class UsersController < ApplicationController
-  before_action :call_coin_market_cap
-  before_action :call_bittrex
-
   def new
     @user = User.new
   end
