@@ -171,7 +171,7 @@
         var coinSymbol = $('.js-coin-symbol').text(); //get coin name from html element
         if (coinSymbol === 'BCH'){ coinSymbol = 'BCC'};
           $.ajax({
-            url: "https://cors-anywhere.herokuapp.com/https://bittrex.com/api/v1.1/public/getmarketsummary?market=btc-" + coinSymbol,
+            url: "https://cors.now.sh/https://bittrex.com/api/v1.1/public/getmarketsummary?market=btc-" + coinSymbol,
             method: 'GET'
           })
           .done(function (response) {
