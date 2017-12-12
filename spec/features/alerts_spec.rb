@@ -41,6 +41,6 @@ feature 'Alerts', %q{
     find("ul.collapsible").click
     click_link('Delete')
     page.driver.browser.switch_to.alert.accept
-    expect(page).to have_no_content("1.1"), :driver => :webkit
+    expect(page).to have_no_content("1.1")
   end
 end
