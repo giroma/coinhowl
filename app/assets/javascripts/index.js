@@ -23,8 +23,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
           return coin['MarketName'] === coinName;
           }
         });
-        item.querySelector('.coin-volume').innerText = (apiCoin['BaseVolume'].toFixed(3)) //update volume
-        item.querySelector('.coin-last').innerText = (apiCoin['Last'].toFixed(8))       //update last price
+        if ( item.style.display !== 'none') {// When filtering checks their property isn't display:none
+          item.querySelector('.coin-volume').innerText = (apiCoin['BaseVolume'].toFixed(3)) //update volume
+          item.querySelector('.coin-last').innerText = (apiCoin['Last'].toFixed(8))       //update last price
+        }
       });
     });
   },3000);
