@@ -175,9 +175,13 @@
             method: 'GET'
           })
           .done(function (response) {
-            $('.coin-prices-table tr').each(function () { // itterate over each element
+            $('.coin-prices-table tr').each(function (index) { // itterate over each element
               var field = $(this).find('td').eq(1).find('p').attr('data-field'); // get the field name for the h5 of every second dt
-              $(this).find('td').eq(1).find('p').html('&#579; ' + (response['result'][0][field]).toFixed(8));
+
+              var decimalPoints = 8
+              if (field === 'BaseVolume') { decimalPoints = 2 } //change to 2 decimal points for volume display
+
+              $(this).find('td').eq(1).find('p').html('&#579; ' + (response['result'][0][field]).toFixed(decimalPoints));
             })
             $('#last-updated').html('LAST UPDATED: ' + Date(response['result'][0]['TimeStamp']));
           })
