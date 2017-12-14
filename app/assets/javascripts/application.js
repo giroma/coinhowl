@@ -51,7 +51,6 @@ $(document).ready(function() {
             symbolHash[btcRemoved+' '+element["MarketCurrencyLong"]] = element["LogoUrl"]
           }
         }
-        console.log(symbolHash);
     });
 
     $('input.autocomplete').autocomplete({
