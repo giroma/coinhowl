@@ -1,24 +1,30 @@
-# README
+# Coin Howl
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Coin Howl provides an easy-to-use service when monitoring cryptocurrencies in the Bitcoin market. Follow a coin, set up your alerts on our site, and you'll be sure to get a real time "Howl" via SMS and e-mail.
 
-Things you may want to cover:
+Please donate to keep us running :) 
 
-* Ruby version
+* BTC: 38hvkQeNHoXVtiGRHtBxmUB3Nzv5VQ8r26 
+* ETH: 0xb2bc175f590c34b77b37ef3844fc3be6755f79e4
 
-* System dependencies
+## Built With:
 
-* Configuration
+* Rails 5.1.4
 
-* Database creation
+* Materialize SCSS - front-end styling
 
-* Database initialization
+* Postgresql - database
 
-* How to run the test suite
+* 2 Cryptocurrency APIs
+    * Bittrex - current data
+    * CryptoCompare - historical data for the charts and cryptocoin images
 
-* Services (job queues, cache servers, search engines, etc.)
+### Key Gems:
 
-* Deployment instructions
+* [Dalli](https://github.com/petergoldstein/dalli) - accessing memcached servers
+* [DelayedJob ActiveRecord](https://github.com/collectiveidea/delayed_job_active_record/tree/v4.1.2) - development scheduling tasks
+* [Twilio](https://github.com/twilio/twilio-ruby) - SMS alerts
 
-* ...
+## Thanks
+* Bitmaker Instructors!
+* nenchev
