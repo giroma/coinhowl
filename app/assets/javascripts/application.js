@@ -45,7 +45,7 @@ $(document).ready(function() {
         var tempSymbol = element["MarketName"].includes('BTC-','');
         if (tempSymbol === true) {
           if (element["MarketName"] == 'BTC-BCC') {
-            symbolHash['BCH Bitcoin Cash'] = "https://www.cryptocompare.com/media/1383919/bch.jpg"
+            symbolHash['BCC Bitcoin Cash'] = "https://www.cryptocompare.com/media/1383919/bch.jpg"
           } else {
             var btcRemoved = element["MarketName"].replace('BTC-','');
             symbolHash[btcRemoved+' '+element["MarketCurrencyLong"]] = element["LogoUrl"]

@@ -17,14 +17,14 @@ class BittrexClient
       coin_row = CoinRow.new
       coin_row.name = coin["MarketName"]
       coin_row.symbol = symbol_for(coin_row.name)
-      coin_row.volume = number_with_precision(coin["BaseVolume"], precision: 3)
-      coin_row.bid = number_with_precision(coin["Bid"], precision: 8)
-      coin_row.ask = number_with_precision(coin["Ask"], precision: 8)
+      coin_row.volume = ActionController::Base.helpers.number_with_precision(coin["BaseVolume"], precision: 2)
+      coin_row.bid = ActionController::Base.helpers.number_with_precision(coin["Bid"], precision: 8)
+      coin_row.ask = ActionController::Base.helpers.number_with_precision(coin["Ask"], precision: 8)
       coin_row.pct_change = percentage_change(coin["Last"], coin["PrevDay"])
-      coin_row.last_price = number_with_precision(coin["Last"], precision: 8)
-      coin_row.high_24hr = number_with_precision(coin["High"], precision: 8)
-      coin_row.low_24hr = number_with_precision(coin["Low"], precision: 8)
-      coin_row.prev_day = number_with_precision(coin["PrevDay"], precision: 8)
+      coin_row.last_price = ActionController::Base.helpers.number_with_precision(coin["Last"], precision: 8)
+      coin_row.high_24hr = ActionController::Base.helpers.number_with_precision(coin["High"], precision: 8)
+      coin_row.low_24hr = ActionController::Base.helpers.number_with_precision(coin["Low"], precision: 8)
+      coin_row.prev_day = ActionController::Base.helpers.number_with_precision(coin["PrevDay"], precision: 8)
       coin_row.added = Date.parse(coin["Created"])
       coin_rows << coin_row
     end
@@ -72,14 +72,14 @@ class BittrexClient
 
   # math lol
   def self.percentage_change(last_price, prev_day)
-    pct_change = number_with_precision((( last_price - prev_day)/prev_day )*100, precision: 2)
+    pct_change = ActionController::Base.helpers.number_with_precision((( last_price - prev_day)/prev_day )*100, precision: 2)
     return pct_change
   end
 
   # remaps name to correct market name
   def self.remap_name(element)
     if element["MarketName"] == "BTC-BCC"
-      element["MarketName"] = "BTC-BCH"
+      element["MarketName"] = "BTC-BCC"
     end
   end
 end

@@ -21,8 +21,11 @@ class CoinsController < ApplicationController
       @is_following = @following.present? ? true : false
       @alert = Alert.new
     end
-
-    @data_by_minute_result = get_chart_data_by_minute(coin_symbol, 100)
+    if coin_symbol == 'BCC'
+      @data_by_minute_result = get_chart_data_by_minute('BCH', 100)
+    else
+      @data_by_minute_result = get_chart_data_by_minute(coin_symbol, 100)
+    end
   end
 
   def get_chart_data_by_minute(symbol, limit)

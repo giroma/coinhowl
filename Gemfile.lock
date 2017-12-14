@@ -144,7 +144,6 @@ GEM
       rack (>= 1.2, < 3)
     pg (0.21.0)
     public_suffix (3.0.1)
-    puma (3.11.0)
     rack (2.0.3)
     rack-test (0.8.2)
       rack (>= 1.0, < 3)
@@ -279,7 +278,6 @@ DEPENDENCIES
   material_icons
   materialize-sass (~> 0.100.2)
   pg (~> 0.18)
-  puma
   rails (~> 5.1.4)
   rails-controller-testing
   rspec-rails (~> 3.7, >= 3.7.2)
