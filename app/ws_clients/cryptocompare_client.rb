@@ -45,6 +45,11 @@ class CryptoCompare
     return cc_images_url
   end
 
+  def btc_to_dollar_euro_price
+    request = HTTParty.get(https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,CAD,EUR)
+    btc_to_dollar_euro_price = JSON.parse(request.body)
+  end
+
   def self.get_chart_data_by_minute(symbol, limit)
     data_by_minute = HTTParty.get("https://min-api.cryptocompare.com/data/histominute?fsym=#{symbol}&limit=#{limit}&tsym=BTC&aggregate=3&e=Bittrex&allData=true")
     data_by_minute_result = JSON.parse(data_by_minute.body)
