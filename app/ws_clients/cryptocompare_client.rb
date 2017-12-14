@@ -45,8 +45,8 @@ class CryptoCompare
     return cc_images_url
   end
 
-  def btc_to_dollar_euro_price
-    request = HTTParty.get(https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,CAD,EUR)
+  def self.btc_to_dollar_euro_price
+    request = HTTParty.get("https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,CAD,EUR")
     btc_to_dollar_euro_price = JSON.parse(request.body)
   end
 
