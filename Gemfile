@@ -45,7 +45,6 @@ gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 
 gem 'sorcery'
 
-gem 'delayed_job_active_record' #integrates easiest with rails, uses active_record
 
 gem "letter_opener", :group => :development
 
