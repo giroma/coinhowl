@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Coinhowl</title>
-    <%= favicon_link_tag 'alerts' %>
+    <!-- <%= favicon_link_tag 'alerts' %> -->
     <%= csrf_meta_tags %>
     <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
     <script src="https://www.amcharts.com/lib/3/serial.js"></script>
@@ -31,13 +31,13 @@
             </li>
             <% if !current_user %>
               <li><a href="<%= new_user_path %>"><i class="material-icons right">add</i>Signup</a></li>
-              <li><a href="<%= new_session_path %>"><i class="material-icons right">account_circle</i>Log In</a></li>
+              <li><a href="<%= login_path %>"><i class="material-icons right">account_circle</i>Log In</a></li>
           </ul>
           <% else %>
             <ul id="dropdown1" class="dropdown-content">
               <li><a href="<%= user_path(current_user) %>">User settings</a></li>
               <li class="divider"></li>
-              <li><%= link_to "Logout", session_path, method: :delete %></li>
+              <li><%= link_to "Logout", logout_path, method: :delete %></li>
             </ul>
             <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons right">account_circle</i>My Account</a></li>
             <li><a href="<%= following_index_path %>"><i class="material-icons right">account_balance_wallet</i>My Portfolio</a></li>

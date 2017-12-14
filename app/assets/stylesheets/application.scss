@@ -43,15 +43,18 @@ ul.autocomplete-content.dropdown-content {
 
 img.carousel-img {
   height: auto;
+  min-height: 300px;
   max-height: 300px;
-  // padding: 25px 0;
-  // margin: 0 0 68px 0;
 }
 .carousel .indicators .indicator-item.active {
   background-color: #55ddaa;
 }
 .carousel .indicators .indicator-item {
   background-color: lightgray;
+}
+
+.carousel-slider {
+  max-height: 400px;
 }
 
 .carousel-item.black-text {
@@ -73,4 +76,8 @@ img.menu-logo {
 
 .footer-link-img {
   margin: 0 0 0 10px;
+}
+
+.coin-img {
+  margin: 0 10px;
 }

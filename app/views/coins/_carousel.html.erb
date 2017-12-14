@@ -5,40 +5,24 @@
     </div> -->
     <% count = 0 %>
     <% @top_5_coins.each do |coin| %>
-      <% if @top_5_cc_symbol[count] == "GBG"  %>
-        <% @top_5_cc_symbol[count] = "GOLOS" %>
-        <div class="carousel-item black-text" href="<%= @carousel_position[count] %>">
-          <div class="row">
-            <div class="col s5 coin-logo" id="carousel-item<%= count %>">
-              <img src="https://www.cryptocompare.com<%= @cryptocompare_result[@top_5_cc_symbol[count]]["ImageUrl"] %>">
-            </div>
-            <div class="col s7 text-left">
-              <h5>Biggest % Gain</h5>
-              <h3><%= link_to "#{ coin[1][:original]['MarketName'] }", "coins/#{@top_5_cc_symbol[count]}" %></h3>
-              <h5> <%= number_with_precision(coin[1][:change], precision: 2) %>%</h5>
-              <h5>Last Price <%= number_with_precision(coin[1][:original]["Last"], precision: 8) %></h5>
-              <h5>24hr Volume <%= number_with_precision(coin[1][:original]["BaseVolume"], precision: 2) %> BTC</h5>
-              <% count+=1 %>
-            </div>
+    <% ext = @cc_coin_list[coin.symbol] %>
+      <% #if @top_5_cc_symbol[count] == "GBG"  %>
+        <% #@top_5_cc_symbol[count] = "GOLOS" %>
+      <div class="carousel-item black-text" href="<%= @carousel_position[count] %>">
+        <div class="row">
+          <div class="col s5 coin-logo" id="carousel-item<%= count %>">
+            <img src="<%= ext[:image_url] %>" class="carousel-img">
+          </div>
+          <div class="col s7 text-left">
+            <h5>Biggest % Gain</h5>
+            <h3><%= link_to "#{ ext[:full_name] }", "coins/#{coin.symbol}" %></h3>
+            <h5> <%= coin.pct_change %>%</h5>
+            <h5>Last Price <%= coin.last_price %></h5>
+            <h5>24hr Volume <%= coin.volume %> BTC</h5>
+            <% count += 1 %>
           </div>
         </div>
-      <% else %>
-        <div class="carousel-item black-text" href="<%= @carousel_position[count] %>">
-          <div class="row">
-            <div class="col s5 coin-logo" id="carousel-item<%= count %>">
-              <img src="https://www.cryptocompare.com<%= @cryptocompare_result[@top_5_cc_symbol[count]]["ImageUrl"] %>">
-            </div>
-            <div class="col s7 text-left">
-              <h5>Biggest % Gain</h5>
-              <h3><%= link_to "#{ coin[1][:original]['MarketName'] }", "coins/#{@top_5_cc_symbol[count]}" %></h3>
-              <h5> <%= number_with_precision(coin[1][:change], precision: 2) %>%</h5>
-              <h5>Last Price <%= number_with_precision(coin[1][:original]["Last"], precision: 8) %></h5>
-              <h5>24hr Volume <%= number_with_precision(coin[1][:original]["BaseVolume"], precision: 2) %> BTC</h5>
-              <% count+=1 %>
-            </div>
-          </div>
-        </div>
-      <% end %>
+      </div>
     <% end %>
   </div>
 </div>

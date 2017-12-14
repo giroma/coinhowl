@@ -2,20 +2,20 @@
 
 <!-- GRAPH -->
 <div class="container row">
-  <div class="col s8">
-    <%= content_tag "div", id: "chartdiv", data: {chartArray: @data_by_minute_result, coinSymbol: params[:id]} do %>
+  <div class="col l7 m12 s12">
+    <%= content_tag "div", id: "chartdiv", data: {chartArray: @data_by_minute_result, coinSymbol: @coin.symbol} do %>
   <% end %>
 </div>
 
 <!-- MAIN COIN INFO SECTION -->
-<div class="col s4">
+<div class="col l5 m12 s12">
   <div class="row">
-    <div class="col s4">
+    <div class="col l6">
       <div class="head-info valign-wrapper">
-        <h3 class="js-coin-symbol"><%= @coin_symbol %></h3>
+        <h3 class="js-coin-symbol"><%= image_tag("#{@cc_coin_list[@coin.symbol][:image_url]}", size: "40x40", alt: "#{@coin.symbol}", class: "coin-img") %><%= @coin.symbol %></h3>
       </div>
     </div>
-    <div class="col s4">
+    <div class="col l4">
       <div class="head-info valign-wrapper">
         <!-- FOLLOW/UNFOLLOW BUTTON -->
         <div class="center-align">
@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <div class="col s4">
+    <div class="col l2">
       <div id="alert-container" class="head-info valign-wrapper text-right">
         <!-- ALERT BUTTON-->
         <a id="alert-icon" class="btn btn-floating btn-medium cyan accent-4 waves-effect waves-light modal-trigger <%= 'hide' if !@is_following %>" href="#modal1" action="#modal1">
@@ -50,24 +50,24 @@
     <tbody class='coin-prices-table'>
       <tr>
         <!-- LAST -->
-        <% if @coin_last < @prev_day %>
+        <% if @coin.last_price < @coin.prev_day %>
           <td>
             <p class="coin-info red-text">LAST:</p>
           </td>
           <td>
             <p class="coin-info" data-field="Last">&#579;
-              <%= number_with_precision(@coin_last, precision: 8) %></p>
+              <%= @coin.last_price %></p>
           </td>
           <td class="text-center">
             <span class="red-text">
               <i class="material-icons valign-wrapper red-text">arrow_drop_down</i></span></td>
-          <% elsif @coin_last > @prev_day %>
+          <% elsif @coin.last_price > @coin.prev_day %>
             <td>
               <p class="coin-info green-text">LAST:</p>
             </td>
             <td>
               <p class="coin-info" data-field="Last">&#579;
-                <%= number_with_precision(@coin_last, precision: 8) %></p>
+                <%= @coin.last_price %></p>
             </td>
             <td class="coin-info text-center">
               <span class="green-text">
@@ -78,7 +78,7 @@
             </td>
             <td>
               <p class="coin-info" data-field="Last">&#579;
-                <%= number_with_precision(@coin_last, precision: 8) %></p>
+                <%= @coin.last_price %></p>
             </td>
             <td class="text-center">
               <span class="black-text">
@@ -92,7 +92,7 @@
           </td>
           <td>
             <p class="coin-info" data-field="BaseVolume">&#579;
-              <span><%= number_with_precision(@coin_base_volume, precision: 8) %></p>
+              <span><%= @coin.volume %></p>
             </td>
             <td></td>
           </tr>
@@ -103,7 +103,7 @@
             </td>
             <td>
               <p class="coin-info" data-field="Bid">&#579;
-                <%= number_with_precision(@coin_bid, precision: 8) %></p>
+                <%= @coin.bid %></p>
             </td>
             <td></td>
           </tr>
@@ -114,7 +114,7 @@
             </td>
             <td>
               <p class="coin-info" data-field="Ask">&#579;
-                <%= number_with_precision(@coin_ask, precision: 8) %></p>
+                <%= @coin.ask %></p>
             </td>
             <td></td>
           </tr>
@@ -125,7 +125,7 @@
             </td>
             <td>
               <p class="coin-info" data-field="High">&#579;
-                <%= number_with_precision(@coin_high, precision: 8) %></p>
+                <%= @coin.high_24hr %></p>
             </td>
             <td></td>
           </tr>
@@ -136,7 +136,7 @@
             </td>
             <td>
               <p class="coin-info" data-field="Low">&#579;
-                <%= number_with_precision(@coin_low, precision: 8) %></p>
+                <%= @coin.low_24hr %></p>
             </td>
             <td></td>
           </tr>

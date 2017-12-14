@@ -12,15 +12,15 @@
   <h5><%= follow.coin_name %></h5>
   <div class="field">
     <%= f.label :price_above %><br />
-    <%= f.number_field :price_above %>
+    <%= f.text_field :price_above %>
   </div>
   <div class="field">
     <%= f.label :price_below %><br />
-    <%= f.number_field :price_below %>
+    <%= f.text_field :price_below %>
   </div>
   <div class="field">
     <%= f.label '24h percent change' %><br />
-    <%= f.number_field :percent %>
+    <%= f.text_field :percent %>
   </div>
   <div class="actions modal-close submit-alert">
     <%= f.submit :class => 'btn cyan accent-4' %>

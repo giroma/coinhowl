@@ -24,10 +24,4 @@ RSpec.describe ApplicationController, :type => :controller do
       expect(controller.call_cryptocompare_api.length).to be >= 200
     end
   end
-
-  describe "Check Top 5 coins method" do
-    it "checks length of the return equals to 5" do
-      expect(controller.top_5_coins.length).to equal(5)
-    end
-  end
 end

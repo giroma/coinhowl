@@ -33,7 +33,8 @@ $(document).ready(function() {
   // Get data from API for Search function
   var symbolHash = {}
   var myResults = function() {
-    var url = "https://cors-anywhere.herokuapp.com/https://bittrex.com/api/v1.1/public/getmarkets";
+    // var url = "https://cors-anywhere.herokuapp.com/https://bittrex.com/api/v1.1/public/getmarkets";
+    var url = "https://cors.now.sh/https://bittrex.com/api/v1.1/public/getmarkets";
     $.ajax({
       url: url,
       method: 'GET',
@@ -44,7 +45,7 @@ $(document).ready(function() {
         var tempSymbol = element["MarketName"].includes('BTC-','');
         if (tempSymbol === true) {
           if (element["MarketName"] == 'BTC-BCC') {
-            symbolHash['BCH Bitcoin Cash'] = "https://www.cryptocompare.com/media/1383919/bch.jpg"
+            symbolHash['BCC Bitcoin Cash'] = "https://www.cryptocompare.com/media/1383919/bch.jpg"
           } else {
             var btcRemoved = element["MarketName"].replace('BTC-','');
             symbolHash[btcRemoved+' '+element["MarketCurrencyLong"]] = element["LogoUrl"]
