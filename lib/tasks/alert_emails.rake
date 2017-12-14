@@ -1,4 +1,5 @@
 desc 'Call Bittrex api and get last price of each coin, check against prices in alerts table'
+
 task alerts: [:environment] do
   response = HTTParty.get('https://bittrex.com/api/v1.1/public/getmarketsummaries')
   response = JSON.parse(response.body)
@@ -25,54 +26,52 @@ task alerts: [:environment] do
     api_coin_price = api_coin[0]['Last'] # to acces the 0 array and return ony price
     api_coin_percent = ((api_coin[0]['Last'])/(api_coin[0]['PrevDay'])-1)*100 # gives percent change from prev day
 
+    def set_alert_to_inactive
+      alert.state = 'Inactive' #change alert state to inactive once triggered
+      alert.save
+    end
           # ------EMAIL-------
     if alert.following.user.email_alert # trigger only when email_alert is set to true, meaing user wants to recieve email alerts
 
       #trigger when current price is above the alert price_above
       if api_coin_price > alert.price_above
         UserMailer.alert_email_above(alert.following.user.email, alert).deliver_now
-        alert.state = 'Inactive' #change alert state to inactive once triggered
-        alert.save
-      end if alert.price_above != nil # only triger if value is not nil
+        set_alert_to_inactive
+      end if alert.price_above != nil # only triger if value is not nil otherwise nil evaluation error occurs
 
       #trigger when current price is below the alert price_below
       if api_coin_price < alert.price_below
         UserMailer.alert_email_below(alert.following.user.email, alert).deliver_now
-        alert.state = 'Inactive'
-        alert.save
+        set_alert_to_inactive
       end if alert.price_below != nil
 
       # trigger when price has changed more % in a day than alert %
       if api_coin_percent.abs > alert.percent
         UserMailer.alert_email_percent(alert.following.user.email, alert).deliver_now
-        alert.state = 'Inactive'
-        alert.save
+        set_alert_to_inactive
       end if alert.percent != nil
     end
 
         #-------SMS--------
     if alert.following.user.phone_alert #only if user wants sms alerts
       if api_coin_price > alert.price_above
-        body = "id:#{alert.id} #{alert.following.coin_name} > #{alert.price_above}"
+        body = "#{alert.following.coin_name} > #{alert.price_above}"
         send_alert_sms(alert, body)
-        alert.state = 'Inactive' #change alert state to inactive once triggered
-        alert.save
-      end if alert.price_above != nil # only triger if value is not nil therwise nil evaluation o error occurs
+        set_alert_to_inactive
+      end if alert.price_above != nil # only triger if value is not nil otherwise nil evaluation error occurs
 
       #trigger when current price is below the alert price_below
       if api_coin_price < alert.price_below
-        body = "id:#{alert.id} #{alert.following.coin_name} < #{alert.price_below}"
+        body = "#{alert.following.coin_name} < #{alert.price_below}"
         send_alert_sms(alert, body)
-        alert.state = 'Inactive'
-        alert.save
+        set_alert_to_inactive
       end if alert.price_below != nil
 
       # trigger when price has changed more % in a day than alert %
       if api_coin_percent.abs > alert.percent
-        body = "id #{alert.id} #{alert.following.coin_name} price has changed over #{alert.percent}%"
+        body = "#{alert.following.coin_name} price has changed over #{alert.percent}%"
         send_alert_sms(alert, body)
-        alert.state = 'Inactive'
-        alert.save
+        set_alert_to_inactive
       end if alert.percent != nil
     end
   end
@@ -80,7 +79,6 @@ end
 
 def send_alert_sms(alert, body)
   client = Twilio::REST::Client.new(ENV['TWILIO_ID'], ENV['TWILIO_TOKEN'])
-
   client.api.account.messages.create(
     from: ENV['PHONE_NUMBER'],
     to: "+1#{alert.following.user.phone}",

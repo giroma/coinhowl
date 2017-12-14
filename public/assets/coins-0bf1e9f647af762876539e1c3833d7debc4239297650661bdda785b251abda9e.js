@@ -169,7 +169,7 @@
       // update show page prices every 3 seconds
       setInterval(function () {
         var coinSymbol = $('.js-coin-symbol').text(); //get coin name from html element
-        if (coinSymbol === 'BCH'){ coinSymbol = 'BCC'}; //remap bch coin due to different naming in apis
+        if (coinSymbol === 'BCH'){ coinSymbol = 'BCC'};
           $.ajax({
             url: "https://cors-anywhere.herokuapp.com/https://bittrex.com/api/v1.1/public/getmarketsummary?market=btc-" + coinSymbol,
             method: 'GET'
@@ -190,3 +190,4 @@
  $('.modal').modal();
 
 }); //end of DOMContentLoaded
+;
