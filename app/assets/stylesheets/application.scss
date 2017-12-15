@@ -40,6 +40,9 @@ ul.autocomplete-content.dropdown-content {
   width: 150px;
 }
 
+input#autocomplete-input {
+  height: auto;
+}
 
 img.carousel-img {
   height: auto;
@@ -54,6 +57,7 @@ img.carousel-img {
 }
 
 .carousel-slider {
+  margin-top: 8px;
   max-height: 400px;
 }
 
@@ -83,10 +87,14 @@ img.menu-logo {
 }
 
 .btc-price {
-  padding: 0 20px 0 0;
-  margin-right: 10px;
+  padding: 0 15px 0 15px;
 }
 
 nav li {
-  border-right: 2px solid white;
+  border-left: 2px solid #01579b;
+}
+
+.input-field.col.l12.m12.s12 {
+  padding: 0 15px 0 15px;
+
 }
