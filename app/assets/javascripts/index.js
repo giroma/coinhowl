@@ -29,5 +29,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
       });
     });
+    //update BTC price with live data in the header 
+    $.ajax({
+      url:"https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,CAD,EUR",
+      method: 'GET'
+    }).done(function (response) {
+      $('.btc-price').text(`1ɃTC = $${response['USD']} USD`)
+    })
   },3000);
 });
