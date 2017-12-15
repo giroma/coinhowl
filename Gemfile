@@ -35,7 +35,6 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'httparty', '~> 0.13.7'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
-# gem 'materialize-rails', '~> 0.97.5.2'
 gem 'materialize-sass', '~> 0.100.2'
 gem 'material_icons'
 gem 'clockwork'
@@ -44,12 +43,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 
 gem 'sorcery'
-
-gem 'delayed_job_active_record' #integrates easiest with rails, uses active_record
-
-gem "letter_opener", :group => :development
-
-# gem "puma"
+gem "puma"
 gem "dalli"
 
 # gem 'whenever', :require => false
