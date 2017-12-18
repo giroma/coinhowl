@@ -3,6 +3,19 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 document.addEventListener("DOMContentLoaded", function(event) {
 
+  if (!Cookies.get('currency')) { //set currency cookie to USD as default if none exists
+    Cookies.set('currency', 'USD');
+  }
+
+  var btcPrice = document.querySelector('.btc-price') //select btc price display element in header
+  btcPrice.addEventListener('click', function () {
+    if (Cookies.get('currency') === 'USD')
+      Cookies.set('currency', 'CAD');
+    else
+      Cookies.set('currency', 'USD');
+    console.log('clicked');
+  })
+  console.log(btcPrice.innerHTML);
   //update main index price data every 3 seconds
   setInterval(function () {
     // var coinSymbol = $('.js-coin-symbol').text() //get coin name from html element
@@ -29,12 +42,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
       });
     });
-    //update BTC price with live data in the header 
+    //update BTC price with live data in the header
+    var cookie = Cookies.get('currency')
+
     $.ajax({
       url:"https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,CAD,EUR",
       method: 'GET'
     }).done(function (response) {
-      $('.btc-price').text(`1ɃTC = $${response['USD']} USD`)
+
+      console.log(response);
+      $('.btc-price').text(`1ɃTC = $${response[cookie].toFixed(2)} ${cookie}`)
     })
+    console.log(cookie);
   },3000);
 });

@@ -17,6 +17,7 @@
 //= require alerts
 //= require jquery-ui
 //= require_tree .
+//= require js.cookie
 //= stub coins
 
 $(document).ready(function() {
