@@ -8,11 +8,22 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 
   var btcPrice = document.querySelector('.btc-price') //select btc price display element in header
-  btcPrice.addEventListener('click', function () { //toggle user cookie currency preference to CAD or USD
-    if (Cookies.get('currency') === 'USD')
-      Cookies.set('currency', 'CAD');
-    else
-      Cookies.set('currency', 'USD');
+  btcPrice.addEventListener('click', function () { //toggle user cookie currency preference to USD to CAD to EUR
+    if (Cookies.get('currency') === 'USD'){
+      Cookies.set('currency', 'CAD')
+      btcPrice.innerText = 'CAD'
+      console.log('cad');
+    }
+    else if (Cookies.get('currency') === 'CAD'){
+      Cookies.set('currency', 'EUR')
+      btcPrice.innerText = 'EUR'
+      console.log('eur');
+    }
+    else {
+      Cookies.set('currency', 'USD')
+      btcPrice.innerText = 'USD'
+      console.log('usd');
+    }
   })
   //update main index price data every 3 seconds
   setInterval(function () {
@@ -46,9 +57,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
       url:"https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,CAD,EUR",
       method: 'GET'
     }).done(function (response) {
-
-      console.log(response);
-      $('.btc-price').text(`1ɃTC = $${response[cookie].toFixed(2)} ${cookie}`)
+      console.log(cookie);
+      $('.btc-price').text(`1ɃTC = ${response[cookie].toFixed(2)} ${cookie}`)
     })
   },3000);
 });
