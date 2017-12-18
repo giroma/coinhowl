@@ -17,7 +17,9 @@
         <!-- Iteration from Bittrex to display each follow's current price -->
         <% @coin_summary.each do |coin| %>
           <% if coin.name == "BTC-#{follow.coin_name}" %>
+          <!-- Creates variables to use later in the coin portfolio -->
             <% @coin_last = coin.last_price %>
+            <% @coin_volume = coin.volume %>
           <% end %>
         <% end %>
           <li>
@@ -27,9 +29,13 @@
                 <%= link_to follow.coin_name, coin_path(follow.coin_name) %>
                 </h4>
               </div>
-              <div class="right col s7" id="followings-price">
-                Current Price: Ƀ
+              <div class="right col s3" id="followings-price">
+                Price: Ƀ
                 <%= @coin_last %>
+              </div>
+              <div class="right col s4" id="followings-price">
+                Volume:
+                <%= @coin_volume %>
               </div>
               <% if follow.alerts.length > 0 %>
                 <div class="right col s1">
