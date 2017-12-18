@@ -32,18 +32,18 @@
         <tbody>
           <% @coin_summary.each do |coin| %>
             <tr class="item">
-              <td class="coin-title">
+              <td class="coin-title table-title">
                 <a href="coins/<%= coin.symbol %>">
                   <% if @cc_coin_list[coin.symbol] != nil %>
                   <img src="<%= @cc_coin_list[coin.symbol][:image_url] %>" class="coin-image" title="<%= @cc_coin_list[coin.symbol][:full_name] %>">
-                  <%= @cc_coin_list[coin.symbol][:full_name] %>
+                  <span style="font-size:1.5rem;"><%= @cc_coin_list[coin.symbol][:full_name] %></span>
                   <% end %>
                 </a>
               </td>
-              <td class="text-center hide-on-med-and-down coin-symbol">
+              <td class="text-center hide-on-med-and-down coin-symbol table-data">
                 BTC-<%= coin.symbol %>
               </td>
-              <td class="text-right coin-volume" data-value="<%= coin.volume %>">
+              <td class="text-right coin-volume table-data" data-value="<%= coin.volume %>">
                 <%= coin.volume %>
               </td>
                 <% if coin.prev_day > coin.last_price %>
@@ -55,7 +55,7 @@
                     </span>
                   </td>
                 <% elsif coin.prev_day < coin.last_price %>
-                  <td class="text-right" data-value="<%= coin.pct_change %>">
+                  <td class="text-right table-data" data-value="<%= coin.pct_change %>">
                     <span class="green-text">
                       <i class="material-icons valign-wrapper green-text">arrow_drop_up</i>
                       <%= coin.pct_change %>
@@ -63,22 +63,22 @@
                     </span>
                   </td>
                 <% else %>
-                  <td class="text-right" data-value="<%= coin.pct_change %>">
+                  <td class="text-right table-data" data-value="<%= coin.pct_change %>">
                     <i class="material-icons valign-wrapper black-text">drag_handle</i>
                     <%= coin.pct_change %>
                     %
                   </td>
                 <% end %>
-                <td class="text-right coin-last" data-value="<%= coin.last_price %>">
+                <td class="text-right coin-last table-data" data-value="<%= coin.last_price %>">
                   <%= coin.last_price %>
                 </td>
-                <td class="text-right hide-on-med-and-down" data-value="<%= coin.high_24hr %>">
+                <td class="text-right hide-on-med-and-down table-data" data-value="<%= coin.high_24hr %>">
                   <%= coin.high_24hr %>
                 </td>
-                <td class="text-right hide-on-med-and-down" data-value="<%= coin.low_24hr %>">
+                <td class="text-right hide-on-med-and-down table-data" data-value="<%= coin.low_24hr %>">
                   <%= coin.low_24hr %>
                 </td>
-                <td class="text-center hide-on-med-and-down">
+                <td class="text-center hide-on-med-and-down table-data">
                   <%= coin.added %>
                 </td>
               </tr>
