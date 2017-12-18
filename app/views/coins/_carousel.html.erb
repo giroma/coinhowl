@@ -11,11 +11,15 @@
       <div class="carousel-item black-text" href="<%= @carousel_position[count] %>">
         <div class="row">
           <div class="col s5 coin-logo" id="carousel-item<%= count %>">
+            <% if ext != nil %>
             <img src="<%= ext[:image_url] %>" class="carousel-img">
+            <% end %>
           </div>
           <div class="col s7 text-left">
             <h5>Biggest % Gain</h5>
+            <% if ext != nil %>
             <h3><%= link_to "#{ ext[:full_name] }", "coins/#{coin.symbol}" %></h3>
+            <% end %>
             <h5> <%= coin.pct_change %>%</h5>
             <h5>Last Price <%= coin.last_price %></h5>
             <h5>24hr Volume <%= coin.volume %> BTC</h5>
