@@ -8,18 +8,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 
   var btcPrice = document.querySelector('.btc-price') //select btc price display element in header
-  btcPrice.addEventListener('click', function () {
+  btcPrice.addEventListener('click', function () { //toggle user cookie currency preference to CAD or USD
     if (Cookies.get('currency') === 'USD')
       Cookies.set('currency', 'CAD');
     else
       Cookies.set('currency', 'USD');
-    console.log('clicked');
   })
-  console.log(btcPrice.innerHTML);
   //update main index price data every 3 seconds
   setInterval(function () {
     // var coinSymbol = $('.js-coin-symbol').text() //get coin name from html element
-
     $.ajax({
       url: "https://cors.now.sh/https://bittrex.com/api/v1.1/public/getmarketsummaries",
       method: 'GET'
@@ -53,6 +50,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
       console.log(response);
       $('.btc-price').text(`1ɃTC = $${response[cookie].toFixed(2)} ${cookie}`)
     })
-    console.log(cookie);
   },3000);
 });
