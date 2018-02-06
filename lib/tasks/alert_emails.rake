@@ -26,7 +26,8 @@ task alerts: [:environment] do
     api_coin_price = api_coin[0]['Last'] # to acces the 0 array and return ony price
     api_coin_percent = ((api_coin[0]['Last'])/(api_coin[0]['PrevDay'])-1)*100 # gives percent change from prev day
 
-    def set_alert_to_inactive
+
+    def set_alert_to_inactive(alert)
       alert.state = 'Inactive' #change alert state to inactive once triggered
       alert.save
     end
@@ -36,19 +37,19 @@ task alerts: [:environment] do
       #trigger when current price is above the alert price_above
       if api_coin_price > alert.price_above
         UserMailer.alert_email_above(alert.following.user.email, alert).deliver_now
-        set_alert_to_inactive
+        set_alert_to_inactive(alert)
       end if alert.price_above != nil # only triger if value is not nil otherwise nil evaluation error occurs
 
       #trigger when current price is below the alert price_below
       if api_coin_price < alert.price_below
         UserMailer.alert_email_below(alert.following.user.email, alert).deliver_now
-        set_alert_to_inactive
+        set_alert_to_inactive(alert)
       end if alert.price_below != nil
 
       # trigger when price has changed more % in a day than alert %
       if api_coin_percent.abs > alert.percent
         UserMailer.alert_email_percent(alert.following.user.email, alert).deliver_now
-        set_alert_to_inactive
+        set_alert_to_inactive(alert)
       end if alert.percent != nil
     end
 
@@ -57,21 +58,21 @@ task alerts: [:environment] do
       if api_coin_price > alert.price_above
         body = "#{alert.following.coin_name} > #{alert.price_above}"
         send_alert_sms(alert, body)
-        set_alert_to_inactive
+        set_alert_to_inactive(alert)
       end if alert.price_above != nil # only triger if value is not nil otherwise nil evaluation error occurs
 
       #trigger when current price is below the alert price_below
       if api_coin_price < alert.price_below
         body = "#{alert.following.coin_name} < #{alert.price_below}"
         send_alert_sms(alert, body)
-        set_alert_to_inactive
+        set_alert_to_inactive(alert)
       end if alert.price_below != nil
 
       # trigger when price has changed more % in a day than alert %
       if api_coin_percent.abs > alert.percent
         body = "#{alert.following.coin_name} price has changed over #{alert.percent}%"
         send_alert_sms(alert, body)
-        set_alert_to_inactive
+        set_alert_to_inactive(alert)
       end if alert.percent != nil
     end
   end
