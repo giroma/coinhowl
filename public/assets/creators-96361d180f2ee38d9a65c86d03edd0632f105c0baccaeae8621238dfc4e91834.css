@@ -1,0 +1,13 @@
+/* line 11, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/creators.scss */
+#howl {
+  font-weight: bolder;
+  color: darkblue;
+}
+
+/* line 16, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/creators.scss */
+#header-description {
+  color: darkslategrey;
+  font-style: italic;
+  line-height: 2;
+  padding: 10px 0 50px;
+}

@@ -1,0 +1,144 @@
+/* line 5, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/coins.scss */
+tbody {
+  line-height: 0.1;
+}
+
+/* line 9, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/coins.scss */
+.card .card-title {
+  font-weight: 400;
+}
+
+/* line 13, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/coins.scss */
+.strong {
+  font-weight: 500;
+}
+
+/* line 17, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/coins.scss */
+.symbol {
+  font-size: 2.4rem;
+}
+
+/* line 21, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/coins.scss */
+.coin-image {
+  width: 25px;
+  height: 25px;
+}
+
+/* line 25, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/coins.scss */
+td #coinsIndex {
+  padding: 4px 10px;
+}
+
+/* line 30, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/coins.scss */
+span .red-text {
+  vertical-align: middle;
+  text-align: center;
+}
+
+/* line 35, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/coins.scss */
+span .green-text {
+  vertical-align: middle;
+  text-align: center;
+}
+
+/* line 40, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/coins.scss */
+#chartdiv {
+  width: 100%;
+  height: 500px;
+  font-size: 11px;
+}
+
+/* line 46, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/coins.scss */
+.coin-title {
+  font-size: 1.1rem;
+}
+/* line 48, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/coins.scss */
+.coin-title span {
+  vertical-align: super;
+}
+
+/* line 54, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/coins.scss */
+.text-left {
+  text-align: left;
+  font-size: inherit;
+  padding: inherit;
+}
+
+/* line 60, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/coins.scss */
+.text-right {
+  text-align: right;
+  font-size: inherit;
+  padding: inherit;
+}
+
+/* line 66, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/coins.scss */
+.text-center {
+  padding: inherit;
+  text-align: center;
+  font-size: inherit;
+}
+
+/* line 72, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/coins.scss */
+table[data-sortable] thead th {
+  border-right: solid 1px lightgray;
+}
+
+/* line 75, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/coins.scss */
+table[data-sortable] tbody td {
+  border-right: solid 1px lightgray;
+}
+
+/* line 79, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/coins.scss */
+table[data-sortable] .text-left {
+  text-align: left;
+}
+
+/* line 83, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/coins.scss */
+table[data-sortable] .text-right {
+  text-align: right;
+}
+
+/* line 87, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/coins.scss */
+table[data-sortable] .text-center {
+  text-align: center;
+}
+
+/* line 91, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/coins.scss */
+table[data-sortable] .no-image {
+  padding-left: 45px;
+}
+
+/* line 95, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/coins.scss */
+table.highlight > tbody > tr:hover {
+  background-color: lightblue;
+}
+
+/* line 99, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/coins.scss */
+.head-info {
+  height: 100px;
+}
+
+/* line 103, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/coins.scss */
+#show-coin-table td {
+  padding: 5px;
+}
+
+/* line 107, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/coins.scss */
+div#show-coin-table-head {
+  text-align: center;
+}
+
+/* line 111, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/coins.scss */
+.coin-info {
+  font-size: 1.2rem;
+}
+
+/* line 115, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/coins.scss */
+.table-title {
+  fon-size: 1.5rem;
+}
+
+/* line 119, /Users/arielc/OneDrive/bitmaker/projects/coinhowl/app/assets/stylesheets/coins.scss */
+.table-data {
+  font-size: 1.1rem;
+}
