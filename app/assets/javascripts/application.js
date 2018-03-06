@@ -44,12 +44,14 @@ $(document).ready(function() {
     .done(function(data) {
       data["result"].forEach(function(element) {
         var tempSymbol = element["MarketName"].includes('BTC-','');
-        if (tempSymbol === true) {
+				var twoDaysAgo = new Date();
+				twoDaysAgo.setDate(twoDaysAgo.getDate() - 2);
+				twoDaysAgo = twoDaysAgo.toISOString().slice(0,10)
+				var apiDate = element["Created"].slice(0, 10);
+        if (tempSymbol === true && (apiDate < twoDaysAgo)) {
           if (element["MarketName"] == 'BTC-BCC') {
             symbolHash['BCC Bitcoin Cash'] = "https://www.cryptocompare.com/media/1383919/bch.jpg"
-          } else if (element["MarketName"] == 'BTC-TUSD') {
-						'here'
-					} else {
+          } else {
             var btcRemoved = element["MarketName"].replace('BTC-','');
             symbolHash[btcRemoved+' '+element["MarketCurrencyLong"]] = element["LogoUrl"]
           }
