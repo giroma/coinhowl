@@ -47,7 +47,9 @@ $(document).ready(function() {
         if (tempSymbol === true) {
           if (element["MarketName"] == 'BTC-BCC') {
             symbolHash['BCC Bitcoin Cash'] = "https://www.cryptocompare.com/media/1383919/bch.jpg"
-          } else {
+          } else if (element["MarketName"] == 'BTC-TUSD') {
+						'here'
+					} else {
             var btcRemoved = element["MarketName"].replace('BTC-','');
             symbolHash[btcRemoved+' '+element["MarketCurrencyLong"]] = element["LogoUrl"]
           }
