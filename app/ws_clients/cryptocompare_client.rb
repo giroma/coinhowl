@@ -14,7 +14,7 @@ class CryptoCompare
     all_rows.each do |coin|
       cc_images_url[coin.symbol] = {
         image_url: "https://cdn.browshot.com/static/images/not-found.png",
-        full_name: "N/A"
+        full_name: "N/A CC"
       }
     end
     base_image_url = 'https://www.cryptocompare.com'

@@ -26,13 +26,16 @@ class BittrexClient
       coin_row.low_24hr = ActionController::Base.helpers.number_with_precision(coin["Low"], precision: 8)
       coin_row.prev_day = ActionController::Base.helpers.number_with_precision(coin["PrevDay"], precision: 8)
       coin_row.added = Date.parse(coin["Created"])
-      coin_rows << coin_row
+			if coin_row.added < 2.days.ago
+				coin_rows << coin_row
+			end
     end
     return coin_rows
   end
 
   # gets all extended data (images and full name)
   def self.ext_data(all_rows)
+		coin_rows = summary
     response = HTTParty.get(@@base_url + "getmarkets")
     response_body = JSON.parse(response.body)
     response_images = response_body["result"].select {|coin|
@@ -43,7 +46,7 @@ class BittrexClient
     all_rows.each do |coin|
       ext_data[coin.symbol] = {
         image_url: "https://cdn.browshot.com/static/images/not-found.png",
-        full_name: "N/A"
+        full_name: "N/A BR"
       }
     end
 
@@ -53,14 +56,15 @@ class BittrexClient
       coin_ext = ext_data[symbol_for(ext["MarketName"])]
       logo_url = ext["LogoUrl"]
       full_name = ext["MarketCurrencyLong"]
+			if coin_rows.include?(ext["MarketName"])
+	      if (logo_url != nil)
+	        coin_ext[:image_url] = logo_url
+	      end
 
-      if (logo_url != nil)
-        coin_ext[:image_url] = logo_url
-      end
-
-      if (full_name != nil)
-        coin_ext[:full_name] = full_name
-      end
+	      if (full_name != nil)
+	        coin_ext[:full_name] = full_name
+	      end
+			end
     end
     return ext_data
   end
@@ -79,7 +83,7 @@ class BittrexClient
   # remaps name to correct market name
   def self.remap_name(element)
     if element["MarketName"] == "BTC-BCC"
-      element["MarketName"] = "BTC-BCC"
+      element["MarketName"] == "BTC-BCC"
     end
   end
 end
