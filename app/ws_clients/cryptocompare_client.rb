@@ -14,7 +14,7 @@ class CryptoCompare
     all_rows.each do |coin|
       cc_images_url[coin.symbol] = {
         image_url: "https://cdn.browshot.com/static/images/not-found.png",
-        full_name: "N/A CC"
+        full_name: coin.symbol
       }
     end
     base_image_url = 'https://www.cryptocompare.com'
@@ -36,10 +36,12 @@ class CryptoCompare
           full_name: data['GOLOS']["CoinName"]
         }
       else
-        cc_images_url[coin.symbol] = {
+				if data[coin.symbol] != nil
+        	cc_images_url[coin.symbol] = {
           image_url: base_image_url + data[coin.symbol]["ImageUrl"],
           full_name: data[coin.symbol]["CoinName"]
         }
+				end
       end
     end
     return cc_images_url
